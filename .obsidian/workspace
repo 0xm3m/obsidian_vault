@@ -7,8 +7,11 @@
         "id": "02878a4b17f5dc9a",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "razorblack0/enum.md",
+            "mode": "source"
+          }
         }
       }
     ],
@@ -65,6 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "razorblack0/enum.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -83,5 +87,7 @@
     "collapsed": true
   },
   "active": "02878a4b17f5dc9a",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "razorblack0/enum.md"
+  ]
 }
