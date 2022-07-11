@@ -52,7 +52,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 314
   },
   "right": {
     "id": "28118da430c51560",
@@ -83,11 +83,12 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 100,
     "collapsed": true
   },
   "active": "02878a4b17f5dc9a",
   "lastOpenFiles": [
-    "razorblack0/readme.md.md"
+    "razorblack0/readme.md.md",
+    "razorblack0/enum.md"
   ]
 }
