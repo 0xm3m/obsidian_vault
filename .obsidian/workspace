@@ -78,13 +78,20 @@
                 "unlinkedCollapsed": true
               }
             }
+          },
+          {
+            "id": "4c70a72a93df76ef",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 100,
-    "collapsed": true
+    "width": 100
   },
   "active": "02878a4b17f5dc9a",
   "lastOpenFiles": [
