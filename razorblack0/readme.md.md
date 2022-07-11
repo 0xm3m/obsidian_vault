@@ -1,5 +1,5 @@
 ---
-title: "THM - Lame"
+title: "THM - # RazorBlack"
 classes: wide
 tag: 
   - "OSCP Box"
@@ -10,15 +10,15 @@ tag:
   - "OSCP Prep"
 header:
   teaser: /assets/images/htb/htb.png
-ribbon: green
-description: "Writeup for HTB - Lame"
+ribbon: blue
+description: "Writeup for THM - # RazorBlack"
 categories:
-  - HTB
+  - THM
 ---
 
-The given box ```Lame``` is a Linux machine with an IP address of ```10.10.10.3```
+The given box ```RazorBlack``` is a Linux machine with an IP address of ```10.10.135.22```
 
-- [Hack The Box - Lame](#hack-the-box---lame)
+- [TryHackMe- RazorBlack](#hack-the-box---lame)
   - [Recon](#recon)
     - [Nmap Scan Result](#nmap-scan-result)
   - [Enumeration](#enumeration)
@@ -38,101 +38,218 @@ The given box ```Lame``` is a Linux machine with an IP address of ```10.10.10.3`
 
 ### Nmap Scan Result
 
-On performing a nmap scan on the target, we can see there are 4 standard ports open
-
-    1. ftp - 21
-    2. ssh - 22
-    3. netbios-ssn - 139
-    4. smb - 445
-
-And also it discovered that the machine is running ```Debian Ubuntu``` OS
+On performing a nmap scan on the target, we can see there are 32 standard ports open
 
 ```c
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ sudo nmap -sC -sV -A 10.10.10.3
-Starting Nmap 7.91 ( https://nmap.org ) at 2021-09-15 10:45 IST
-Nmap scan report for 10.10.10.3
-Host is up (0.25s latency).
-Not shown: 996 filtered ports
-PORT    STATE SERVICE     VERSION
-21/tcp  open  ftp         vsftpd 2.3.4
-|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
-| ftp-syst: 
-|   STAT: 
-| FTP server status:
-|      Connected to 10.10.14.8
-|      Logged in as ftp
-|      TYPE: ASCII
-|      No session bandwidth limit
-|      Session timeout in seconds is 300
-|      Control connection is plain text
-|      Data connections will be plain text
-|      vsFTPd 2.3.4 - secure, fast, stable
-|_End of status
-22/tcp  open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
-| ssh-hostkey: 
-|   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)
-|_  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)
-139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
-445/tcp open  netbios-ssn Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)
-Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
-Aggressive OS guesses: DD-WRT v24-sp1 (Linux 2.4.36) (92%), OpenWrt White Russian 0.9 (Linux 2.4.30) (92%), Linux 2.6.23 (92%), Arris TG862G/CT cable modem (92%), D-Link DAP-1522 WAP, or Xerox WorkCentre Pro 245 or 6556 printer (92%), Dell Integrated Remote Access Controller (iDRAC6) (92%), Linksys WET54GS5 WAP, Tranzeo TR-CPQ-19f WAP, or Xerox WorkCentre Pro 265 printer (92%), Linux 2.4.21 - 2.4.31 (likely embedded) (92%), Linux 2.4.27 (92%), Citrix XenServer 5.5 (Linux 2.6.18) (92%)
-No exact OS matches for host (test conditions non-ideal).
+root@rE3oN:~/thm/machines/medium/raz0rblack# masscan -p1-65535,U:1-65535 --rate=1000 10.10.135.22 -e tun0
+Starting masscan 1.3.2 (http://bit.ly/14GZzcT) at 2022-07-11 15:34:16 GMT
+Initiating SYN Stealth Scan
+Scanning 1 hosts [131070 ports/host]
+Discovered open port 58637/udp on 10.10.135.22
+Discovered open port 389/tcp on 10.10.135.22
+Discovered open port 49679/tcp on 10.10.135.22
+Discovered open port 636/tcp on 10.10.135.22
+Discovered open port 135/tcp on 10.10.135.22
+Discovered open port 593/tcp on 10.10.135.22
+Discovered open port 53/tcp on 10.10.135.22
+Discovered open port 49669/tcp on 10.10.135.22
+Discovered open port 49856/tcp on 10.10.135.22
+Discovered open port 49667/tcp on 10.10.135.22
+Discovered open port 49674/tcp on 10.10.135.22
+Discovered open port 57300/udp on 10.10.135.22
+Discovered open port 9389/tcp on 10.10.135.22
+Discovered open port 49676/tcp on 10.10.135.22
+Discovered open port 49664/tcp on 10.10.135.22
+Discovered open port 2049/tcp on 10.10.135.22
+Discovered open port 47001/tcp on 10.10.135.22
+Discovered open port 3268/tcp on 10.10.135.22
+Discovered open port 49665/tcp on 10.10.135.22
+Discovered open port 57651/udp on 10.10.135.22
+Discovered open port 5985/tcp on 10.10.135.22
+Discovered open port 3389/tcp on 10.10.135.22
+Discovered open port 464/tcp on 10.10.135.22
+Discovered open port 88/tcp on 10.10.135.22
+Discovered open port 49708/tcp on 10.10.135.22
+Discovered open port 3269/tcp on 10.10.135.22
+Discovered open port 139/tcp on 10.10.135.22
+Discovered open port 58941/udp on 10.10.135.22
+Discovered open port 111/tcp on 10.10.135.22
+Discovered open port 445/tcp on 10.10.135.22
+Discovered open port 49675/tcp on 10.10.135.22
+Discovered open port 49694/tcp on 10.10.135.22
+```
+
+	
+
+And also it discovered that the machine is running ```Windows``` OS
+
+```c
+# Nmap 7.92 scan initiated Sat Jul  9 19:57:26 2022 as: nmap -vv --reason -Pn -T4 -sV -sC --version-all -A --osscan-guess -p- -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/_full_tcp_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/xml/_full_tcp_nmap.xml 10.10.247.120
+Increasing send delay for 10.10.247.120 from 0 to 5 due to 611 out of 1527 dropped probes since last increase.
+Increasing send delay for 10.10.247.120 from 5 to 10 due to 11 out of 12 dropped probes since last increase.
+Nmap scan report for 10.10.247.120
+Host is up, received user-set (0.18s latency).
+Scanned at 2022-07-09 19:57:27 IST for 1142s
+Not shown: 65508 closed tcp ports (reset)
+PORT      STATE SERVICE       REASON          VERSION
+53/tcp    open  domain        syn-ack ttl 127 Simple DNS Plus
+88/tcp    open  kerberos-sec  syn-ack ttl 127 Microsoft Windows Kerberos (server time: 2022-07-09 14:41:39Z)
+111/tcp   open  rpcbind       syn-ack ttl 127 2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/tcp6  rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  2,3,4        111/udp6  rpcbind
+|   100003  2,3         2049/udp   nfs
+|   100003  2,3         2049/udp6  nfs
+|   100003  2,3,4       2049/tcp   nfs
+|   100003  2,3,4       2049/tcp6  nfs
+|   100005  1,2,3       2049/tcp   mountd
+|   100005  1,2,3       2049/tcp6  mountd
+|   100005  1,2,3       2049/udp   mountd
+|   100005  1,2,3       2049/udp6  mountd
+|   100021  1,2,3,4     2049/tcp   nlockmgr
+|   100021  1,2,3,4     2049/tcp6  nlockmgr
+|   100021  1,2,3,4     2049/udp   nlockmgr
+|   100021  1,2,3,4     2049/udp6  nlockmgr
+|   100024  1           2049/tcp   status
+|   100024  1           2049/tcp6  status
+|   100024  1           2049/udp   status
+|_  100024  1           2049/udp6  status
+135/tcp   open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+139/tcp   open  netbios-ssn   syn-ack ttl 127 Microsoft Windows netbios-ssn
+389/tcp   open  ldap          syn-ack ttl 127 Microsoft Windows Active Directory LDAP (Domain: raz0rblack.thm, Site: Default-First-Site-Name)
+445/tcp   open  microsoft-ds? syn-ack ttl 127
+464/tcp   open  kpasswd5?     syn-ack ttl 127
+593/tcp   open  ncacn_http    syn-ack ttl 127 Microsoft Windows RPC over HTTP 1.0
+636/tcp   open  tcpwrapped    syn-ack ttl 127
+2049/tcp  open  mountd        syn-ack ttl 127 1-3 (RPC #100005)
+3268/tcp  open  ldap          syn-ack ttl 127 Microsoft Windows Active Directory LDAP (Domain: raz0rblack.thm, Site: Default-First-Site-Name)
+3269/tcp  open  tcpwrapped    syn-ack ttl 127
+3389/tcp  open  ms-wbt-server syn-ack ttl 127 Microsoft Terminal Services
+| ssl-cert: Subject: commonName=HAVEN-DC.raz0rblack.thm
+| Issuer: commonName=HAVEN-DC.raz0rblack.thm
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2022-07-08T14:26:08
+| Not valid after:  2023-01-07T14:26:08
+| MD5:   8e38 471c d08c 1570 27b1 20e9 faa4 b519
+| SHA-1: 12da c7ca 7abc 435f f6ea 542a 6322 db63 8098 ee98
+| -----BEGIN CERTIFICATE-----
+| MIIC8jCCAdqgAwIBAgIQQKxL8oWvM7hDGk2gbBkKsTANBgkqhkiG9w0BAQsFADAi
+| MSAwHgYDVQQDExdIQVZFTi1EQy5yYXowcmJsYWNrLnRobTAeFw0yMjA3MDgxNDI2
+| MDhaFw0yMzAxMDcxNDI2MDhaMCIxIDAeBgNVBAMTF0hBVkVOLURDLnJhejByYmxh
+| Y2sudGhtMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0G39e8XIgDuJ
+| xMo4IARZCUyCHEWSvqfKODuuj7pdViGtlGOLb1oPLca0lHc9l07zhh45PnNrv/CC
+| ehPWfeAeFADdCb+iXlip0lZqvUlCImUbbpMO/NUL9SVhOqA12uH4J7NJK0GgW2x4
+| +8g6VD4zPheZfAUOuQECmLRtATSfGW1UewvscL16ih9m2VUXEjdClyK4sq/Fjh5Q
+| MgftbQQyqRA3eyNnm69lsbrCJnJ/sxRLjGifkXfB+uCmkw8ZbvmsXqG9xk1VCyf8
+| cLn7h5NhgSW1Yr+Xt9wG74SDW2xadloIVsedPdqtRlB8BVaD9271hLAhZky8WAz4
+| qLkK0TwuBQIDAQABoyQwIjATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMC
+| BDAwDQYJKoZIhvcNAQELBQADggEBAECk0mch8qtKekAn+uZTYz+i7sABSy7nek34
+| L3RNVvYaSAXK0UBF7EFZmq4Ye0EPs390q2LbEbjji3qSWcQywQ6MK5CDBwgfzfU/
+| 1x73ieELRcmWiU1X69xdbJr5CdaBbpb8Bapm8+e7pOjHsLH3Qd0Q2ZW3dBMWQQDI
+| BBioVi8nJ1ISt3Coy0sYGPy+eKQcIA0D8Y6JOLkZLPaxDyvqx7hmoSXn/ONPQ4Ti
+| hP4h/anme8+uNWO1iWYlDR2OgtQTYN24in1/74Etdj3pZX/Fbp04DCNIVcsCmx/R
+| rFKZaKnwIvk+Y9zcolud1gMdD9UNaUrkcxLzJkiOdPqcHLN7Fa8=
+|_-----END CERTIFICATE-----
+| rdp-ntlm-info: 
+|   Target_Name: RAZ0RBLACK
+|   NetBIOS_Domain_Name: RAZ0RBLACK
+|   NetBIOS_Computer_Name: HAVEN-DC
+|   DNS_Domain_Name: raz0rblack.thm
+|   DNS_Computer_Name: HAVEN-DC.raz0rblack.thm
+|   DNS_Tree_Name: raz0rblack.thm
+|   Product_Version: 10.0.17763
+|_  System_Time: 2022-07-09T14:44:35+00:00
+|_ssl-date: 2022-07-09T14:44:44+00:00; 0s from scanner time.
+5985/tcp  open  http          syn-ack ttl 127 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+9389/tcp  open  mc-nmf        syn-ack ttl 127 .NET Message Framing
+47001/tcp open  http          syn-ack ttl 127 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+49664/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49665/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49667/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49669/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49670/tcp open  ncacn_http    syn-ack ttl 127 Microsoft Windows RPC over HTTP 1.0
+49671/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49673/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49677/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49692/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49704/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+Aggressive OS guesses: Microsoft Windows 10 1709 - 1909 (93%), Microsoft Windows Server 2012 (92%), Microsoft Windows Vista SP1 (92%), Microsoft Windows Longhorn (91%), Microsoft Windows Server 2012 R2 Update 1 (91%), Microsoft Windows 7, Windows Server 2012, or Windows 8.1 Update 1 (91%), Microsoft Windows Server 2016 (90%), Microsoft Windows 10 1703 (90%), Microsoft Windows 7 SP1 (90%), Microsoft Windows 8 (90%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.92%E=4%D=7/9%OT=53%CT=1%CU=39653%PV=Y%DS=2%DC=T%G=Y%TM=62C994C5
+OS:%P=aarch64-unknown-linux-gnu)SEQ(SP=104%GCD=1%ISR=103%TI=I%CI=I%II=I%SS=
+OS:S%TS=U)OPS(O1=M505NW8NNS%O2=M505NW8NNS%O3=M505NW8%O4=M505NW8NNS%O5=M505N
+OS:W8NNS%O6=M505NNS)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FF70)ECN
+OS:(R=Y%DF=Y%T=80%W=FFFF%O=M505NW8NNS%CC=Y%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F=A
+OS:S%RD=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%T=80%
+OS:W=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)
+OS:T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A%A
+OS:=O%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%D
+OS:F=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=8
+OS:0%CD=Z)
+
 Network Distance: 2 hops
-Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+TCP Sequence Prediction: Difficulty=259 (Good luck!)
+IP ID Sequence Generation: Incremental
+Service Info: Host: HAVEN-DC; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Host script results:
-|_clock-skew: mean: 2h06m38s, deviation: 2h49m43s, median: 6m37s
-| smb-os-discovery: 
-|   OS: Unix (Samba 3.0.20-Debian)
-|   Computer name: lame
-|   NetBIOS computer name: 
-|   Domain name: hackthebox.gr
-|   FQDN: lame.hackthebox.gr
-|_  System time: 2021-09-15T01:22:15-04:00
-| smb-security-mode: 
-|   account_used: <blank>
-|   authentication_level: user
-|   challenge_response: supported
-|_  message_signing: disabled (dangerous, but default)
-|_smb2-time: Protocol negotiation failed (SMB2)
+|_clock-skew: mean: 0s, deviation: 0s, median: 0s
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 43629/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 27615/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 49191/udp): CLEAN (Failed to receive data)
+|   Check 4 (port 47775/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2022-07-09T14:44:37
+|_  start_date: N/A
 
-TRACEROUTE (using port 22/tcp)
+TRACEROUTE (using port 8888/tcp)
 HOP RTT       ADDRESS
-1   248.84 ms 10.10.14.1
-2   248.92 ms 10.10.10.3
+1   172.31 ms 10.11.0.1
+2   179.02 ms 10.10.247.120
 
+Read data files from: /usr/bin/../share/nmap
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 73.88 seconds
+# Nmap done at Sat Jul  9 20:16:29 2022 -- 1 IP address (1 host up) scanned in 1142.90 seconds
+
 ```
 
 ## Enumeration
 
-### FTP anonymous login
+### RPC 
 
-Since ```anonymous login``` is enabled, we can login into FTP without password and view its contents
+While enumerating port 111 a nfs is been opened, And found a flag ```THM{ab53e05c9a98def00314a14ccbfa8104}```  from sbradley user and one more file is there where all usernames was mentioned.
 
 ```c
-┌──(aidenpearce369㉿aidenpearce369)-[~]
-└─$ ftp 10.10.10.3               
-Connected to 10.10.10.3.
-220 (vsFTPd 2.3.4)
-Name (10.10.10.3:aidenpearce369): anonymous
-331 Please specify the password.
-Password:
-230 Login successful.
-Remote system type is UNIX.
-Using binary mode to transfer files.
-ftp> ls -la
-200 PORT command successful. Consider using PASV.
-150 Here comes the directory listing.
-drwxr-xr-x    2 0        65534        4096 Mar 17  2010 .
-drwxr-xr-x    2 0        65534        4096 Mar 17  2010 ..
-226 Directory send OK.
-ftp>
+Export list for 10.10.247.120:
+/users (everyone)
+
+root@rE3oN:~/thm/machines/medium/raz0rblack# mount 10.10.135.22:/users /mnt/users
+
+root@rE3oN:~/thm/machines/medium/raz0rblack# ls /mnt/users
+employee_status.xlsx  sbradley.txt
+
+root@rE3oN:~/thm/machines/medium/raz0rblack# cat /mnt/users/sbradley.txt
+THM{ab53e05c9a98def00314a14ccbfa8104}
+
 ```
 
-There is no useful information in FTP directory
+
 
 ### SMB enumeration with smbmap
 
@@ -152,6 +269,8 @@ There is a ```SMB``` port open in ```445```, so lets enumerate for ```open share
 ```
 
 There is a share named ```tmp``` where we can ```read & write```
+
+
 
 ### SMB enumeration with smbclient
 
