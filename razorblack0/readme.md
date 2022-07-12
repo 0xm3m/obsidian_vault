@@ -25,7 +25,7 @@ The given box ```RazorBlack``` is a Linux machine with an IP address of ```10.10
     - [RPC](#rpc)
     	- [usernames](#usernames)
     	- [Converting usernames into ad username format](#Converting-usernames-into ad-username-format)
-    	- [Request AS_REP message](#Request-AS-REP-message)
+    	- [Request AS_REP message](#Request-AS_REP-message)
     	- [Cracking the hash](#Cracking-the-hash)
   
 
