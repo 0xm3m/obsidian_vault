@@ -18,21 +18,16 @@ categories:
 
 The given box ```RazorBlack``` is a Linux machine with an IP address of ```10.10.135.22```
 
-- [TryHackMe- RazorBlack](#hack-the-box---lame)
+- [TryHackMe- RazorBlack](#tryhackme---razorblack)
   - [Recon](#recon)
     - [Nmap Scan Result](#nmap-scan-result)
   - [Enumeration](#enumeration)
-    - [FTP anonymous login](#ftp-anonymous-login)
-    - [SMB enumeration with smbmap](#smb-enumeration-with-smbmap)
-    - [SMB enumeration with smbclient](#smb-enumeration-with-smbclient)
-  - [Finding Suitable Exploits With Searchsploit](#finding-suitable-exploits-with-searchsploit)
-    - [FTP - VSFTPD 2.3.4 exploit](#ftp---vsftpd-234-exploit)
-    - [Samba 3.0.20 exploit](#samba-3020-exploit)
-  - [Gaining Access](#gaining-access)
-    - [VSFTPD 2.3.4 manual exploit](#vsftpd-234-manual-exploit)
-    - [VSFTPD 2.3.4 metasploit exploit](#vsftpd-234-metasploit-exploit)
-    - [Samba 3.0.20 manual exploit](#samba-3020-manual-exploit)
-    - [Samba 3.0.20 metasploit exploit](#samba-3020-metasploit-exploit)
+    - [RPC](#rpc)
+    	- [usernames](#usernames)
+    	- [Converting usernames into ad username format](#Converting-usernames-into ad-username-format)
+    	- [Request AS_REP message](#Request-AS-REP-message)
+    	- [Cracking the hash](#Cracking-the-hash)
+  
 
 ## Recon
 
