@@ -1,13 +1,6 @@
 ---
 title: "THM - # RazorBlack"
 classes: wide
-tag: 
-  - "OSCP Box"
-  - "VSFTPD 2.3.4 Exploit"
-  - "Linux Box"
-  - "Linux VAPT"
-  - "Samba 3.0.20"
-  - "OSCP Prep"
 header:
   teaser: /assets/images/htb/htb.png
 ribbon: blue
