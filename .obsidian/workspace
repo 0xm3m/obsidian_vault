@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "razorblack0/readme.md.md",
-            "mode": "source"
+            "file": "razorblack0/readme.md",
+            "mode": "preview"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "razorblack0/readme.md.md",
+                "file": "razorblack0/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,7 +95,7 @@
   },
   "active": "02878a4b17f5dc9a",
   "lastOpenFiles": [
-    "razorblack0/readme.md.md",
+    "razorblack0/readme.md",
     "razorblack0/enum.md"
   ]
 }
