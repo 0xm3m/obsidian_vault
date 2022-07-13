@@ -1,0 +1,7 @@
+
+; <<>> DiG 9.18.4-2-Debian <<>> AXFR -p 53 @10.10.247.120
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+

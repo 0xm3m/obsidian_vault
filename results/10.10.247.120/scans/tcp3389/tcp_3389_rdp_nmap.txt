@@ -1,0 +1,102 @@
+# Nmap 7.92 scan initiated Sat Jul  9 20:08:14 2022 as: nmap -vv --reason -Pn -T4 -sV -p 3389 "--script=banner,(rdp* or ssl*) and not (brute or broadcast or dos or external or fuzzer)" -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp3389/tcp_3389_rdp_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp3389/xml/tcp_3389_rdp_nmap.xml 10.10.247.120
+Nmap scan report for 10.10.247.120
+Host is up, received user-set (0.17s latency).
+Scanned at 2022-07-09 20:08:15 IST for 48s
+
+PORT     STATE SERVICE       REASON          VERSION
+3389/tcp open  ms-wbt-server syn-ack ttl 127 Microsoft Terminal Services
+| ssl-enum-ciphers: 
+|   TLSv1.0: 
+|     ciphers: 
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (ecdh_x25519) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA (rsa 2048) - C
+|     compressors: 
+|       NULL
+|     cipher preference: server
+|     warnings: 
+|       64-bit block cipher 3DES vulnerable to SWEET32 attack
+|   TLSv1.1: 
+|     ciphers: 
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (ecdh_x25519) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA (rsa 2048) - C
+|     compressors: 
+|       NULL
+|     cipher preference: server
+|     warnings: 
+|       64-bit block cipher 3DES vulnerable to SWEET32 attack
+|   TLSv1.2: 
+|     ciphers: 
+|       TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (ecdh_x25519) - A
+|       TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 (dh 2048) - A
+|       TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (dh 2048) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 (ecdh_x25519) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (ecdh_x25519) - A
+|       TLS_RSA_WITH_AES_256_GCM_SHA384 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_GCM_SHA256 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA256 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA256 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA (rsa 2048) - C
+|     compressors: 
+|       NULL
+|     cipher preference: server
+|     warnings: 
+|       64-bit block cipher 3DES vulnerable to SWEET32 attack
+|_  least strength: C
+| rdp-enum-encryption: 
+|   Security layer
+|     CredSSP (NLA): SUCCESS
+|     CredSSP with Early User Auth: SUCCESS
+|_    RDSTLS: SUCCESS
+| rdp-ntlm-info: 
+|   Target_Name: RAZ0RBLACK
+|   NetBIOS_Domain_Name: RAZ0RBLACK
+|   NetBIOS_Computer_Name: HAVEN-DC
+|   DNS_Domain_Name: raz0rblack.thm
+|   DNS_Computer_Name: HAVEN-DC.raz0rblack.thm
+|   DNS_Tree_Name: raz0rblack.thm
+|   Product_Version: 10.0.17763
+|_  System_Time: 2022-07-09T14:38:22+00:00
+| ssl-cert: Subject: commonName=HAVEN-DC.raz0rblack.thm
+| Issuer: commonName=HAVEN-DC.raz0rblack.thm
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2022-07-08T14:26:08
+| Not valid after:  2023-01-07T14:26:08
+| MD5:   8e38 471c d08c 1570 27b1 20e9 faa4 b519
+| SHA-1: 12da c7ca 7abc 435f f6ea 542a 6322 db63 8098 ee98
+| -----BEGIN CERTIFICATE-----
+| MIIC8jCCAdqgAwIBAgIQQKxL8oWvM7hDGk2gbBkKsTANBgkqhkiG9w0BAQsFADAi
+| MSAwHgYDVQQDExdIQVZFTi1EQy5yYXowcmJsYWNrLnRobTAeFw0yMjA3MDgxNDI2
+| MDhaFw0yMzAxMDcxNDI2MDhaMCIxIDAeBgNVBAMTF0hBVkVOLURDLnJhejByYmxh
+| Y2sudGhtMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0G39e8XIgDuJ
+| xMo4IARZCUyCHEWSvqfKODuuj7pdViGtlGOLb1oPLca0lHc9l07zhh45PnNrv/CC
+| ehPWfeAeFADdCb+iXlip0lZqvUlCImUbbpMO/NUL9SVhOqA12uH4J7NJK0GgW2x4
+| +8g6VD4zPheZfAUOuQECmLRtATSfGW1UewvscL16ih9m2VUXEjdClyK4sq/Fjh5Q
+| MgftbQQyqRA3eyNnm69lsbrCJnJ/sxRLjGifkXfB+uCmkw8ZbvmsXqG9xk1VCyf8
+| cLn7h5NhgSW1Yr+Xt9wG74SDW2xadloIVsedPdqtRlB8BVaD9271hLAhZky8WAz4
+| qLkK0TwuBQIDAQABoyQwIjATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMC
+| BDAwDQYJKoZIhvcNAQELBQADggEBAECk0mch8qtKekAn+uZTYz+i7sABSy7nek34
+| L3RNVvYaSAXK0UBF7EFZmq4Ye0EPs390q2LbEbjji3qSWcQywQ6MK5CDBwgfzfU/
+| 1x73ieELRcmWiU1X69xdbJr5CdaBbpb8Bapm8+e7pOjHsLH3Qd0Q2ZW3dBMWQQDI
+| BBioVi8nJ1ISt3Coy0sYGPy+eKQcIA0D8Y6JOLkZLPaxDyvqx7hmoSXn/ONPQ4Ti
+| hP4h/anme8+uNWO1iWYlDR2OgtQTYN24in1/74Etdj3pZX/Fbp04DCNIVcsCmx/R
+| rFKZaKnwIvk+Y9zcolud1gMdD9UNaUrkcxLzJkiOdPqcHLN7Fa8=
+|_-----END CERTIFICATE-----
+|_ssl-date: 2022-07-09T14:38:43+00:00; 0s from scanner time.
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jul  9 20:09:03 2022 -- 1 IP address (1 host up) scanned in 48.83 seconds

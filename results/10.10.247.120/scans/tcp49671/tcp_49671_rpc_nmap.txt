@@ -1,0 +1,1 @@
+# Nmap 7.92 scan initiated Sat Jul  9 20:16:30 2022 as: nmap -vv --reason -Pn -T4 -sV -p 49671 --script=banner,msrpc-enum,rpc-grind,rpcinfo -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp49671/tcp_49671_rpc_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp49671/xml/tcp_49671_rpc_nmap.xml 10.10.247.120

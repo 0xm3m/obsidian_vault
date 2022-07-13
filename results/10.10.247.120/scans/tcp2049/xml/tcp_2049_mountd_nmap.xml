@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jul  9 20:08:14 2022 as: nmap -vv -&#45;reason -Pn -T4 -sV -p 2049 &quot;-&#45;script=banner,nfs* and not (brute or broadcast or dos or external or fuzzer)&quot; -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp2049/tcp_2049_mountd_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp2049/xml/tcp_2049_mountd_nmap.xml 10.10.247.120 -->
+<nmaprun scanner="nmap" args="nmap -vv -&#45;reason -Pn -T4 -sV -p 2049 &quot;-&#45;script=banner,nfs* and not (brute or broadcast or dos or external or fuzzer)&quot; -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp2049/tcp_2049_mountd_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp2049/xml/tcp_2049_mountd_nmap.xml 10.10.247.120" start="1657377494" startstr="Sat Jul  9 20:08:14 2022" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="2049"/>
+<verbose level="2"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1657377494"/>
+<taskend task="NSE" time="1657377494"/>
+<taskbegin task="NSE" time="1657377494"/>
+<taskend task="NSE" time="1657377494"/>
+<taskbegin task="NSE" time="1657377494"/>
+<taskend task="NSE" time="1657377494"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1657377494"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1657377494"/>
+<taskbegin task="SYN Stealth Scan" time="1657377494"/>
+<taskend task="SYN Stealth Scan" time="1657377494" extrainfo="1 total ports"/>
+<taskbegin task="Service scan" time="1657377495"/>
+<taskend task="Service scan" time="1657377501" extrainfo="1 service on 1 host"/>
+<taskbegin task="NSE" time="1657377501"/>
+<taskend task="NSE" time="1657377512"/>
+<taskbegin task="NSE" time="1657377512"/>
+<taskend task="NSE" time="1657377512"/>
+<taskbegin task="NSE" time="1657377512"/>
+<taskend task="NSE" time="1657377512"/>
+<host starttime="1657377494" endtime="1657377512"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.10.247.120" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="2049"><state state="open" reason="syn-ack" reason_ttl="127"/><service name="mountd" version="1-3" extrainfo="RPC #100005" method="probed" conf="10"/><script id="nfs-showmount" output="&#xa;  /users &#xa;"/></port>
+</ports>
+<times srtt="178488" rttvar="178488" to="892440"/>
+</host>
+<taskbegin task="NSE" time="1657377512"/>
+<taskend task="NSE" time="1657377512"/>
+<taskbegin task="NSE" time="1657377512"/>
+<taskend task="NSE" time="1657377512"/>
+<taskbegin task="NSE" time="1657377512"/>
+<taskend task="NSE" time="1657377512"/>
+<runstats><finished time="1657377512" timestr="Sat Jul  9 20:08:32 2022" summary="Nmap done at Sat Jul  9 20:08:32 2022; 1 IP address (1 host up) scanned in 18.58 seconds" elapsed="18.58" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

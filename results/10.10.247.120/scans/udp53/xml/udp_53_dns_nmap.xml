@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jul  9 20:05:45 2022 as: nmap -vv -&#45;reason -Pn -T4 -sU -sV -p 53 &quot;-&#45;script=banner,(dns* or ssl*) and not (brute or broadcast or dos or external or fuzzer)&quot; -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/udp53/udp_53_dns_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/udp53/xml/udp_53_dns_nmap.xml 10.10.247.120 -->
+<nmaprun scanner="nmap" args="nmap -vv -&#45;reason -Pn -T4 -sU -sV -p 53 &quot;-&#45;script=banner,(dns* or ssl*) and not (brute or broadcast or dos or external or fuzzer)&quot; -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/udp53/udp_53_dns_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/udp53/xml/udp_53_dns_nmap.xml 10.10.247.120" start="1657377345" startstr="Sat Jul  9 20:05:45 2022" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="1" services="53"/>
+<verbose level="2"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1657377345"/>
+<taskend task="NSE" time="1657377345"/>
+<taskbegin task="NSE" time="1657377345"/>
+<taskend task="NSE" time="1657377345"/>
+<taskbegin task="NSE" time="1657377345"/>
+<taskend task="NSE" time="1657377345"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1657377345"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1657377345"/>
+<taskbegin task="UDP Scan" time="1657377345"/>
+<taskend task="UDP Scan" time="1657377346" extrainfo="1 total ports"/>
+<taskbegin task="Service scan" time="1657377346"/>
+<taskend task="Service scan" time="1657377366" extrainfo="1 service on 1 host"/>
+<taskbegin task="NSE" time="1657377366"/>
+<taskend task="NSE" time="1657377388"/>
+<taskbegin task="NSE" time="1657377388"/>
+<taskend task="NSE" time="1657377388"/>
+<taskbegin task="NSE" time="1657377388"/>
+<taskend task="NSE" time="1657377388"/>
+<host starttime="1657377345" endtime="1657377388"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.10.247.120" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="udp" portid="53"><state state="open" reason="udp-response" reason_ttl="127"/><service name="domain" extrainfo="generic dns response: SERVFAIL" servicefp="SF-Port53-UDP:V=7.92%I=7%D=7/9%Time=62C99256%P=aarch64-unknown-linux-gnu%r(NBTStat,32,&quot;\x80\xf0\x80\x82\0\x01\0\0\0\0\0\0\x20CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\0\0!\0\x01&quot;);" method="probed" conf="10"/><script id="dns-cache-snoop" output="0 of 100 tested domains are cached.&#xa;"/><script id="dns-nsec3-enum" output="Can&apos;t determine domain for host 10.10.247.120; use dns-nsec3-enum.domains script arg."/><script id="dns-nsec-enum" output="Can&apos;t determine domain for host 10.10.247.120; use dns-nsec-enum.domains script arg."/><script id="fingerprint-strings" output="&#xa;  NBTStat: &#xa;    CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"><elem key="NBTStat">&#xa;    CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</elem>
+</script></port>
+</ports>
+<hostscript><script id="dns-brute" output="Can&apos;t guess domain of &quot;10.10.247.120&quot;; use dns-brute.domain script argument."/></hostscript><times srtt="172357" rttvar="172357" to="861785"/>
+</host>
+<taskbegin task="NSE" time="1657377388"/>
+<taskend task="NSE" time="1657377388"/>
+<taskbegin task="NSE" time="1657377388"/>
+<taskend task="NSE" time="1657377388"/>
+<taskbegin task="NSE" time="1657377388"/>
+<taskend task="NSE" time="1657377388"/>
+<runstats><finished time="1657377388" timestr="Sat Jul  9 20:06:28 2022" summary="Nmap done at Sat Jul  9 20:06:28 2022; 1 IP address (1 host up) scanned in 43.00 seconds" elapsed="43.00" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
