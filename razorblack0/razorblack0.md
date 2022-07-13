@@ -67,8 +67,6 @@ Discovered open port 49675/tcp on 10.10.135.22
 Discovered open port 49694/tcp on 10.10.135.22
 ```
 
-	
-
 And also it discovered that the machine is running ```Windows``` OS
 
 ```shell
