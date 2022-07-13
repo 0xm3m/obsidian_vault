@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "razorblack0/readme.md",
+            "file": "razorblack0/razorblack0.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "razorblack0/readme.md",
+                "file": "razorblack0/razorblack0.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,7 +95,7 @@
   },
   "active": "531a639465f38492",
   "lastOpenFiles": [
-    "razorblack0/readme.md",
+    "razorblack0/razorblack0.md",
     "Converting usernames into ad username format.md",
     "razorblack0/enum.md"
   ]
