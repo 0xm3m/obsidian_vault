@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Thu Jul 14 21:01:41 2022 as: nmap -vv -&#45;reason -Pn -T4 -sV -p 49676 -&#45;script=banner,msrpc-enum,rpc-grind,rpcinfo -oN /root/enum-more/obsidian_vault/VulnNetActive/results/10.10.25.148/scans/tcp49676/tcp_49676_rpc_nmap.txt -oX /root/enum-more/obsidian_vault/VulnNetActive/results/10.10.25.148/scans/tcp49676/xml/tcp_49676_rpc_nmap.xml 10.10.25.148 -->
+<nmaprun scanner="nmap" args="nmap -vv -&#45;reason -Pn -T4 -sV -p 49676 -&#45;script=banner,msrpc-enum,rpc-grind,rpcinfo -oN /root/enum-more/obsidian_vault/VulnNetActive/results/10.10.25.148/scans/tcp49676/tcp_49676_rpc_nmap.txt -oX /root/enum-more/obsidian_vault/VulnNetActive/results/10.10.25.148/scans/tcp49676/xml/tcp_49676_rpc_nmap.xml 10.10.25.148" start="1657812701" startstr="Thu Jul 14 21:01:41 2022" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="49676"/>
+<verbose level="2"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1657812702"/>
+<taskend task="NSE" time="1657812702"/>
+<taskbegin task="NSE" time="1657812702"/>
+<taskend task="NSE" time="1657812702"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1657812702"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1657812702"/>
+<taskbegin task="SYN Stealth Scan" time="1657812702"/>
+<taskend task="SYN Stealth Scan" time="1657812703" extrainfo="1 total ports"/>
+<taskbegin task="Service scan" time="1657812703"/>
+<taskend task="Service scan" time="1657812760" extrainfo="1 service on 1 host"/>
+<taskbegin task="NSE" time="1657812760"/>
+<taskend task="NSE" time="1657812775"/>
+<taskbegin task="NSE" time="1657812775"/>
+<taskend task="NSE" time="1657812775"/>
+<host starttime="1657812703" endtime="1657812775"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.10.25.148" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="49676"><state state="open" reason="syn-ack" reason_ttl="127"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+</ports>
+<times srtt="207976" rttvar="207976" to="1039880"/>
+</host>
+<taskbegin task="NSE" time="1657812775"/>
+<taskend task="NSE" time="1657812775"/>
+<taskbegin task="NSE" time="1657812775"/>
+<taskend task="NSE" time="1657812775"/>
+<runstats><finished time="1657812775" timestr="Thu Jul 14 21:02:55 2022" summary="Nmap done at Thu Jul 14 21:02:55 2022; 1 IP address (1 host up) scanned in 74.05 seconds" elapsed="74.05" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

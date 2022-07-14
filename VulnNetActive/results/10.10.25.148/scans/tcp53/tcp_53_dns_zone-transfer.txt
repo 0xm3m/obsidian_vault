@@ -1,0 +1,10 @@
+
+; <<>> DiG 9.18.4-2-Debian <<>> AXFR -p 53 @10.10.25.148
+; (1 server found)
+;; global options: +cmd
+;; Query time: 4412 msec
+;; SERVER: 10.10.25.148#53(10.10.25.148) (UDP)
+;; WHEN: Thu Jul 14 21:01:50 IST 2022
+;; MSG SIZE  rcvd: 28
+
+

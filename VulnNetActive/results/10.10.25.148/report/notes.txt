@@ -1,0 +1,68 @@
+[*] domain found on tcp/53.
+
+
+
+[*] msrpc found on tcp/135.
+
+
+
+[*] netbios-ssn found on tcp/139.
+
+
+
+[*] microsoft-ds found on tcp/445.
+
+
+
+[*] kpasswd5 found on tcp/464.
+
+
+
+[*] redis found on tcp/6379.
+
+
+
+[*] mc-nmf found on tcp/9389.
+
+
+
+[*] msrpc found on tcp/49665.
+
+
+
+[*] msrpc found on tcp/49667.
+
+
+
+[*] msrpc found on tcp/49669.
+
+
+
+[*] ncacn_http found on tcp/49670.
+
+
+
+[*] msrpc found on tcp/49676.
+
+
+
+[*] msrpc found on tcp/49687.
+
+
+
+[*] msrpc found on tcp/49707.
+
+
+
+[*] domain found on udp/53.
+
+
+
+[*] kerberos-sec found on udp/88.
+
+
+
+[*] ntp found on udp/123.
+
+
+

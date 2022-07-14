@@ -1,0 +1,15 @@
+Discovered open port 445/tcp on 10.10.25.148                                   
+Discovered open port 49667/tcp on 10.10.25.148                                 
+Discovered open port 464/tcp on 10.10.25.148                                   
+Discovered open port 49665/tcp on 10.10.25.148                                 
+Discovered open port 6379/tcp on 10.10.25.148                                  
+Discovered open port 53/tcp on 10.10.25.148                                    
+Discovered open port 49707/tcp on 10.10.25.148                                 
+Discovered open port 49687/tcp on 10.10.25.148                                 
+Discovered open port 49669/tcp on 10.10.25.148                                 
+Discovered open port 49676/tcp on 10.10.25.148                                 
+Discovered open port 9389/tcp on 10.10.25.148                                  
+Discovered open port 53/udp on 10.10.25.148                                    
+Discovered open port 139/tcp on 10.10.25.148                                   
+Discovered open port 49670/tcp on 10.10.25.148                                 
+Discovered open port 135/tcp on 10.10.25.148                                   
