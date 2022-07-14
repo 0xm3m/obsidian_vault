@@ -15,12 +15,6 @@ The given box ```VulnNet: Active``` is a Linux machine with an IP address of ```
   - [Recon](#recon)
     - [Nmap Scan Result](#nmap-scan-result)
   - [Enumeration](#enumeration)
-    - [RPC](#rpc)
-    	- [usernames](#usernames)
-    	- [AD username format ](#AD-username-format)
-    	- [Request AS_REP message](#Request-AS_REP-message)
-    	- [Cracking the hash](#Cracking-the-hash)
-  
 
 ## Recon
 
