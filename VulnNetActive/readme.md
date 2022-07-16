@@ -705,4 +705,6 @@ PS C:\Users\enterprise-security\Downloads>
 
 ### **BloodHound**
 
-![[Pasted image 20220716201629.png]]
+<center>
+<img src="https://github.com/enum-more/obsidian_vault/raw/main/VulnNetActive/Pasted%20image%2020220716201629.png" \>
+</center>
