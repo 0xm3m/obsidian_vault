@@ -41,7 +41,7 @@ Discovered open port 49670/tcp on 10.10.25.148
 Discovered open port 135/tcp on 10.10.25.148
 ```
 
-#### TCP Scan
+#### **TCP Scan**
 
 ```shell
 # Nmap 7.92 scan initiated Thu Jul 14 20:55:16 2022 as: nmap -vv --reason -Pn -T4 -sV -sC --version-all -A --osscan-guess -p- -oN /root/enum-more/obsidian_vault/VulnNetActive/results/10.10.25.148/scans/_full_tcp_nmap.txt -oX /root/enum-more/obsidian_vault/VulnNetActive/results/10.10.25.148/scans/xml/_full_tcp_nmap.xml 10.10.25.148
@@ -111,7 +111,7 @@ OS and Service detection performed. Please report any incorrect results at https
 # Nmap done at Thu Jul 14 21:01:40 2022 -- 1 IP address (1 host up) scanned in 384.37 seconds
 ```
 
-#### UDP Scan
+#### **UDP Scan**
 
 ```shell
 # Nmap 7.92 scan initiated Thu Jul 14 20:55:16 2022 as: nmap -vv --reason -Pn -T4 -sU -A --top-ports 100 -oN /root/enum-more/obsidian_vault/VulnNetActive/results/10.10.25.148/scans/_top_100_udp_nmap.txt -oX /root/enum-more/obsidian_vault/VulnNetActive/results/10.10.25.148/scans/xml/_top_100_udp_nmap.xml 10.10.25.148
