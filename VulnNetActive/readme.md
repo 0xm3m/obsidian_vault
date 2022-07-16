@@ -155,11 +155,11 @@ OS and Service detection performed. Please report any incorrect results at https
 # Nmap done at Thu Jul 14 21:24:47 2022 -- 1 IP address (1 host up) scanned in 1770.48 seconds
 ```
 
-### Enumeration
+## Enumeration
 
 After running ```autorecon tool``` the possible finding is on port  ```6379/tcp  open  redis```  and  ```135/tcp   open  msrpc```
 
-#### **Redis**
+### **Redis**
 
 Redis is an open source (BSD licensed), in-memory **data structure store**, used as a **database**, cache and message broker. By default and commonly Redis uses a plain-text based protocol, but you have to keep in mind that it can also implement **ssl/tls**.
 
@@ -489,7 +489,7 @@ ENTERPRISE-SECURITY::VULNNET:1fecd174d12475d0:d6bfd2513d1d201258d7758a41613f4d:0
 
 Further proceeding with SMB enumeration....
 
-#### **SMB**
+### **SMB**
 
 SMB enumeration with the credentials got from the ```enterprise-security``` | ```sand_0873959498```
 
@@ -526,7 +526,7 @@ smb: \> get PurgeIrrelevantData_1826.ps1
 getting file \PurgeIrrelevantData_1826.ps1 of size 69 as PurgeIrrelevantData_1826.ps1 (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
 ```
 
-#### **SMB Reverse-Shell**
+### **SMB Reverse-Shell**
 
 contents in that file  ```PurgeIrrelevantData_1826.ps1```
 
@@ -701,4 +701,5 @@ d-----        2/26/2021  12:14 PM                Redis-x64-2.8.2402
 PS C:\Users\enterprise-security\Downloads>
 ```
 
-### Privilege Escalation
+## Privilege Escalation
+
