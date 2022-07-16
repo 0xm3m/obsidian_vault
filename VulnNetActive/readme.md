@@ -706,11 +706,10 @@ PS C:\Users\enterprise-security\Downloads>
 ### **BloodHound**
 
 <center>
-<img src="https://github.com/enum-more/obsidian_vault/raw/main/VulnNetActive/Pasted%20image%2020220716201629.png" \>
+<img src="https://github.com/enum-more/obsidian_vault/raw/main/VulnNetActive/Bloodhound.png" \>
 </center>
 
 
 <center>
-<img src="obsidian://open?vault=obsidian_vault&file=VulnNetActive%2FPasted%20image%2020220716202028.png" \>
+<img src="https://github.com/enum-more/obsidian_vault/raw/main/VulnNetActive/Bloodhound_finding.png" \>
 </center>
-![[Pasted image 20220716202028.png]]

@@ -7,9 +7,11 @@
         "id": "531a639465f38492",
         "type": "leaf",
         "state": {
-          "type": "image",
+          "type": "markdown",
           "state": {
-            "file": "VulnNetActive/Bloodhound.png.png"
+            "file": "VulnNetActive/readme.md",
+            "mode": "source",
+            "source": true
           }
         }
       }
@@ -67,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "VulnNetActive/Bloodhound.png.png",
+                "file": "VulnNetActive/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,6 +96,7 @@
   },
   "active": "531a639465f38492",
   "lastOpenFiles": [
+    "VulnNetActive/Bloodhound.png",
     "VulnNetActive/Bloodhound_finding.png",
     "VulnNetActive/readme.md",
     "razorblack0/readme.md",
