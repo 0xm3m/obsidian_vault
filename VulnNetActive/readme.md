@@ -536,7 +536,7 @@ rm -Force C:\Users\Public\Documents\* -ErrorAction SilentlyContinue
 
 So, now need to get the reverse shell modifying that file will help in getting reverse shell.
 
-Download -> https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1
+[Invoke-PowerShellTcp.ps1](https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1)
 
 ```powershell
 function Invoke-PowerShellTcp 
@@ -705,7 +705,7 @@ PS C:\Users\enterprise-security\Downloads>
 
 ### **BloodHound**
 
-Download SharpHound.exe -> https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe
+[SharpHound.exe](https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe)
 
 ```shell
 .\sharphound.exe
