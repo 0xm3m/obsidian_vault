@@ -15,6 +15,12 @@ The given box ```VulnNet: Active``` is a Linux machine with an IP address of ```
   - [Recon](#recon)
     - [Nmap Scan Result](#nmap-scan-result)
   - [Enumeration](#enumeration)
+	  - [Redis](#redis)
+	  - [SMB](#smb)
+	  - [SMB Reverse-Shell](#smb-reverse-shell)
+  - [Privilege Escalation](#privilege-escalation)
+	  - [BloodHound Enumeration](#bloodhound-enumeration)
+	  - [Exploiting the GPO](#exploiting-the-gpo)
 
 ## Recon
 
@@ -703,7 +709,7 @@ PS C:\Users\enterprise-security\Downloads>
 
 ## Privilege Escalation
 
-### **BloodHound**
+### **BloodHound Enumeration**
 
 [SharpHound.exe](https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe)
 
@@ -748,6 +754,8 @@ C:\Users\enterprise-security\Downloads> powershell cp 20220716072804_BloodHound.
 <center>
 <img src="https://github.com/enum-more/obsidian_vault/raw/main/VulnNetActive/Bloodhound_finding.png" \>
 </center>
+
+### **Exploiting the GPO**
 
 After enumerating through ```BloodHound``` got a way to escalate to admin rights
 
