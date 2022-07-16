@@ -17,7 +17,7 @@ The given box ```VulnNet: Active``` is a Linux machine with an IP address of ```
   - [Enumeration](#enumeration)
 	  - [Redis](#redis)
 	  - [SMB](#smb)
-  - [Post Exploitation](#post-exploitation)
+  - [Post Escalation](#post-escalation)
 	  - [SMB Reverse-Shell](#smb-reverse-shell)
   - [Privilege Escalation](#privilege-escalation)
 	  - [BloodHound Enumeration](#bloodhound-enumeration)
