@@ -703,3 +703,6 @@ PS C:\Users\enterprise-security\Downloads>
 
 ## Privilege Escalation
 
+### **BloodHound**
+
+![[Pasted image 20220716201629.png]]
