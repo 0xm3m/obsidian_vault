@@ -17,6 +17,7 @@ The given box ```VulnNet: Active``` is a Linux machine with an IP address of ```
   - [Enumeration](#enumeration)
 	  - [Redis](#redis)
 	  - [SMB](#smb)
+  - [Post Exploitation](#post-exploitation)
 	  - [SMB Reverse-Shell](#smb-reverse-shell)
   - [Privilege Escalation](#privilege-escalation)
 	  - [BloodHound Enumeration](#bloodhound-enumeration)
@@ -531,6 +532,8 @@ smb: \> ls
 smb: \> get PurgeIrrelevantData_1826.ps1
 getting file \PurgeIrrelevantData_1826.ps1 of size 69 as PurgeIrrelevantData_1826.ps1 (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
 ```
+
+## Post Escalation
 
 ### **SMB Reverse-Shell**
 
