@@ -155,3 +155,9 @@ OS and Service detection performed. Please report any incorrect results at https
 # Nmap done at Thu Jul 14 21:24:47 2022 -- 1 IP address (1 host up) scanned in 1770.48 seconds
 ```
 
+### Enumeration
+
+After running ```autorecon tool``` the possible finding is on port  ```6379/tcp  open  redis```  and  ```135/tcp   open  msrpc```
+
+#### **Redis**
+
