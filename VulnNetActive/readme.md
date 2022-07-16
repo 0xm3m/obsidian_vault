@@ -736,6 +736,8 @@ d-----        2/26/2021  12:14 PM                Redis-x64-2.8.2402
 -a----        7/16/2022   7:26 AM         908288 sharphound.exe
 -a----        2/26/2021  10:37 AM            143 startup.bat
 -a----        7/16/2022   7:28 AM           7856 Y2Q3NzU4MTgtZWE0Ny00ZGJjLTg4MDAtM2NjYjJmZTZjN2U2.bin
+
+C:\Users\enterprise-security\Downloads> powershell cp 20220716072804_BloodHound.zip C:\Enterprise-Share\20220716072804_BloodHound.zip
 ```
 
 <center>
