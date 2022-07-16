@@ -705,6 +705,37 @@ PS C:\Users\enterprise-security\Downloads>
 
 ### **BloodHound**
 
+```shell
+.\sharphound.exe
+2022-07-16T07:27:19.5511764-07:00|INFORMATION|Resolved Collection Methods: Group, LocalAdmin, Session, Trusts, ACL, Container, RDP, ObjectProps, DCOM, SPNTargets, PSRemote
+2022-07-16T07:27:19.5667538-07:00|INFORMATION|Initializing SharpHound at 7:27 AM on 7/16/2022
+2022-07-16T07:27:20.1448980-07:00|INFORMATION|Flags: Group, LocalAdmin, Session, Trusts, ACL, Container, RDP, ObjectProps, DCOM, SPNTargets, PSRemote
+2022-07-16T07:27:20.5979901-07:00|INFORMATION|Beginning LDAP search for vulnnet.local
+2022-07-16T07:27:21.0198642-07:00|INFORMATION|Producer has finished, closing LDAP channel
+2022-07-16T07:27:21.0198642-07:00|INFORMATION|LDAP channel closed, waiting for consumers
+2022-07-16T07:27:50.8949229-07:00|INFORMATION|Status: 0 objects finished (+0 0)/s -- Using 35 MB RAM
+2022-07-16T07:28:04.2698745-07:00|INFORMATION|Consumers finished, closing output channel
+2022-07-16T07:28:04.3167513-07:00|INFORMATION|Output channel closed, waiting for output task to complete
+Closing writers
+2022-07-16T07:28:04.8323758-07:00|INFORMATION|Status: 93 objects finished (+93 2.113636)/s -- Using 39 MB RAM
+2022-07-16T07:28:04.8323758-07:00|INFORMATION|Enumeration finished in 00:00:44.2386223
+2022-07-16T07:28:04.9730049-07:00|INFORMATION|SharpHound Enumeration Completed at 7:28 AM on 7/16/2022! Happy Graphing!
+ls
+
+
+    Directory: C:\Users\enterprise-security\Downloads
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        2/23/2021   2:29 PM                nssm-2.24-101-g897c7ad
+d-----        2/26/2021  12:14 PM                Redis-x64-2.8.2402
+-a----        7/16/2022   7:28 AM          10767 20220716072804_BloodHound.zip
+-a----        7/16/2022   7:26 AM         908288 sharphound.exe
+-a----        2/26/2021  10:37 AM            143 startup.bat
+-a----        7/16/2022   7:28 AM           7856 Y2Q3NzU4MTgtZWE0Ny00ZGJjLTg4MDAtM2NjYjJmZTZjN2U2.bin
+```
+
 <center>
 <img src="https://github.com/enum-more/obsidian_vault/raw/main/VulnNetActive/Bloodhound.png" \>
 </center>
@@ -713,3 +744,7 @@ PS C:\Users\enterprise-security\Downloads>
 <center>
 <img src="https://github.com/enum-more/obsidian_vault/raw/main/VulnNetActive/Bloodhound_finding.png" \>
 </center>
+
+After enumerating through ```BloodHound``` got a way to escalate to admin rights
+
+
