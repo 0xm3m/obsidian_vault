@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "razorblack0/readme.md",
+            "file": "Intro to C2/readme.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "razorblack0/readme.md",
+                "file": "Intro to C2/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,11 +96,11 @@
   },
   "active": "531a639465f38492",
   "lastOpenFiles": [
+    "razorblack0/readme.md",
     "razorblack0/secret.png",
     "VulnNetActive/readme.md",
     "VulnNetActive/Bloodhound.png",
     "VulnNetActive/Bloodhound_finding.png",
-    "razorblack0/readme.md",
     "Converting usernames into ad username format.md",
     "razorblack0/enum.md"
   ]
