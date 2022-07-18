@@ -1,11 +1,12 @@
 #!/bin/bash
 
 
-echo -e "\nPrinting Git Status \n";
 gstatus=`git status --porcelain`
 
 if [ ${#gstatus} -ne 0 ]
 then
+    echo -e "\n[+]Printing Git Status \n";
+    echo $gstatus;
     echo -e "\n[+]Adding Files to Push\n";
     git add --all
     echo -e "\n[+]Commit Message\n";
