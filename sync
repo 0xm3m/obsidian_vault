@@ -20,17 +20,17 @@ then
 	git pull --rebase origin $branch;
     if [ $? -eq 0 ];
     then
-        echo -e "Git pull was successful on $branch...";
+        echo -e "Git pull was successful on [$branch]";
     else
-        echo -e "Git pull failed! on $branch...";
+        echo -e "Git pull failed! on [$branch]";
     fi
     echo -e "[+]Pushing to the branch";
     read -p "[+]Enter the push branch name: " branch;
     git push -u origin $branch --force;
     if [ $? -eq 0 ];
     then
-        echo -e "Git push was successful on $branch...";
+        echo -e "Git push was successful on [$branch]";
     else
-        echo -e "Git push failed! on $branch...";
+        echo -e "Git push failed! on [$branch]";
     fi
 fi
