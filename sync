@@ -6,6 +6,7 @@ echo "_____________________________
         GIT AUTOMATION         
 _____________________________"
 
+echo ""
 #Pulling the latest code from the branch before making any changes...
 echo -e "[+]Pulling the branch";
     read -p "[+]Enter the pull branch name: " branch;
