@@ -16,8 +16,7 @@ then
     echo -e "[+]Commit Message";
     git commit -m "$gstatus";
     echo -e "[+]Pulling the branch";
-    echo -e "[+]Enter the pull branch name: ";
-    read -p "branch:" branch;
+    read -p "[+]Enter the pull branch name: " branch;
 	git pull --rebase origin $branch;
     if [ $? -eq 0 ];
     then
