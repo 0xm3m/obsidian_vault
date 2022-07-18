@@ -25,8 +25,7 @@ then
         echo -e "Git pull failed! on $branch...";
     fi
     echo -e "[+]Pushing to the branch";
-    echo -e "[+]Enter the push branch name: ";
-    read branch;
+    read -p "[+]Enter the push branch name: " branch;
     git push -u origin $branch --force;
     if [ $? -eq 0 ];
     then
