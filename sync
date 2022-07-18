@@ -10,29 +10,29 @@ gstatus=`git status --porcelain`
 
 if [ ${#gstatus} -ne 0 ]
 then
-    echo -e "\n[+]Printing Git Status \n"; echo $gstatus
-    echo -e "\n[+]Adding Files to Push";
+    echo -e "[+]Printing Git Status"; echo $gstatus
+    echo -e "[+]Adding Files to Push";
     git add --all;
-    echo -e "\n[+]Commit Message\n";
+    echo -e "[+]Commit Message";
     git commit -m "$gstatus";
-    echo -e "\n[+]Pulling the branch \n";
-    echo -e "\n[+]Enter the pull branch name: ";
+    echo -e "[+]Pulling the branch";
+    echo -e "[+]Enter the pull branch name: ";
     read branch;
 	git pull --rebase origin $branch;
     if [ $? -eq 0 ];
     then
-        echo -e "\nGit pull was successful on $branch\n";
+        echo -e "Git pull was successful on $branch...";
     else
-        echo -e "\nGit pull failed! on $branch.\n";
+        echo -e "Git pull failed! on $branch...";
     fi
-    echo -e "\n[+]Pushing to the branch\n";
-    echo -e "\n[+]Enter the push branch name: ";
+    echo -e "[+]Pushing to the branch";
+    echo -e "[+]Enter the push branch name: ";
     read branch;
     git push -u origin $branch --force;
     if [ $? -eq 0 ];
     then
-        echo -e "\nGit push was successful on $branch\n";
+        echo -e "Git push was successful on $branch...";
     else
-        echo -e "\nGit push failed! on $branch.\n";
+        echo -e "Git push failed! on $branch...";
     fi
 fi
