@@ -1,4 +1,5 @@
 {
   "attachmentFolderPath": "Intro to C2",
-  "promptDelete": false
+  "promptDelete": false,
+  "alwaysUpdateLinks": true
 }
