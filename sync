@@ -27,15 +27,6 @@ then
     git add --all;
     echo -e "[+]Commit Message";
     git commit -m "$gstatus";
-    echo -e "[+]Pulling the branch";
-    read -p "[+]Enter the pull branch name: " branch;
-	git pull --rebase origin $branch;
-    if [ $? -eq 0 ];
-    then
-        echo -e "Git pull was successful on [$branch]";
-    else
-        echo -e "Git pull failed! on [$branch]";
-    fi
     echo -e "[+]Pushing to the branch";
     read -p "[+]Enter the push branch name: " branch;
     git push -u origin $branch --force;
