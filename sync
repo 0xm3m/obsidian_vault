@@ -1,6 +1,10 @@
 #!/bin/bash
+# author: gnanaraj.mauviel
 
-echo 
+
+echo "_____________________________
+            GIT AUTOMATION         
+      _____________________________      "
 
 gstatus=`git status --porcelain`
 
