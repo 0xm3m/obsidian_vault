@@ -3,7 +3,7 @@
 
 
 echo "_____________________________
-            GIT AUTOMATION         
+        GIT AUTOMATION         
 _____________________________"
 
 gstatus=`git status --porcelain`
