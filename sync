@@ -9,8 +9,8 @@ _____________________________"
 echo ""
 #Pulling the latest code from the branch before making any changes...
 echo -e "[+]Pulling the branch";
-    read -p "[+]Enter the pull branch name: " branch;
-    git pull --rebase origin $branch;
+read -p "[+]Enter the pull branch name: " branch;
+git pull --rebase origin $branch;
     if [ $? -eq 0 ];
     then
         echo -e "Git pull was successful on [$branch]";
