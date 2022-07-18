@@ -14,6 +14,12 @@ then
     echo -e "\n[+]Enter the pull branch name: \n";
     read branch;
 	git pull --rebase origin $branch;
+    if [ $? -eq 0 ];
+    then
+        echo -e "\nGit pull was successful\n";
+    else
+        echo -e "\nGit pull failed!.\n";
+    fi
     echo -e "\n[+]Pushing to branch main \n";
     echo -e "\n[+]Enter the push branch name: \n";
     read branch;
