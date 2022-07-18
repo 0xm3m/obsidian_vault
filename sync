@@ -1,14 +1,26 @@
 #!/bin/bash
 
+
+echo -e "\nPrinting Git Status \n";
 gstatus=`git status --porcelain`
 
 if [ ${#gstatus} -ne 0 ]
 then
-
+    echo -e "\nAdding Files to Push\n";
     git add --all
+
+    echo -e "\nCommit Message\n";
     git commit -m "$gstatus"
 
 	git pull --rebase origin main
-    git push -u origin main --force
+    
+    echo -e "\npushing to branch main \n";
+    git push -u origin main --force;
+    if [ $? -eq 0 ];
+    then
+        echo -e "\nGit push was successful\n";
+    else
+        echo -e "\nGit push failed!.\n";
+    fi
 
 fi
