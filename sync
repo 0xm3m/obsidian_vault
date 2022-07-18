@@ -6,15 +6,12 @@ gstatus=`git status --porcelain`
 
 if [ ${#gstatus} -ne 0 ]
 then
-    echo -e "\nAdding Files to Push\n";
+    echo -e "\n[+]Adding Files to Push\n";
     git add --all
-
-    echo -e "\nCommit Message\n";
+    echo -e "\n[+]Commit Message\n";
     git commit -m "$gstatus"
-
 	git pull --rebase origin main
-    
-    echo -e "\npushing to branch main \n";
+    echo -e "\n[+]Pushing to branch main \n";
     git push -u origin main --force;
     if [ $? -eq 0 ];
     then
@@ -22,5 +19,4 @@ then
     else
         echo -e "\nGit push failed!.\n";
     fi
-
 fi
