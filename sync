@@ -6,7 +6,7 @@ echo "_____________________________
         GIT AUTOMATION         
 _____________________________"
 
-
+echo ""
 # Adding new changes to the repo
 gstatus=`git status --porcelain`
 
