@@ -24,7 +24,7 @@ The given box ```Enumerating Active Directory``` is a AD machine with an IP addr
 	  - [Exploiting the GPO](#exploiting-the-gpo)
 
 <center>
-<img src = "" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/adenumeration/attacking-ad.png" />
 </center>
 
 ## Recon
