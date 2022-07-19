@@ -7,8 +7,12 @@
         "id": "5a9e9ca36f371d5e",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "adenumeration/readme.md",
+            "mode": "source",
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "adenumeration/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -91,15 +96,15 @@
   },
   "active": "5a9e9ca36f371d5e",
   "lastOpenFiles": [
+    "VulnNetActive/readme.md",
+    "adenumeration/readme.md",
     "Intro to C2/readme.md",
     "Intro to C2/armitage.png",
-    "VulnNetActive/readme.md",
     "Intro to C2/redteamfundametals.png",
     "razorblack0/readme.md",
     "razorblack0/secret.png",
     "VulnNetActive/Bloodhound.png",
     "VulnNetActive/Bloodhound_finding.png",
-    "Converting usernames into ad username format.md",
-    "razorblack0/enum.md"
+    "Converting usernames into ad username format.md"
   ]
 }
