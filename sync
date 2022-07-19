@@ -12,16 +12,6 @@ gstatus=`git status --porcelain`
 
 if [ ${#gstatus} -ne 0 ]
 then
-    #Pulling the latest code from the branch before making any changes...
-    echo -e "[+]Pulling the branch";
-    read -p "[+]Enter the pull branch name: " branch;
-    git pull --rebase origin $branch;
-    if [ $? -eq 0 ];
-    then
-        echo -e "Git pull was successful on [$branch]";
-    else
-        echo -e "Git pull failed! on [$branch]";
-    fi
     echo -e "[+]Printing Git Status"; echo $gstatus
     echo -e "[+]Adding Files to Push";
     git add --all;
@@ -35,5 +25,15 @@ then
         echo -e "Git push was successful on [$branch]";
     else
         echo -e "Git push failed! on [$branch]";
+    fi
+    #Pulling the latest code from the branch before making any changes...
+    echo -e "[+]Pulling the branch";
+    read -p "[+]Enter the pull branch name: " branch;
+    git pull --rebase origin $branch;
+    if [ $? -eq 0 ];
+    then
+        echo -e "Git pull was successful on [$branch]";
+    else
+        echo -e "Git pull failed! on [$branch]";
     fi
 fi
