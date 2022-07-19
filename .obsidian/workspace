@@ -7,9 +7,11 @@
         "id": "5a9e9ca36f371d5e",
         "type": "leaf",
         "state": {
-          "type": "image",
+          "type": "markdown",
           "state": {
-            "file": "adenumeration/dns.png"
+            "file": "adenumeration/readme.md",
+            "mode": "source",
+            "source": true
           }
         }
       }
@@ -67,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "adenumeration/dns.png",
+                "file": "adenumeration/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -92,8 +94,9 @@
     "direction": "horizontal",
     "width": 100
   },
-  "active": "f816177e427261a2",
+  "active": "5a9e9ca36f371d5e",
   "lastOpenFiles": [
+    "adenumeration/dns.png",
     "adenumeration/readme.md",
     "VulnNetActive/readme.md",
     "Intro to C2/readme.md",
@@ -102,7 +105,6 @@
     "razorblack0/readme.md",
     "razorblack0/secret.png",
     "VulnNetActive/Bloodhound.png",
-    "VulnNetActive/Bloodhound_finding.png",
-    "Converting usernames into ad username format.md"
+    "VulnNetActive/Bloodhound_finding.png"
   ]
 }
