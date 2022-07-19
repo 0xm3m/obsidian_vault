@@ -27,6 +27,8 @@ The given box ```Enumerating Active Directory``` is a AD machine with an IP addr
 <img src = "https://github.com/enum-more/obsidian_vault/raw/main/adenumeration/attacking-ad.png" />
 </center>
 
-## Recon
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/adenumeration/network-diagram.png" />
+</center>
 
-### Nmap Scan Result
+![[Pasted image 20220719200751.png]]
