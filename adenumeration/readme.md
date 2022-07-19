@@ -31,4 +31,4 @@ The given box ```Enumerating Active Directory``` is a AD machine with an IP addr
 <img src = "https://github.com/enum-more/obsidian_vault/raw/main/adenumeration/network-diagram.png" />
 </center>
 
-![[Pasted image 20220719200751.png]]
+![[dns.png]]
