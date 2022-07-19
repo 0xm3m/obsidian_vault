@@ -1,13 +1,3 @@
-# Nmap 7.92 scan initiated Sat Jul  9 20:05:45 2022 as: nmap -vv --reason -Pn -T4 -sU -sV -p 123 "--script=banner,(ntp* or ssl*) and not (brute or broadcast or dos or external or fuzzer)" -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/udp123/udp_123_ntp_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/udp123/xml/udp_123_ntp_nmap.xml 10.10.247.120
-Nmap scan report for 10.10.247.120
-Host is up, received user-set (0.17s latency).
-Scanned at 2022-07-09 20:05:45 IST for 11s
-
-PORT    STATE SERVICE REASON               VERSION
-123/udp open  ntp     udp-response ttl 127 NTP v3
-| ntp-info: 
-|_  receive time stamp: 2022-07-09T14:35:55
-
-Read data files from: /usr/bin/../share/nmap
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sat Jul  9 20:05:56 2022 -- 1 IP address (1 host up) scanned in 11.14 seconds
+version https://git-lfs.github.com/spec/v1
+oid sha256:db6e4ace880dc915cec9bf12b64375c030d8364e7cd7da221f70ea51958a88dd
+size 918

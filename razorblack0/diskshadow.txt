@@ -1,5 +1,3 @@
-set metadata C:\tmp\tmp.cabs 
-set context persistent nowriters 
-add volume c: alias someAlias 
-create 
-expose %someAlias% w: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:ae47162fb52eb5cec4b06dc62e35859c2bf3f69c252ab79b56420ecab0f94a1b
+size 125

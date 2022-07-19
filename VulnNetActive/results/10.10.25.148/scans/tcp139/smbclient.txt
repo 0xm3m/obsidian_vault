@@ -1,8 +1,3 @@
-do_connect: Connection to 10.10.25.148 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
-Anonymous login successful
-
-	Sharename       Type      Comment
-	---------       ----      -------
-Reconnecting with SMB1 for workgroup listing.
-Unable to connect with SMB1 -- no workgroup available
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:31491e124d6e055c3409464455ede8d958a415165d2870e3e12575abfc5fd151
+size 287

@@ -1,1 +1,3 @@
-# Nmap 7.92 scan initiated Sat Jul  9 20:16:30 2022 as: nmap -vv --reason -Pn -T4 -sV -p 49665 --script=banner,msrpc-enum,rpc-grind,rpcinfo -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp49665/tcp_49665_rpc_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp49665/xml/tcp_49665_rpc_nmap.xml 10.10.247.120
+version https://git-lfs.github.com/spec/v1
+oid sha256:f8037ed45283758027922ea174a49e658670834ced8635916a25058e365c4f79
+size 360

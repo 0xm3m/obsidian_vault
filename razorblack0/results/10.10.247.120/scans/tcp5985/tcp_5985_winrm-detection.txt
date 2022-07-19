@@ -1,2 +1,3 @@
-WinRM was possibly detected running on tcp port 5985.
-Check _manual_commands.txt for manual commands you can run against this service.
+version https://git-lfs.github.com/spec/v1
+oid sha256:e1ac6ee3b63f02403de3c8ef924d871147b6cab5af6a6ae73807c21a99ed6068
+size 134

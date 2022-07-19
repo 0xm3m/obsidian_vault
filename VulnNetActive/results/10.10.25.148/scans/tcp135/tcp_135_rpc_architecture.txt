@@ -1,6 +1,3 @@
-Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
-
-[*] Gathering OS architecture for 1 machines
-[*] Socket connect timeout set to 2 secs
-10.10.25.148 is 64-bit
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:ff06b48b3d5115ef557ad2d40afd6d1af5659049883c5ccb0d3693a56d6d2423
+size 168

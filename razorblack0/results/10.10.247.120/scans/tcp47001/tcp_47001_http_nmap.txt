@@ -1,1 +1,3 @@
-# Nmap 7.92 scan initiated Sat Jul  9 20:16:29 2022 as: nmap -vv --reason -Pn -T4 -sV -p 47001 "--script=banner,(http* or ssl*) and not (brute or broadcast or dos or external or http-slowloris* or fuzzer)" -oN /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp47001/tcp_47001_http_nmap.txt -oX /root/thm/machines/medium/raz0rblack/results/10.10.247.120/scans/tcp47001/xml/tcp_47001_http_nmap.xml 10.10.247.120
+version https://git-lfs.github.com/spec/v1
+oid sha256:30555be08765688bad2782bcdff2ae742389f11e82afe58ac2f5971c0ae2dd4f
+size 428
