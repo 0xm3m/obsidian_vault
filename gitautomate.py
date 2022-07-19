@@ -8,7 +8,6 @@ Automate the process of using commands such as add, commit, branch, pull, merge 
 """
 
 import subprocess
-import os
 from pyfiglet import figlet_format
 from termcolor import cprint
 
@@ -32,7 +31,7 @@ def run(*args):
     return subprocess.check_call(['git'] + list(args))
 
 def add():
-    run('git add --all')
+    run('add', '.')
 
 
 def commit():
