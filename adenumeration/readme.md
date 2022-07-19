@@ -1,17 +1,17 @@
 ---
-title: "THM - # VulnNet: Active"
+title: "THM - # Enumerating Active Directory"
 classes: wide
 header:
   teaser: /assets/images/htb/htb.png
 ribbon: blue
-description: "Writeup for THM - # VulnNet: Active"
+description: "Writeup for THM - # Enumerating Active Directory"
 categories:
   - THM
 ---
 
-The given box ```VulnNet: Active``` is a Linux machine with an IP address of ```10.10.135.22```
+The given box ```Enumerating Active Directory``` is a AD machine with an IP address of ```10.10.135.22```
 
-- [TryHackMe- VulnNet:Active](#tryhackme---razorblack)
+- [TryHackMe- Enumerating Active Directory](#tryhackme---Enumerating-Active-Directory)
   - [Recon](#recon)
     - [Nmap Scan Result](#nmap-scan-result)
   - [Enumeration](#enumeration)
@@ -22,6 +22,10 @@ The given box ```VulnNet: Active``` is a Linux machine with an IP address of ```
   - [Privilege Escalation](#privilege-escalation)
 	  - [BloodHound Enumeration](#bloodhound-enumeration)
 	  - [Exploiting the GPO](#exploiting-the-gpo)
+
+<center>
+<img src = "" />
+</center>
 
 ## Recon
 

@@ -11,7 +11,7 @@
           "state": {
             "file": "adenumeration/readme.md",
             "mode": "source",
-            "source": false
+            "source": true
           }
         }
       }
