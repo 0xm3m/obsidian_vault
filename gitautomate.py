@@ -1,3 +1,4 @@
+#!/bin/python3
 """
 
 author: @enum-more
@@ -35,9 +36,17 @@ def add():
 
 
 def commit():
-    run('commit', '-am',  'git status')
+    choice = input('\nDo you want to commit the changes right now to GitHub? (y/n): ').lower()
+    if choice == 'y':
+        run('commit', '-am',  'git status')
+    else:
+        print('\nOkay, goodbye!\n')
     branch = input('\n[+]Push branch: ')
-    run('push', '-u', 'origin', branch)
+    choice = input('\nDo you want to push the branch right now to GitHub? (y/n): ').lower()
+    if choice == 'y':
+        run('push', '-u', 'origin', branch)
+    else:
+        print('\nOkay, goodbye!\n')
 
 
 def branch():
@@ -53,11 +62,12 @@ def branch():
 
 
 def pull():
-    print('\n[+]Pull the changes.')
+    #print('\n[+]Pull the changes.')
+    branch = input('\n[+]Pull the branch changes: ')
     choice = input('\nDo you want to pull the changes from GitHub? (y/n): ').lower()
 
     if choice == 'y':
-        run('pull')
+        run('pull', 'origin', branch)
     else:
         print('\nOkay, goodbye!\n')
 
