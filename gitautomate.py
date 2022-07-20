@@ -39,11 +39,7 @@ def add():
 
 def commit():
     commit =  input('\n[+]Commit message: ')
-    choice = input('\nDo you want to commit the changes right now to GitHub? (y/n): ').lower()
-    if choice == 'y':
-        run('commit', '-am',  commit)
-    else:
-        print('\nOkay, goodbye!\n')
+    run('commit', '-am',  commit)
     branch = input('\n[+]Push branch: ')
     choice = input('\nDo you want to push the branch right now to GitHub? (y/n): ').lower()
     if choice == 'y':
@@ -120,47 +116,47 @@ def main():
         if choose_command == 1:
             add()
             continue
-            print("")
+            print("\n")
 
         elif choose_command == 2:
             commit()
             continue
-            print("")
+            print("\n")
 
         elif choose_command == 3:
             branch()
             continue
-            print("")
+            print("\n")
 
         elif choose_command == 4:
             pull()
             continue
-            print("")
+            print("\n")
 
         elif choose_command == 5:
             fetch() 
             continue 
-            print("") 
+            print("\n") 
 
         elif choose_command == 6:
             merge()
             continue
-            print("")
+            print("\n")
             
         elif choose_command == 7:
             reset() 
             continue
-            print("") 
+            print("\n") 
             
         elif choose_command == 8:
             blame() 
             continue
-            print("")  
+            print("\n")  
 
         elif choose_command == 9:
             exit()
             continue
-            print("")
+            print("\n")
 
         else:
             print('Invalid choice')    
