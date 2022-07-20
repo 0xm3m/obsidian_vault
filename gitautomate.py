@@ -4,29 +4,23 @@
 author: @enum-more
 
 Automated Git commands
-Automate the process of using commands such as add, commit, branch, pull, merge and blame
+Automate the process of using commands such as add, commit, branch, pull, merge, blame and exit
 
 """
 
 import subprocess
-import os
-import git
 from pyfiglet import figlet_format
 from termcolor import cprint
-from git import Repo
 
 
 logo = 'Git-Commands'
-
 
 class color:
     NOTICE = '\033[91m'
     END = '\033[0m'
 
-
 info = color.NOTICE + '''
 Automate the process of using commands such as add, commit, branch, pull, merge and blame.\n''' + color.END
-
 
 dict = {}
 
@@ -35,7 +29,6 @@ def run(*args):
 
 def add():
     run('add', '.')
-
 
 def commit():
     commit =  input('\n[+]Commit message: ')
@@ -46,8 +39,6 @@ def commit():
         run('push', '-u', 'origin', branch)
     else:
         print('\nOkay, goodbye!\n')
-
-
 
 def branch():
     branch = input('\n[+]Checkout branch: ')
@@ -60,7 +51,6 @@ def branch():
     else:
         print('\nOkay, goodbye!\n')
 
-
 def pull():
     #print('\n[+]Pull the changes.')
     branch = input('\n[+]Pull the branch changes: ')
@@ -71,7 +61,6 @@ def pull():
     else:
         print('\nOkay, goodbye!\n')
 
-
 def fetch():
     print('\nFetches changes from the current folder.')
     run('fetch')
@@ -79,7 +68,6 @@ def fetch():
 def merge():
     branch = input('\n[+]Merge branch: ')
     run('merge', branch)
-
 
 def reset():
     filename = input('\n[+]Reset file: ')
