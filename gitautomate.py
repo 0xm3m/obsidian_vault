@@ -157,7 +157,7 @@ def main():
 
         else:
             print('Invalid choice')    
-            continue
+
 
 
         dict = {
