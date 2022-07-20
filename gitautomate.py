@@ -124,6 +124,7 @@ def main():
 
         elif choose_command == 2:
             commit()
+            break
 
         elif choose_command == 3:
             branch()
