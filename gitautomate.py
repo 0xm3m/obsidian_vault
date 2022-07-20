@@ -36,6 +36,7 @@ def run(*args):
 def add():
     run('add', '.')
 
+
 def commit():
     commit =  input('\n[+]Commit message: ')
     choice = input('\nDo you want to commit the changes right now to GitHub? (y/n): ').lower()
@@ -50,6 +51,8 @@ def commit():
     else:
         print('\nOkay, goodbye!\n')
 
+
+
 def branch():
     branch = input('\n[+]Checkout branch: ')
     run('checkout', '-b', branch)
@@ -61,6 +64,7 @@ def branch():
     else:
         print('\nOkay, goodbye!\n')
 
+
 def pull():
     #print('\n[+]Pull the changes.')
     branch = input('\n[+]Pull the branch changes: ')
@@ -71,42 +75,93 @@ def pull():
     else:
         print('\nOkay, goodbye!\n')
 
+
 def fetch():
     print('\nFetches changes from the current folder.')
     run('fetch')
+
 
 def merge():
     branch = input('\n[+]Merge branch: ')
     run('merge', branch)
 
+
 def reset():
     filename = input('\n[+]Reset file: ')
     run('reset', filename)
+
 
 def blame():
     file = input('\n[+]Blame file: ')
     run('blame', file)
 
+
+def exit():
+    print(quit)
+    quit()
+
 def main():
     cprint(figlet_format(logo, font='slant'), 'green')
     print(f'{info} \n')
 
-    print('Commands to use: add, commit, branch, pull, fetch, merge, reset and blame')
 
-    choose_command = input('Command: ').lower()
+    print('[1] Add')
+    print('[2] Commit')
+    print('[3] Branch')
+    print('[4] Pull')
+    print('[5] Fetch')
+    print('[6] Merge')
+    print('[7] Reset')
+    print('[8] Blame')
+    print('[9] Exit')
+    
 
-    dict = {
-        'add': add,
-        'commit': commit,
-        'branch': branch,
-        'pull': pull,
-        'fetch': fetch,
-        'merge': merge,
-        'reset': reset,
-        'blame': blame
-    }
+    choose_command = int(input('Command: '))
+    while choose_command > 0:
+        if choose_command == 1:
+            add()
 
-    dict.get(choose_command, lambda: "Invalid")()
+        elif choose_command == 2:
+            commit()
+
+        elif choice == 3:
+            branch()
+
+        elif choice == 4:
+            pull()
+
+        elif choice == 5:
+            fetch()    
+
+        elif choice == 6:
+            merge()
+            
+        elif choice == 7:
+            reset()  
+            
+        elif choice == 8:
+            blame()   
+
+        elif choice == 9:
+            exit()
+
+        else:
+            print('Invalid choice')    
+
+
+        dict = {
+                'add': 1,
+                'commit': 2,
+                'branch': 3,
+                'pull': 4,
+                'fetch': 5,
+                'merge': 6,
+                'reset': 7,
+                'blame': 8,
+                'exit': 9
+        }
+
+        dict.get(choose_command, lambda: "Invalid")()
 
 
 if __name__ == '__main__':
