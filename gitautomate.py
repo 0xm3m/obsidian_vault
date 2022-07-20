@@ -30,14 +30,11 @@ Automate the process of using commands such as add, commit, branch, pull, merge 
 
 dict = {}
 
-
-
 def run(*args):
     return subprocess.check_call(['git'] + list(args))
 
 def add():
     run('add', '.')
-
 
 def commit():
     commit =  input('\n[+]Commit message: ')
@@ -53,7 +50,6 @@ def commit():
     else:
         print('\nOkay, goodbye!\n')
 
-
 def branch():
     branch = input('\n[+]Checkout branch: ')
     run('checkout', '-b', branch)
@@ -65,7 +61,6 @@ def branch():
     else:
         print('\nOkay, goodbye!\n')
 
-
 def pull():
     #print('\n[+]Pull the changes.')
     branch = input('\n[+]Pull the branch changes: ')
@@ -76,26 +71,21 @@ def pull():
     else:
         print('\nOkay, goodbye!\n')
 
-
 def fetch():
     print('\nFetches changes from the current folder.')
     run('fetch')
-
 
 def merge():
     branch = input('\n[+]Merge branch: ')
     run('merge', branch)
 
-
 def reset():
     filename = input('\n[+]Reset file: ')
     run('reset', filename)
 
-
 def blame():
     file = input('\n[+]Blame file: ')
     run('blame', file)
-
 
 def main():
     cprint(figlet_format(logo, font='slant'), 'green')
