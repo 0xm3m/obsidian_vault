@@ -11,7 +11,7 @@
           "state": {
             "file": "thm/adenumeration/readme.md",
             "mode": "source",
-            "source": true
+            "source": false
           }
         }
       }
@@ -96,15 +96,15 @@
   },
   "active": "fc58c378bea4491b",
   "lastOpenFiles": [
-    "thm/adenumeration/attacking-ad.png",
-    "thm/adenumeration/readme.md",
-    "thm/VulnNetActive/results/10.10.25.148/report/report.md/10.10.25.148/Services/Service - tcp-6379-redis/Nmap Redis.md",
-    "thm/adenumeration/dns.png",
-    "thm/VulnNetActive/readme.md",
-    "Intro to C2/readme.md",
-    "Intro to C2/armitage.png",
-    "Intro to C2/redteamfundametals.png",
-    "thm/razorblack0/readme.md",
-    "thm/razorblack0/secret.png"
+    "thm/adenumeration/assets/detailed_view.png",
+    "thm/adenumeration/assets/sites&service.png",
+    "thm/adenumeration/assets/groups.png",
+    "thm/adenumeration/assets/advanced_feature.png",
+    "thm/adenumeration/assets/change_domain.png",
+    "thm/adenumeration/assets/user&computer.png",
+    "thm/adenumeration/assets/Pasted image 20220720221758.png",
+    "thm/adenumeration/assets/change_forest.png",
+    "thm/adenumeration/assets/Pasted image 20220720221658.png",
+    "thm/adenumeration/assets/domain&trust.png"
   ]
 }
