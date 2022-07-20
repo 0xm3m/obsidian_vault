@@ -37,7 +37,7 @@ def add():
 
 
 def commit():
-    commit = '`git status`'
+    commit = '"`git status --porcelain`"'
     choice = input('\nDo you want to commit the changes right now to GitHub? (y/n): ').lower()
     if choice == 'y':
         run('commit', '-am',  commit)
