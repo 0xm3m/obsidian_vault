@@ -123,7 +123,7 @@ def main():
 
         elif choose_command == 2:
             commit()
-            break
+            continue
 
         elif choose_command == 3:
             branch()
