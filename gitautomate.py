@@ -10,8 +10,10 @@ Automate the process of using commands such as add, commit, branch, pull, merge 
 
 import subprocess
 import os
+import git
 from pyfiglet import figlet_format
 from termcolor import cprint
+from git import Repo
 
 
 logo = 'Git-Commands'
@@ -29,6 +31,7 @@ Automate the process of using commands such as add, commit, branch, pull, merge 
 dict = {}
 
 
+
 def run(*args):
     return subprocess.check_call(['git'] + list(args))
 
@@ -37,11 +40,10 @@ def add():
 
 
 def commit():
-    commit = '"`git status --porcelain`"'
+    commit =  input('\n[+]Commit message: ')
     choice = input('\nDo you want to commit the changes right now to GitHub? (y/n): ').lower()
     if choice == 'y':
         run('commit', '-am',  commit)
-        #os.system(commit -m `git status`)
     else:
         print('\nOkay, goodbye!\n')
     branch = input('\n[+]Push branch: ')
