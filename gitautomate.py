@@ -46,10 +46,12 @@ def commit():
         print('\nOkay, goodbye!\n')
     branch = input('\n[+]Push branch: ')
     choice = input('\nDo you want to push the branch right now to GitHub? (y/n): ').lower()
-    if choice == 'y':
-        run('push', '-u', 'origin', branch)
-    else:
-        print('\nOkay, goodbye!\n')
+    while choice != (y,n):
+        if choice == 'y':
+            run('push', '-u', 'origin', branch)
+            break
+        else:
+            print('\nOkay, goodbye!\n')
 
 
 
@@ -120,6 +122,7 @@ def main():
     while choose_command > 0:
         if choose_command == 1:
             add()
+            continue
 
         elif choose_command == 2:
             commit()
@@ -127,24 +130,31 @@ def main():
 
         elif choose_command == 3:
             branch()
+            break
 
         elif choose_command == 4:
             pull()
+            break
 
         elif choose_command == 5:
-            fetch()    
+            fetch() 
+            break   
 
         elif choose_command == 6:
             merge()
+            break
             
         elif choose_command == 7:
-            reset()  
+            reset() 
+            break 
             
         elif choose_command == 8:
-            blame()   
+            blame() 
+            break  
 
         elif choose_command == 9:
             exit()
+            break
 
         else:
             print('Invalid choice')    
