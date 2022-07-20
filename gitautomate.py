@@ -38,7 +38,7 @@ def add():
 def commit():
     choice = input('\nDo you want to commit the changes right now to GitHub? (y/n): ').lower()
     if choice == 'y':
-        run('commit', '-am',  '`git status`')
+        run('commit', '-am',  "`git status`")
     else:
         print('\nOkay, goodbye!\n')
     branch = input('\n[+]Push branch: ')
