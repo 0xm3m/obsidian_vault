@@ -127,31 +127,31 @@ def main():
 
         elif choose_command == 3:
             branch()
-            break
+            continue
 
         elif choose_command == 4:
             pull()
-            break
+            continue
 
         elif choose_command == 5:
             fetch() 
-            break   
+            continue  
 
         elif choose_command == 6:
             merge()
-            break
+            continue
             
         elif choose_command == 7:
             reset() 
-            break 
+            continue 
             
         elif choose_command == 8:
             blame() 
-            break  
+            continue  
 
         elif choose_command == 9:
             exit()
-            break
+            continue
 
         else:
             print('Invalid choice')    
