@@ -123,26 +123,27 @@ def main():
 
         elif choose_command == 2:
             commit()
+            continue
 
-        elif choice == 3:
+        elif choose_command == 3:
             branch()
 
-        elif choice == 4:
+        elif choose_command == 4:
             pull()
 
-        elif choice == 5:
+        elif choose_command == 5:
             fetch()    
 
-        elif choice == 6:
+        elif choose_command == 6:
             merge()
             
-        elif choice == 7:
+        elif choose_command == 7:
             reset()  
             
-        elif choice == 8:
+        elif choose_command == 8:
             blame()   
 
-        elif choice == 9:
+        elif choose_command == 9:
             exit()
 
         else:
