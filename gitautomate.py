@@ -35,7 +35,6 @@ def run(*args):
 
 def add():
     run('add', '.')
-    print("\n")
 
 
 def commit():
@@ -47,7 +46,6 @@ def commit():
         run('push', '-u', 'origin', branch)
     else:
         print('\nOkay, goodbye!\n')
-    print("\n")
 
 
 
@@ -61,7 +59,6 @@ def branch():
         run('push', '-u', 'origin', branch)
     else:
         print('\nOkay, goodbye!\n')
-    print("\n")
 
 
 def pull():
@@ -73,29 +70,24 @@ def pull():
         run('pull', 'origin', branch)
     else:
         print('\nOkay, goodbye!\n')
-    print("\n")
 
 
 def fetch():
     print('\nFetches changes from the current folder.')
     run('fetch')
-    print("\n")
-
 
 def merge():
     branch = input('\n[+]Merge branch: ')
     run('merge', branch)
-    print("\n")
+
 
 def reset():
     filename = input('\n[+]Reset file: ')
     run('reset', filename)
-    print("\n")
 
 def blame():
     file = input('\n[+]Blame file: ')
     run('blame', file)
-    print("\n")
 
 def exit():
     print(quit)
