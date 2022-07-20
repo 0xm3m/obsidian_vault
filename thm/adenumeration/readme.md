@@ -24,14 +24,15 @@ The given box ```Enumerating Active Directory``` is a AD machine with an IP addr
 	  - [Exploiting the GPO](#exploiting-the-gpo)
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/adenumeration/attacking-ad.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/attacking-ad.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/adenumeration/network-diagram.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/network-diagram.png" />
 </center>
 
-![[dns.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/dns.png" />
+</center>
 
 
-hello test 123
