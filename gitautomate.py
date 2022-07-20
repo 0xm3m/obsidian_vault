@@ -126,7 +126,6 @@ def main():
 
         elif choose_command == 2:
             commit()
-            continue
 
         elif choose_command == 3:
             branch()
@@ -158,6 +157,7 @@ def main():
 
         else:
             print('Invalid choice')    
+            continue
 
 
         dict = {
