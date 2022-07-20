@@ -114,10 +114,9 @@ def main():
     print('[7] Reset')
     print('[8] Blame')
     print('[9] Exit')
-    
-
-    choose_command = int(input('Command: '))
-    while choose_command > 0:
+        
+    while True:
+        choose_command = int(input('Command: '))
         if choose_command == 1:
             add()
             continue
