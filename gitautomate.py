@@ -116,42 +116,51 @@ def main():
     print('[9] Exit')
         
     while True:
-        choose_command = int(input('Command: '))
+        choose_command = int(input('[Command]: '))
         if choose_command == 1:
             add()
             continue
+            print("")
 
         elif choose_command == 2:
             commit()
             continue
+            print("")
 
         elif choose_command == 3:
             branch()
             continue
+            print("")
 
         elif choose_command == 4:
             pull()
             continue
+            print("")
 
         elif choose_command == 5:
             fetch() 
-            continue  
+            continue 
+            print("") 
 
         elif choose_command == 6:
             merge()
             continue
+            print("")
             
         elif choose_command == 7:
             reset() 
-            continue 
+            continue
+            print("") 
             
         elif choose_command == 8:
             blame() 
-            continue  
+            continue
+            print("")  
 
         elif choose_command == 9:
             exit()
             continue
+            print("")
 
         else:
             print('Invalid choice')    
