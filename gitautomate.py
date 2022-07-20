@@ -38,20 +38,18 @@ def add():
 
 
 def commit():
-    while True:
-        commit =  input('\n[+]Commit message: ')
-        choice = input('\nDo you want to commit the changes right now to GitHub? (y/n): ').lower()
-        if choice == 'y':
-            run('commit', '-am',  commit)
-        else:
-            print('\nOkay, goodbye!\n')
-        branch = input('\n[+]Push branch: ')
-        choice = input('\nDo you want to push the branch right now to GitHub? (y/n): ').lower()
-        if choice == 'y':
-            run('push', '-u', 'origin', branch)
-            break
-        else:
-            print('\nOkay, goodbye!\n')
+    commit =  input('\n[+]Commit message: ')
+    choice = input('\nDo you want to commit the changes right now to GitHub? (y/n): ').lower()
+    if choice == 'y':
+        run('commit', '-am',  commit)
+    else:
+        print('\nOkay, goodbye!\n')
+    branch = input('\n[+]Push branch: ')
+    choice = input('\nDo you want to push the branch right now to GitHub? (y/n): ').lower()
+    if choice == 'y':
+        run('push', '-u', 'origin', branch)
+    else:
+        print('\nOkay, goodbye!\n')
 
 
 
@@ -157,7 +155,6 @@ def main():
 
         else:
             print('Invalid choice')    
-
 
 
         dict = {
