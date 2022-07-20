@@ -46,7 +46,7 @@ def commit():
         print('\nOkay, goodbye!\n')
     branch = input('\n[+]Push branch: ')
     choice = input('\nDo you want to push the branch right now to GitHub? (y/n): ').lower()
-    while choice != (y,n):
+    while True:
         if choice == 'y':
             run('push', '-u', 'origin', branch)
             break
