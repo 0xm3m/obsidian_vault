@@ -10,8 +10,8 @@
           "type": "markdown",
           "state": {
             "file": "thm/adenumeration/readme.md",
-            "mode": "source",
-            "source": false
+            "mode": "preview",
+            "source": true
           }
         }
       }
