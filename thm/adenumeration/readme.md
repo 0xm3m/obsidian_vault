@@ -12,16 +12,8 @@ categories:
 The given box ```Enumerating Active Directory``` is a AD machine with an IP address of ```10.10.135.22```
 
 - [TryHackMe- Enumerating Active Directory](#tryhackme---Enumerating-Active-Directory)
-  - [Recon](#recon)
-    - [Nmap Scan Result](#nmap-scan-result)
-  - [Enumeration](#enumeration)
-	  - [Redis](#redis)
-	  - [SMB](#smb)
-  - [Post Escalation](#post-escalation)
-	  - [SMB Reverse-Shell](#smb-reverse-shell)
-  - [Privilege Escalation](#privilege-escalation)
-	  - [BloodHound Enumeration](#bloodhound-enumeration)
-	  - [Exploiting the GPO](#exploiting-the-gpo)
+  - [Command Prompt](#command-prompt)
+  - [Powershell with AD-RSAT](#powershell-with-ad-rsat)
 
 <center>
 <img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/attacking-ad.png" />
@@ -47,7 +39,11 @@ Name:   thmdc.za.tryhackme.com
 Address: 10.200.68.101
 ```
 
-![[ad_creds.png]]
+
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/ad_creds.png" />
+</center>
+
 
 ```shell
 root@rE3oN:~/enum-more/obsidian_vault/thm/adenumeration# cat ad_credentials.txt
@@ -87,27 +83,43 @@ Please look at the OpenSSL documentation on how to add a private CA to the store
 Do you trust the above certificate? (Y/T/N) y
 ```
 
-![[app&features.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/domain&trust.png" />
+</center>
 
-![[Pasted image 20220720215612.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/change_forest.png" />
+</center>
 
-![[Pasted image 20220720221658.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/sites&service.png" />
+</center>
 
-![[change_forest.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/change_forest.png" />
+</center>
 
-![[sites&service.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/user&computer.png" />
+</center>
 
-![[Pasted image 20220720221758.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/change_domain.png" />
+</center>
 
-![[user&computer.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/advanced_feature.png" />
+</center>
 
-![[change_domain.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/groups.png" />
+</center>
 
-![[advanced_feature.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/detailed_view.png" />
+</center>
 
-![[groups.png]]
-
-![[detailed_view.png]]
+### Command Prompt
 
 ```powershell
 PS C:\Users\tony.holland> net user /domain
@@ -279,6 +291,8 @@ Local Group Memberships      *Guests
 Global Group memberships     *Domain Guests
 The command completed successfully.
 ```
+
+### Powershell with AD-RSAT
 
 ```powershell
 PS C:\Users\tony.holland> Get-ADUser -Identity gordon.stevens -Server za.tryhackme.com -Properties *
@@ -497,138 +511,6 @@ ObjectClass       : rIDManager
 ObjectGUID        : 2fc1c4ed-1d56-491f-a293-26032ed3fe5c
 
 Deleted           :
-DistinguishedName : CN=RID Set,CN=THMDC,OU=Domain Controllers,DC=za,DC=tryhackme,DC=com
-Name              : RID Set
-ObjectClass       : rIDSet
-ObjectGUID        : 98604f43-623e-409c-948d-b6e31c3749f2
-
-Deleted           :
-DistinguishedName : OU=Servers,DC=za,DC=tryhackme,DC=com
-Name              : Servers
-ObjectClass       : organizationalUnit
-ObjectGUID        : e1bd8860-0730-41bd-9c2a-c3037c4e7aa7
-
-Deleted           :
-DistinguishedName : OU=Workstations,DC=za,DC=tryhackme,DC=com
-Name              : Workstations
-ObjectClass       : organizationalUnit
-ObjectGUID        : c49b0279-e36a-4f25-862d-b8f8326c940e
-
-Deleted           :
-DistinguishedName : OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : Admins
-ObjectClass       : organizationalUnit
-ObjectGUID        : 44828fce-e037-4cd3-96f6-20edc4bcd8fc
-
-Deleted           :
-DistinguishedName : CN=Tier 0 Admins,OU=Groups,DC=za,DC=tryhackme,DC=com
-Name              : Tier 0 Admins
-ObjectClass       : group
-ObjectGUID        : ce3298cf-bf26-479f-a053-9b993e5a6e55
-
-Deleted           :
-DistinguishedName : CN=roy.perry,OU=Consulting,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : roy.perry
-ObjectClass       : user
-ObjectGUID        : fa25d286-ff1f-4125-bae0-29acac3ed63a
-
-Deleted           :
-DistinguishedName : CN=denise.jenkins,OU=Finance,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : denise.jenkins
-ObjectClass       : user
-ObjectGUID        : 4fe20438-e4c8-417b-aa87-5ae140386a30
-
-Deleted           :
-DistinguishedName : CN=gemma.lyons,OU=Engineering,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : gemma.lyons
-ObjectClass       : user
-ObjectGUID        : 6d1115e6-d085-4f25-b453-28cb4b6a96f6
-
-Deleted           :
-DistinguishedName : CN=kerry.murray,OU=Consulting,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : kerry.murray
-ObjectClass       : user
-ObjectGUID        : f0bb8993-f32e-4ebe-8383-9823d72e7b07
-
-Deleted           :
-DistinguishedName : CN=darren.davis,OU=Marketing,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : darren.davis
-ObjectClass       : user
-ObjectGUID        : a9190d98-2fc6-48f1-803a-103a7207f57b
-
-Deleted           :
-DistinguishedName : CN=kenneth.davies,OU=Sales,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : kenneth.davies
-ObjectClass       : user
-ObjectGUID        : 9e8e905e-384f-4acf-bf40-3fbf640981e8
-
-Deleted           :
-DistinguishedName : CN=graeme.williams,OU=IT,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : graeme.williams
-ObjectClass       : user
-ObjectGUID        : 9d79da0b-f510-4cad-bfc5-15353ba6989e
-
-Deleted           :
-DistinguishedName : CN=lynda.franklin,OU=Engineering,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : lynda.franklin
-ObjectClass       : user
-ObjectGUID        : 746bfc1d-5b7d-4529-94aa-df37580a231b
-
-Deleted           :
-DistinguishedName : CN=rachel.dunn,OU=Engineering,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : rachel.dunn
-ObjectClass       : user
-ObjectGUID        : 806db00b-7887-4737-b98f-83875cc93bc2
-
-Deleted           :
-DistinguishedName : CN=mandy.bryan,OU=IT,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : mandy.bryan
-ObjectClass       : user
-ObjectGUID        : 5e12031a-2501-42c5-9088-cb40263f66be
-
-Deleted           :
-DistinguishedName : CN=kimberley.smith,OU=Consulting,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : kimberley.smith
-ObjectClass       : user
-ObjectGUID        : cef07387-1b1c-43fe-9667-5ece32758021
-
-Deleted           :
-DistinguishedName : CN=joel.pearce,OU=Engineering,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : joel.pearce
-ObjectClass       : user
-ObjectGUID        : 77a78d58-d4e0-4f02-a987-ea11811d8e99
-
-Deleted           :
-DistinguishedName : CN=ricky.barker,OU=Sales,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : ricky.barker
-ObjectClass       : user
-ObjectGUID        : 7b694eb9-7876-4525-ae76-f6b116d7e699
-
-Deleted           :
-DistinguishedName : CN=maurice.palmer,OU=Consulting,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : maurice.palmer
-ObjectClass       : user
-ObjectGUID        : 152c3bd1-5490-4e02-9811-2edaf6d2973b
-
-Deleted           :
-DistinguishedName : CN=leslie.young,OU=Consulting,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : leslie.young
-ObjectClass       : user
-ObjectGUID        : 3ab61eba-0cee-4c14-870c-9eba80d46481
-
-Deleted           :
-DistinguishedName : CN=david.cook,OU=Marketing,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : david.cook
-ObjectClass       : user
-ObjectGUID        : fc4db1bb-a5c5-4044-83b9-5fb858a13eed
-
-Deleted           :
-DistinguishedName : CN=elliott.allen,OU=Consulting,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : elliott.allen
-ObjectClass       : user
-ObjectGUID        : b293b522-e062-4345-87f6-8f94e483669d
-
-Deleted           :
 DistinguishedName : CN=kathryn.dickinson,OU=Engineering,OU=People,DC=za,DC=tryhackme,DC=com
 Name              : kathryn.dickinson
 ObjectClass       : user
@@ -641,281 +523,12 @@ ObjectClass       : user
 ObjectGUID        : c77a6fc9-0f93-4432-a87e-59b74b995b46
 
 Deleted           :
-DistinguishedName : CN=jenna.field,OU=Consulting,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : jenna.field
-ObjectClass       : user
-ObjectGUID        : bee824a1-cefe-4029-b304-7e31c0bc2d40
-
-Deleted           :
-DistinguishedName : CN=tony.holland,OU=Engineering,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : tony.holland
-ObjectClass       : user
-ObjectGUID        : 87a8f74d-5115-4015-b48b-97f00050a862
-
-Deleted           :
-DistinguishedName : CN=t2_henry.taylor,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_henry.taylor
-ObjectClass       : user
-ObjectGUID        : 3694f78c-9eca-433b-b8b9-25490efd1a88
-
-Deleted           :
-DistinguishedName : CN=declan.clarke,OU=Sales,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : declan.clarke
-ObjectClass       : user
-ObjectGUID        : 4a31ca0d-1ef6-477a-9d03-fadb9b2dac91
-
-Deleted           :
-DistinguishedName : CN=t2_sophie.davies,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_sophie.davies
-ObjectClass       : user
-ObjectGUID        : a4571ce7-379f-40bd-afa8-ee07ddd817de
-
-Deleted           :
-DistinguishedName : CN=t2_brian.wilson,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_brian.wilson
-ObjectClass       : user
-ObjectGUID        : 26379709-3acd-4d54-8d9e-e0596800c474
-
-Deleted           :
-DistinguishedName : CN=t2_christian.goodwin,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_christian.goodwin
-ObjectClass       : user
-ObjectGUID        : 11c5d432-3067-44ce-afbd-40966f970ee1
-
-Deleted           :
-DistinguishedName : CN=t2_chloe.carter,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_chloe.carter
-ObjectClass       : user
-ObjectGUID        : 94b6f97a-1939-4fdb-bea2-2e18f752989c
-
-Deleted           :
-DistinguishedName : CN=t2_victor.fisher,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_victor.fisher
-ObjectClass       : user
-ObjectGUID        : ef283309-56a5-4506-b227-c0f673cc6ec1
-
-Deleted           :
-DistinguishedName : CN=t1_arthur.tyler,OU=T1,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t1_arthur.tyler
-ObjectClass       : user
-ObjectGUID        : 77f38ece-c0dd-4991-b02b-3365f64ff539
-
-Deleted           :
-DistinguishedName : CN=philip.clements,OU=IT,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : philip.clements
-ObjectClass       : user
-ObjectGUID        : fa0d43e1-7e1c-4d2c-be18-fedfcbae9931
-
-Deleted           :
-DistinguishedName : CN=t2_philip.clements,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_philip.clements
-ObjectClass       : user
-ObjectGUID        : 7fa9d895-7933-4bd6-a605-4f57abee8fb5
-
-Deleted           :
-DistinguishedName : CN=t2_jane.oneill,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_jane.oneill
-ObjectClass       : user
-ObjectGUID        : 0c04f516-d52c-4211-b961-517c6e4cb666
-
-Deleted           :
-DistinguishedName : CN=t1_henry.miller,OU=T1,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t1_henry.miller
-ObjectClass       : user
-ObjectGUID        : d15c1146-6fef-40f5-82d3-beed3aad89bc
-
-Deleted           :
-DistinguishedName : CN=t2_natasha.scott,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_natasha.scott
-ObjectClass       : user
-ObjectGUID        : eb050fba-2275-4074-86ab-7ba46ae702cc
-
-Deleted           :
-DistinguishedName : CN=t2_craig.iqbal,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_craig.iqbal
-ObjectClass       : user
-ObjectGUID        : 7dea6022-9877-43c7-93a5-de24add0745c
-
-Deleted           :
-DistinguishedName : CN=t1_gary.moss,OU=T1,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t1_gary.moss
-ObjectClass       : user
-ObjectGUID        : 7de2e387-b70f-4c78-9709-2b3d13be159a
-
-Deleted           :
-DistinguishedName : CN=t2_gerard.davis,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_gerard.davis
-ObjectClass       : user
-ObjectGUID        : 749c77fe-fa54-4c3c-9191-2a2503cc38c0
-
-Deleted           :
-DistinguishedName : CN=t2_zoe.watson,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_zoe.watson
-ObjectClass       : user
-ObjectGUID        : 94d1c24d-a83a-448f-b193-9721b72ba2bc
-
-Deleted           :
-DistinguishedName : CN=t1_jill.wallis,OU=T1,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t1_jill.wallis
-ObjectClass       : user
-ObjectGUID        : 5267ea24-623e-4dd4-91aa-50c936b576fb
-
-Deleted           :
-DistinguishedName : CN=t2_tom.bray,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_tom.bray
-ObjectClass       : user
-ObjectGUID        : 45f6cf25-3b4d-4cef-a9c0-dec3a81a0272
-
-Deleted           :
-DistinguishedName : CN=t2_marian.yates,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_marian.yates
-ObjectClass       : user
-ObjectGUID        : 44c3b9c3-9374-45aa-abff-7684ca1b9251
-
-Deleted           :
-DistinguishedName : CN=t1_marian.yates,OU=T1,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t1_marian.yates
-ObjectClass       : user
-ObjectGUID        : c150fdff-2de0-4a8d-ae2f-b335b442e272
-
-Deleted           :
-DistinguishedName : CN=t2_jeremy.leonard,OU=T2,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t2_jeremy.leonard
-ObjectClass       : user
-ObjectGUID        : de51ba44-1949-4873-9d15-1fa7b952bc2b
-
-Deleted           :
-DistinguishedName : CN=t1_rosie.bryant,OU=T1,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t1_rosie.bryant
-ObjectClass       : user
-ObjectGUID        : 8f5e9057-0e9c-4d74-b8af-0d4fe1b25219
-
-Deleted           :
 DistinguishedName : CN=georgina.edwards,OU=Sales,OU=People,DC=za,DC=tryhackme,DC=com
 Name              : georgina.edwards
 ObjectClass       : user
 ObjectGUID        : 65c5a0d4-d9ee-4d86-8a40-c3e3d872f6a7
 
-Deleted           :
-DistinguishedName : CN=t1_joel.stephenson,OU=T1,OU=Admins,DC=za,DC=tryhackme,DC=com
-Name              : t1_joel.stephenson
-ObjectClass       : user
-ObjectGUID        : 2d6bea54-92f7-4b3a-adbc-c5668ef76d98
 
-Deleted           :
-DistinguishedName : CN=gordon.stevens,OU=Consulting,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : gordon.stevens
-ObjectClass       : user
-ObjectGUID        : 48ddd5f1-37ae-4040-a281-47dd58313fcb
-
-Deleted           :
-DistinguishedName : CN=hollie.powell,OU=Engineering,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : hollie.powell
-ObjectClass       : user
-ObjectGUID        : 4efd3e8d-7cf0-47ff-886d-f1c3272352c5
-
-Deleted           :
-DistinguishedName : CN=heather.smith,OU=Finance,OU=People,DC=za,DC=tryhackme,DC=com
-Name              : heather.smith
-ObjectClass       : user
-ObjectGUID        : faba5407-bc02-40f8-b38e-769c6f937df2
-
-Deleted           :
-DistinguishedName : CN=THMIIS,OU=Servers,DC=za,DC=tryhackme,DC=com
-Name              : THMIIS
-ObjectClass       : computer
-ObjectGUID        : 7c2e5818-c919-4445-8e7a-28471db7ec68
-
-Deleted           :
-DistinguishedName : CN=THMMDT,OU=Servers,DC=za,DC=tryhackme,DC=com
-Name              : THMMDT
-ObjectClass       : computer
-ObjectGUID        : 0eee4895-630f-4c92-8876-aac054fa869a
-
-Deleted           :
-DistinguishedName : CN=THMMDT-Remote-Installation-Services,CN=THMMDT,OU=Servers,DC=za,DC=tryhackme,DC=com
-Name              : THMMDT-Remote-Installation-Services
-ObjectClass       : intellimirrorSCP
-ObjectGUID        : 86c9991e-ff39-4f49-b40e-780477d8e7f4
-
-Deleted           :
-DistinguishedName : OU=Contoso,DC=za,DC=tryhackme,DC=com
-Name              : Contoso
-ObjectClass       : organizationalUnit
-ObjectGUID        : e4db5c03-a2ed-4901-bae4-0a3073bdaa23
-
-Deleted           :
-DistinguishedName : OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : ZA
-ObjectClass       : organizationalUnit
-ObjectGUID        : a79a2fc8-924a-4b63-a9d6-87fb6c048bd7
-
-Deleted           :
-DistinguishedName : OU=Accounts,OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : Accounts
-ObjectClass       : organizationalUnit
-ObjectGUID        : d4aa1a43-0a97-4989-ae26-dbaa9b0009e1
-
-Deleted           :
-DistinguishedName : OU=Computers,OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : Computers
-ObjectClass       : organizationalUnit
-ObjectGUID        : af9a241c-25c8-4858-a73c-add4c1e30cb7
-
-Deleted           :
-DistinguishedName : OU=Groups,OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : Groups
-ObjectClass       : organizationalUnit
-ObjectGUID        : a7b9169b-1c00-49ed-9ad2-624c088ff399
-
-Deleted           :
-DistinguishedName : OU=Admins,OU=Accounts,OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : Admins
-ObjectClass       : organizationalUnit
-ObjectGUID        : be9e8635-f448-452a-afe1-39e0393bb310
-
-Deleted           :
-DistinguishedName : OU=Service Accounts,OU=Accounts,OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : Service Accounts
-ObjectClass       : organizationalUnit
-ObjectGUID        : ee0d86b4-846c-444d-822c-94126c92b743
-
-Deleted           :
-DistinguishedName : OU=Users,OU=Accounts,OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : Users
-ObjectClass       : organizationalUnit
-ObjectGUID        : c8390136-c7f3-4466-abbd-ef47be17d9b3
-
-Deleted           :
-DistinguishedName : OU=Servers,OU=Computers,OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : Servers
-ObjectClass       : organizationalUnit
-ObjectGUID        : 2b074e78-8bea-43fa-962e-77c3f7f786a3
-
-Deleted           :
-DistinguishedName : OU=Workstations,OU=Computers,OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : Workstations
-ObjectClass       : organizationalUnit
-ObjectGUID        : b540f93f-9966-457e-a26b-f02844affcfe
-
-Deleted           :
-DistinguishedName : OU=Security Groups,OU=Groups,OU=ZA,DC=za,DC=tryhackme,DC=com
-Name              : Security Groups
-ObjectClass       : organizationalUnit
-ObjectGUID        : 30df9cd3-ddf8-4459-b736-c874bbf7be43
-
-Deleted           :
-DistinguishedName : CN=svcMDT,CN=Users,DC=za,DC=tryhackme,DC=com
-Name              : svcMDT
-ObjectClass       : user
-ObjectGUID        : 79afaf43-e9a8-4cd9-81ea-51a3b0e7b2b3
-
-Deleted           :
-DistinguishedName : CN=svcLDAP,CN=Users,DC=za,DC=tryhackme,DC=com
-Name              : svcLDAP
-ObjectClass       : user
-ObjectGUID        : 1bcdaea3-0725-4974-b5be-55b3e17418ae
-          
 PS C:\Users\tony.holland> Get-ADObject -Filter 'badPwdCount -gt 0' -Server za.tryhackme.com
 
 DistinguishedName                                                        Name              ObjectClass ObjectGUID
@@ -974,23 +587,6 @@ SubordinateReferences              : {DC=ForestDnsZones,DC=za,DC=tryhackme,DC=co
 SystemsContainer                   : CN=System,DC=za,DC=tryhackme,DC=com
 UsersContainer                     : CN=Users,DC=za,DC=tryhackme,DC=com
 
-
-
-PS C:\Users\tony.holland> Set-ADAccountPassword -Identity gordon.stevens -Server za.tryhackme.com -OldPassword (ConvertTo-SecureString -AsPlaintext "old" -force) -NewPassword (ConvertTo-SecureString -AsPlainText "new" -Force)
-Set-ADAccountPassword : The specified network password is not correct
-At line:1 char:1
-+ Set-ADAccountPassword -Identity gordon.stevens -Server za.tryhackme.c ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidData: (gordon.stevens:ADAccount) [Set-ADAccountPassword], ADInvalidPasswordException
-    + FullyQualifiedErrorId : ActiveDirectoryServer:86,Microsoft.ActiveDirectory.Management.Commands.SetADAccountPassword
-
-PS C:\Users\tony.holland> Set-ADAccountPassword -Identity tony.holland -Server za.tryhackme.com -OldPassword (ConvertTo-SecureString -AsPlaintext "Mhvn2334" -force) -NewPassword (ConvertTo-SecureString -AsPlainText "ajith123" -Force)
-Set-ADAccountPassword : The password does not meet the length, complexity, or history requirement of the domain.
-At line:1 char:1
-+ Set-ADAccountPassword -Identity tony.holland -Server za.tryhackme.com ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidData: (tony.holland:ADAccount) [Set-ADAccountPassword], ADPasswordComplexityException
-    + FullyQualifiedErrorId : ActiveDirectoryServer:1325,Microsoft.ActiveDirectory.Management.Commands.SetADAccountPassword
 
 PS C:\Users\tony.holland> Set-ADAccountPassword -Identity tony.holland -Server za.tryhackme.com -OldPassword (ConvertTo-SecureString -AsPlaintext "Mhvn2334" -force) -NewPassword (ConvertTo-SecureString -AsPlainText "ajith12345" -Force)
 Set-ADAccountPassword : The password does not meet the length, complexity, or history requirement of the domain.
@@ -1221,64 +817,6 @@ whenChanged                          : 2/24/2022 10:04:50 PM
 whenCreated                          : 2/24/2022 10:04:50 PM
 
 
-
-PS C:\Users\tony.holland> Get-ADGroup -Identity Administrators -Server za.tryhackme.com -Properties *
-
-
-adminCount                      : 1
-CanonicalName                   : za.tryhackme.com/Builtin/Administrators
-CN                              : Administrators
-Created                         : 2/24/2022 9:57:34 PM
-createTimeStamp                 : 2/24/2022 9:57:34 PM
-Deleted                         :
-Description                     : Administrators have complete and unrestricted access to the computer/domain
-DisplayName                     :
-DistinguishedName               : CN=Administrators,CN=Builtin,DC=za,DC=tryhackme,DC=com
-dSCorePropagationData           : {2/24/2022 10:13:48 PM, 2/24/2022 9:58:38 PM, 1/1/1601 12:04:16 AM}
-GroupCategory                   : Security
-GroupScope                      : DomainLocal
-groupType                       : -2147483643
-HomePage                        :
-instanceType                    : 4
-isCriticalSystemObject          : True
-isDeleted                       :
-LastKnownParent                 :
-ManagedBy                       :
-member                          : {CN=Domain Admins,CN=Users,DC=za,DC=tryhackme,DC=com, CN=Enterprise Admins,CN=Users,DC=za,DC=tryhackme,DC=com, CN=vagrant,CN=Users,DC=za,DC=tryhackme,DC=com,
-                                  CN=Administrator,CN=Users,DC=za,DC=tryhackme,DC=com}
-MemberOf                        : {}
-Members                         : {CN=Domain Admins,CN=Users,DC=za,DC=tryhackme,DC=com, CN=Enterprise Admins,CN=Users,DC=za,DC=tryhackme,DC=com, CN=vagrant,CN=Users,DC=za,DC=tryhackme,DC=com,
-                                  CN=Administrator,CN=Users,DC=za,DC=tryhackme,DC=com}
-Modified                        : 2/24/2022 10:13:48 PM
-modifyTimeStamp                 : 2/24/2022 10:13:48 PM
-Name                            : Administrators
-nTSecurityDescriptor            : System.DirectoryServices.ActiveDirectorySecurity
-ObjectCategory                  : CN=Group,CN=Schema,CN=Configuration,DC=za,DC=tryhackme,DC=com
-ObjectClass                     : group
-ObjectGUID                      : f4d1cbcd-4a6f-4531-8550-0394c3273c4f
-objectSid                       : S-1-5-32-544
-ProtectedFromAccidentalDeletion : False
-SamAccountName                  : Administrators
-sAMAccountType                  : 536870912
-sDRightsEffective               : 0
-SID                             : S-1-5-32-544
-SIDHistory                      : {}
-systemFlags                     : -1946157056
-uSNChanged                      : 31686
-uSNCreated                      : 8200
-whenChanged                     : 2/24/2022 10:13:48 PM
-whenCreated                     : 2/24/2022 9:57:34 PM
-
-
-
-PS C:\Users\tony.holland> Get-ADGroup -Identity Tier 2 Admins  -Server za.tryhackme.com -Properties *
-Get-ADGroup : A positional parameter cannot be found that accepts argument '2'.
-At line:1 char:1
-+ Get-ADGroup -Identity Tier 2 Admins  -Server za.tryhackme.com -Proper ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidArgument: (:) [Get-ADGroup], ParameterBindingException
-    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.ActiveDirectory.Management.Commands.GetADGroup
-
 PS C:\Users\tony.holland> Get-ADGroup -Identity "Tier 2 Admins" -Server za.tryhackme.com -Properties *
 
 
@@ -1368,6 +906,5 @@ uSNChanged                      : 31668
 uSNCreated                      : 12339
 whenChanged                     : 2/24/2022 10:13:48 PM
 whenCreated                     : 2/24/2022 9:58:38 PM
-
 ```
 
