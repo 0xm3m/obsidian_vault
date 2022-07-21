@@ -7,8 +7,12 @@
         "id": "fc58c378bea4491b",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "thm/adenumeration/readme.md",
+            "mode": "source",
+            "source": true
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "thm/adenumeration/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,17 +94,17 @@
     "direction": "horizontal",
     "width": 100
   },
-  "active": "f816177e427261a2",
+  "active": "fc58c378bea4491b",
   "lastOpenFiles": [
+    "thm/adenumeration/assets/analysis.png",
+    "thm/adenumeration/assets/sites&service.png",
+    "thm/adenumeration/assets/nodeinfo.png",
+    "thm/adenumeration/assets/enum-computers.png",
+    "thm/adenumeration/assets/databaseinfo.png",
     "thm/adenumeration/readme.md",
     "app&features.png.md",
     "thm/adenumeration/assets/domain&trust.png",
     "thm/adenumeration/assets/detailed_view.png",
-    "thm/adenumeration/assets/sites&service.png",
-    "thm/adenumeration/assets/groups.png",
-    "thm/adenumeration/assets/advanced_feature.png",
-    "thm/adenumeration/assets/change_domain.png",
-    "thm/adenumeration/assets/user&computer.png",
-    "thm/adenumeration/assets/Pasted image 20220720221758.png"
+    "thm/adenumeration/assets/groups.png"
   ]
 }
