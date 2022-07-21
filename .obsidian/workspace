@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "thm/adenumeration/readme.md",
+            "file": "thm/breachingad/readme.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thm/adenumeration/readme.md",
+                "file": "thm/breachingad/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,15 +96,15 @@
   },
   "active": "fc58c378bea4491b",
   "lastOpenFiles": [
+    "thm/adenumeration/readme.md",
+    "thm/breachingad/readme.md",
     "thm/adenumeration/assets/analysis.png",
     "thm/adenumeration/assets/sites&service.png",
     "thm/adenumeration/assets/nodeinfo.png",
     "thm/adenumeration/assets/enum-computers.png",
     "thm/adenumeration/assets/databaseinfo.png",
-    "thm/adenumeration/readme.md",
     "app&features.png.md",
     "thm/adenumeration/assets/domain&trust.png",
-    "thm/adenumeration/assets/detailed_view.png",
-    "thm/adenumeration/assets/groups.png"
+    "thm/adenumeration/assets/detailed_view.png"
   ]
 }
