@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "thm/adenumeration/readme.md",
-            "mode": "preview",
+            "mode": "source",
             "source": true
           }
         }
@@ -96,15 +96,15 @@
   },
   "active": "fc58c378bea4491b",
   "lastOpenFiles": [
+    "app&features.png.md",
+    "thm/adenumeration/readme.md",
+    "thm/adenumeration/assets/domain&trust.png",
     "thm/adenumeration/assets/detailed_view.png",
     "thm/adenumeration/assets/sites&service.png",
     "thm/adenumeration/assets/groups.png",
     "thm/adenumeration/assets/advanced_feature.png",
     "thm/adenumeration/assets/change_domain.png",
     "thm/adenumeration/assets/user&computer.png",
-    "thm/adenumeration/assets/Pasted image 20220720221758.png",
-    "thm/adenumeration/assets/change_forest.png",
-    "thm/adenumeration/assets/Pasted image 20220720221658.png",
-    "thm/adenumeration/assets/domain&trust.png"
+    "thm/adenumeration/assets/Pasted image 20220720221758.png"
   ]
 }
