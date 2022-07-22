@@ -9,7 +9,7 @@ categories:
   - THM
 ---
 
-The given box ```VulnNet: Active``` is a Linux machine with an IP address of ```10.10.135.22```
+The given box ```VulnNet: Active``` is a AD machine 
 
 - [TryHackMe- VulnNet:Active](#tryhackme---razorblack)
   - [Recon](#recon)

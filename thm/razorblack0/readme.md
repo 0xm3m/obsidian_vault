@@ -9,7 +9,7 @@ categories:
   - THM
 ---
 
-The given box ```RazorBlack``` is a Linux machine with an IP address of ```10.10.135.22```
+The given box ```RazorBlack``` is a AD machine 
 
 - [TryHackMe- RazorBlack](#tryhackme---razorblack)
   - [Recon](#recon)

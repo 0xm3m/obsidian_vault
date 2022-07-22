@@ -9,7 +9,7 @@ categories:
   - THM
 ---
 
-The given box ```Enumerating Active Directory``` is a AD machine with an IP address of ```10.10.135.22```
+The given box ```Enumerating Active Directory``` is a AD machine 
 
 - [TryHackMe- Enumerating Active Directory](#tryhackme---Enumerating-Active-Directory)
   - [Command Prompt](#command-prompt)
