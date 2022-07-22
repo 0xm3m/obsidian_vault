@@ -23,6 +23,10 @@ The given box ```Breaching Active Directory``` is a AD machine
 <img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/breachingad.png" />
 </center>
 
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/network-diagram.png" />
+</center>
+
 
 ```shell
 root@rE3oN:~/enum-more/obsidian_vault/thm/breachingad# sudo systemctl restart NetworkManager
