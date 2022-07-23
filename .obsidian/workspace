@@ -9,9 +9,9 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "thm/exploitingad/readme.md",
+            "file": "thm/exploitingad/assets/doc/dd.md",
             "mode": "source",
-            "source": true
+            "source": false
           }
         }
       }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thm/exploitingad/readme.md",
+                "file": "thm/exploitingad/assets/doc/dd.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,15 +96,15 @@
   },
   "active": "fc58c378bea4491b",
   "lastOpenFiles": [
-    "thm/exploitingad/assets/images/exploitingad.png",
+    "thm/exploitingad/assets/doc/ad_creds.txt.md",
     "thm/exploitingad/readme.md",
+    "thm/exploitingad/assets/images/exploitingad.png",
     "thm/breachingad/readme.md",
     "thm/razorblack0/readme.md",
     "thm/VulnNetActive/readme.md",
     "thm/adenumeration/readme.md",
     "thm/breachingad/assets/breachingad.png",
     "thm/breachingad/assets/config5.png",
-    "thm/breachingad/assets/table_view2.png",
-    "thm/breachingad/assets/table_view1.png"
+    "thm/breachingad/assets/table_view2.png"
   ]
 }
