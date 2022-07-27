@@ -750,12 +750,12 @@ C:\Users\enterprise-security\Downloads> powershell cp 20220716072804_BloodHound.
 ```
 
 <center>
-<img src="https://github.com/enum-more/obsidian_vault/raw/main/VulnNetActive/Bloodhound.png" \>
+<img src="https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/VulnNetActive/Bloodhound.png" \>
 </center>
 
 
 <center>
-<img src="https://github.com/enum-more/obsidian_vault/raw/main/VulnNetActive/Bloodhound_finding.png" \>
+<img src="https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/VulnNetActive/Bloodhound_finding.png" \>
 </center>
 
 ### **Exploiting the GPO**

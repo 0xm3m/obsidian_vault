@@ -9,9 +9,9 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "thm/exploitingad/readme.md",
+            "file": "thm/AD/exploitingad/readme.md",
             "mode": "source",
-            "source": false
+            "source": true
           }
         }
       }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thm/exploitingad/readme.md",
+                "file": "thm/AD/exploitingad/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,15 +96,15 @@
   },
   "active": "fc58c378bea4491b",
   "lastOpenFiles": [
-    "thm/exploitingad/assets/images/Pasted image 20220725221152.png",
-    "thm/exploitingad/assets/images/Pasted image 20220725221138.png",
-    "thm/exploitingad/assets/images/Pasted image 20220725221107.png",
-    "thm/exploitingad/assets/images/Pasted image 20220725220930.png",
-    "thm/exploitingad/assets/images/Pasted image 20220725220917.png",
-    "thm/exploitingad/assets/images/Pasted image 20220725220903.png",
-    "thm/exploitingad/assets/images/Pasted image 20220725214242.png",
-    "thm/exploitingad/assets/images/Pasted image 20220725214136.png",
-    "thm/exploitingad/assets/images/Pasted image 20220725214006.png",
-    "thm/exploitingad/assets/images/Pasted image 20220725213909.png"
+    "thm/AD/exploitingad/assets/images/bh1.png",
+    "thm/AD/exploitingad/readme.md",
+    "thm/AD/VulnNetActive/readme.md",
+    "thm/AD/razorblack0/readme.md",
+    "thm/AD/breachingad/readme.md",
+    "thm/AD/adenumeration/readme.md",
+    "Manual/recon_map.png",
+    "thm/AD/exploitingad/assets/images/mmc27.png",
+    "thm/AD/exploitingad/assets/images/mmc26.png",
+    "thm/AD/exploitingad/assets/images/mmc25.png"
   ]
 }
