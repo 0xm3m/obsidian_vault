@@ -236,7 +236,7 @@ THM{ab53e05c9a98def00314a14ccbfa8104}
 ```
 
 <center>
-<img src="https://github.com/enum-more/obsidian_vault/raw/main/razorblack0/secret.png" style="width:40%">
+<img src="https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/razorblack0/secret.png" style="width:40%">
 </center>
 
 ###### usernames

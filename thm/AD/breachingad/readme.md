@@ -20,11 +20,11 @@ The given box ```Breaching Active Directory``` is a AD machine
 
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/breachingad.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/breachingad.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/network-diagram.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/network-diagram.png" />
 </center>
 
 
@@ -70,7 +70,7 @@ root@rE3oN:~/enum-more/obsidian_vault/thm/breachingad# python ntlm_passwordspray
 Login with the valid credentials found from the above result http://ntlmauth.za.tryhackme.com/
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/ntlmauth_web.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/ntlmauth_web.png" />
 </center>
 
 ## LDAP Bind Credentials
@@ -78,7 +78,7 @@ Login with the valid credentials found from the above result http://ntlmauth.za.
 http://printer.za.tryhackme.com/settings
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/printer_web.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/printer_web.png" />
 </center>
 
 
@@ -105,31 +105,31 @@ root@rE3oN:~/enum-more/obsidian_vault/thm/breachingad# sudo dpkg-reconfigure -p 
 
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/config1.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/config1.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/config2.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/config2.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/config3.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/config3.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/config4.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/config4.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/config5.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/config5.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/config6.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/config6.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/config7.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/config7.png" />
 </center>
 
 
@@ -466,7 +466,7 @@ Stopped: Thu Jul 21 22:44:16 2022
 ## Microsoft Deployment Toolkit
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/pxeboot_web.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/pxeboot_web.png" />
 </center>
 
 
@@ -546,15 +546,15 @@ failed to create compose table
 ```
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/agent_repos.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/agent_repos.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/table_view1.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/table_view1.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/breachingad/assets/image/table_view2.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/breachingad/assets/image/table_view2.png" />
 </center>
 
 ```svcAV:jWbTyS7BL1Hj7PkO5Di/QhhYmcGj5cOoZ2OkDTrFXsR/abAFPM9B3Q==```

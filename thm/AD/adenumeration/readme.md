@@ -17,15 +17,15 @@ The given box ```Enumerating Active Directory``` is a AD machine
   - [BloodHound](#bloodhound)
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/attacking-ad.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/attacking-ad.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/network-diagram.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/network-diagram.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/dns.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/dns.png" />
 </center>
 
 
@@ -42,7 +42,7 @@ Address: 10.200.68.101
 
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/ad_creds.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/ad_creds.png" />
 </center>
 
 
@@ -85,39 +85,39 @@ Do you trust the above certificate? (Y/T/N) y
 ```
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/domain&trust.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/domain&trust.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/change_forest.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/change_forest.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/sites&service.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/sites&service.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/change_forest.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/change_forest.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/user&computer.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/user&computer.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/change_domain.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/change_domain.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/advanced_feature.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/advanced_feature.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/groups.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/groups.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/detailed_view.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/detailed_view.png" />
 </center>
 
 ### Command Prompt
@@ -912,17 +912,17 @@ whenCreated                     : 2/24/2022 9:58:38 PM
 ### BloodHound
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/databaseinfo.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/databaseinfo.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/enum-computers.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/enum-computers.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/nodeinfo.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/nodeinfo.png" />
 </center>
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/adenumeration/assets/analysis.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/AD/adenumeration/assets/analysis.png" />
 </center>
