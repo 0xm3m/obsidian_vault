@@ -15,5 +15,5 @@ The given box ```Dav``` is a Linux machine
   - [Command Prompt]
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/LINUX/bsidesgtdav/assets/images/attacking-ad.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/LINUX/bsidesgtdav/assets/images/dav.png" />
 </center>
