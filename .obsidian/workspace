@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "thm/LINUX/bsidesgtdav/readme.md",
+            "file": "thm/WINDOWS/Ice/readme.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thm/LINUX/bsidesgtdav/readme.md",
+                "file": "thm/WINDOWS/Ice/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,15 +96,15 @@
   },
   "active": "fc58c378bea4491b",
   "lastOpenFiles": [
-    "thm/LINUX/bsidesgtdav/assets/images/webdav.png",
     "thm/LINUX/bsidesgtdav/readme.md",
+    "thm/WINDOWS/Ice/readme.md",
+    "thm/LINUX/bsidesgtdav/assets/images/webdav.png",
     "thm/LINUX/bsidesgtdav/assets/images/revshell.png",
     "thm/LINUX/bsidesgtdav/assets/images/default_cred.png",
     "thm/LINUX/bsidesgtdav/assets/images/rer.md",
     "thm/LINUX/bsidesgtdav/assets/images/dav.png",
     "thm/LINUX/bsidesgtdav/assets/doc/re.md",
     "thm/AD/adenumeration/readme.md",
-    "thm/AD/exploitingad/readme.md",
-    "thm/AD/exploitingad/assets/images/bh1.png"
+    "thm/AD/exploitingad/readme.md"
   ]
 }
