@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Thu Jul 28 23:03:35 2022 as: nmap -vv -&#45;reason -Pn -T4 -sU -A -&#45;osscan-guess -p 3389 -oN /root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/_custom_ports_udp_nmap.txt -oX /root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/xml/_custom_ports_udp_nmap.xml 10.10.13.157 -->
+<nmaprun scanner="nmap" args="nmap -vv -&#45;reason -Pn -T4 -sU -A -&#45;osscan-guess -p 3389 -oN /root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/_custom_ports_udp_nmap.txt -oX /root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/xml/_custom_ports_udp_nmap.xml 10.10.13.157" start="1659029615" startstr="Thu Jul 28 23:03:35 2022" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="1" services="3389"/>
+<verbose level="2"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1659029616"/>
+<taskend task="NSE" time="1659029616"/>
+<taskbegin task="NSE" time="1659029616"/>
+<taskend task="NSE" time="1659029616"/>
+<taskbegin task="NSE" time="1659029616"/>
+<taskend task="NSE" time="1659029616"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1659029616"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1659029616"/>
+<taskbegin task="UDP Scan" time="1659029616"/>
+<taskend task="UDP Scan" time="1659029616" extrainfo="1 total ports"/>
+<taskbegin task="Service scan" time="1659029616"/>
+<taskbegin task="Traceroute" time="1659029618"/>
+<taskend task="Traceroute" time="1659029621"/>
+<taskbegin task="Parallel DNS resolution of 2 hosts." time="1659029621"/>
+<taskend task="Parallel DNS resolution of 2 hosts." time="1659029621"/>
+<taskbegin task="NSE" time="1659029621"/>
+<taskend task="NSE" time="1659029621"/>
+<taskbegin task="NSE" time="1659029621"/>
+<taskend task="NSE" time="1659029621"/>
+<taskbegin task="NSE" time="1659029621"/>
+<taskend task="NSE" time="1659029621"/>
+<host starttime="1659029616" endtime="1659029621"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.10.13.157" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="udp" portid="3389"><state state="closed" reason="port-unreach" reason_ttl="127"/><service name="ms-wbt-server" method="table" conf="3"/></port>
+</ports>
+<os><portused state="closed" proto="udp" portid="3389"/>
+<osfingerprint fingerprint="SCAN(V=7.92%E=4%D=7/28%OT=%CT=%CU=3389%PV=Y%DS=2%DC=T%G=N%TM=62E2C875%P=aarch64-unknown-linux-gnu)&#xa;SEQ(CI=I%II=I)&#xa;T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)&#xa;T6(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)&#xa;T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)&#xa;U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)&#xa;IE(R=Y%DFI=N%T=80%CD=Z)&#xa;"/>
+</os>
+<distance value="2"/>
+<trace port="3389" proto="udp">
+<hop ttl="1" ipaddr="10.11.0.1" rtt="156.51"/>
+<hop ttl="2" ipaddr="10.10.13.157" rtt="166.76"/>
+</trace>
+<times srtt="159279" rttvar="7444" to="189055"/>
+</host>
+<taskbegin task="NSE" time="1659029621"/>
+<taskend task="NSE" time="1659029621"/>
+<taskbegin task="NSE" time="1659029621"/>
+<taskend task="NSE" time="1659029621"/>
+<taskbegin task="NSE" time="1659029621"/>
+<taskend task="NSE" time="1659029621"/>
+<runstats><finished time="1659029621" timestr="Thu Jul 28 23:03:41 2022" summary="Nmap done at Thu Jul 28 23:03:41 2022; 1 IP address (1 host up) scanned in 5.51 seconds" elapsed="5.51" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
