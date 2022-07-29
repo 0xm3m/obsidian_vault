@@ -18,10 +18,8 @@ The given box ```Ice``` is a Windows machine
 	 - [Enumeration on port 80](#enumeration-on-port-80)
 
 <center>
-<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/WINDOWS/Ice/assets/images/dav.png" />
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/WINDOWS/Ice/assets/images/ice.png" />
 </center>
-
-![[Pasted image 20220729205634.png]]
 
 ## Recon
 
@@ -94,7 +92,9 @@ Nmap done: 1 IP address (1 host up) scanned in 79.61 seconds
 
 https://www.cvedetails.com/vulnerability-list/vendor_id-693/opec-1/Icecast.html
 
-![[Pasted image 20220729215132.png]]
+<center>
+<img src = "https://github.com/enum-more/obsidian_vault/raw/main/thm/WINDOWS/Ice/assets/images/cve.png" />
+</center>
 
 ## Post Exploitation
 

@@ -7,9 +7,11 @@
         "id": "fc58c378bea4491b",
         "type": "leaf",
         "state": {
-          "type": "image",
+          "type": "markdown",
           "state": {
-            "file": "thm/WINDOWS/Ice/assets/images/Pasted image 20220729215132.png"
+            "file": "thm/WINDOWS/Ice/readme.md",
+            "mode": "source",
+            "source": true
           }
         }
       }
@@ -67,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thm/WINDOWS/Ice/assets/images/Pasted image 20220729215132.png",
+                "file": "thm/WINDOWS/Ice/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -92,9 +94,10 @@
     "direction": "horizontal",
     "width": 100
   },
-  "active": "f816177e427261a2",
+  "active": "fc58c378bea4491b",
   "lastOpenFiles": [
-    "thm/WINDOWS/Ice/assets/images/Pasted image 20220729205634.png",
+    "thm/WINDOWS/Ice/assets/images/cve.png",
+    "thm/WINDOWS/Ice/assets/images/ice.png",
     "thm/WINDOWS/Ice/readme.md",
     "thm/LINUX/bsidesgtdav/readme.md",
     "thm/LINUX/bsidesgtdav/assets/images/webdav.png",
@@ -102,7 +105,6 @@
     "thm/LINUX/bsidesgtdav/assets/images/default_cred.png",
     "thm/LINUX/bsidesgtdav/assets/images/rer.md",
     "thm/LINUX/bsidesgtdav/assets/images/dav.png",
-    "thm/LINUX/bsidesgtdav/assets/doc/re.md",
-    "thm/AD/adenumeration/readme.md"
+    "thm/LINUX/bsidesgtdav/assets/doc/re.md"
   ]
 }
