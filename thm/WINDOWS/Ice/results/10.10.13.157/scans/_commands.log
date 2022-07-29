@@ -1,0 +1,102 @@
+nmap -vv --reason -Pn -T4 -sV -sC --version-all -A --osscan-guess -p 5357,445,8000,3389,49160,139,137,49154,49159,49153,49152,49158,135 -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/_full_tcp_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/xml/_full_tcp_nmap.xml" 10.10.13.157
+
+nmap -vv --reason -Pn -T4 -sU -A --osscan-guess -p 5357,445,8000,3389,49160,139,137,49154,49159,49153,49152,49158,135 -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/_custom_ports_udp_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/xml/_custom_ports_udp_nmap.xml" 10.10.13.157
+
+impacket-getArch -target 10.10.13.157
+
+nmap -vv --reason -Pn -T4 -sV -p 135 --script="banner,msrpc-enum,rpc-grind,rpcinfo" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp135/tcp_135_rpc_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp135/xml/tcp_135_rpc_nmap.xml" 10.10.13.157
+
+impacket-rpcdump -port 135 10.10.13.157
+
+enum4linux -a -M -l -d 10.10.13.157 2>&1
+
+nbtscan -rvh 10.10.13.157 2>&1
+
+nmap -vv --reason -Pn -T4 -sV -p 139 --script="banner,(nbstat or smb* or ssl*) and not (brute or broadcast or dos or external or fuzzer)" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp139/tcp_139_smb_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp139/xml/tcp_139_smb_nmap.xml" 10.10.13.157
+
+smbclient -L //10.10.13.157 -N -I 10.10.13.157 2>&1
+
+smbmap -H 10.10.13.157 -P 139 2>&1
+
+nmap -vv --reason -Pn -T4 -sV -p 445 --script="banner,(nbstat or smb* or ssl*) and not (brute or broadcast or dos or external or fuzzer)" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp445/tcp_445_smb_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp445/xml/tcp_445_smb_nmap.xml" 10.10.13.157
+
+smbmap -H 10.10.13.157 -P 445 2>&1
+
+feroxbuster -u http://10.10.13.157:5357/ -t 10 -w /root/.config/AutoRecon/wordlists/dirbuster.txt -x "txt,html,php,asp,aspx,jsp" -v -k -n -q -e -o "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp5357/tcp_5357_http_feroxbuster_dirbuster.txt"
+
+curl -sSikf http://10.10.13.157:5357/.well-known/security.txt
+
+curl -sSikf http://10.10.13.157:5357/robots.txt
+
+curl -sSik http://10.10.13.157:5357/
+
+nmap -vv --reason -Pn -T4 -sV -p 5357 --script="banner,(http* or ssl*) and not (brute or broadcast or dos or external or http-slowloris* or fuzzer)" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp5357/tcp_5357_http_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp5357/xml/tcp_5357_http_nmap.xml" 10.10.13.157
+
+whatweb --color=never --no-errors -a 3 -v http://10.10.13.157:5357 2>&1
+
+wkhtmltoimage --format png http://10.10.13.157:5357/ /root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp5357/tcp_5357_http_screenshot.png
+
+feroxbuster -u http://10.10.13.157:8000/ -t 10 -w /root/.config/AutoRecon/wordlists/dirbuster.txt -x "txt,html,php,asp,aspx,jsp" -v -k -n -q -e -o "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp8000/tcp_8000_http_feroxbuster_dirbuster.txt"
+
+curl -sSikf http://10.10.13.157:8000/.well-known/security.txt
+
+curl -sSikf http://10.10.13.157:8000/robots.txt
+
+curl -sSik http://10.10.13.157:8000/
+
+nmap -vv --reason -Pn -T4 -sV -p 8000 --script="banner,(http* or ssl*) and not (brute or broadcast or dos or external or http-slowloris* or fuzzer)" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp8000/tcp_8000_http_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp8000/xml/tcp_8000_http_nmap.xml" 10.10.13.157
+
+whatweb --color=never --no-errors -a 3 -v http://10.10.13.157:8000 2>&1
+
+wkhtmltoimage --format png http://10.10.13.157:8000/ /root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp8000/tcp_8000_http_screenshot.png
+
+nmap -vv --reason -Pn -T4 -sV -p 49152 --script="banner,msrpc-enum,rpc-grind,rpcinfo" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49152/tcp_49152_rpc_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49152/xml/tcp_49152_rpc_nmap.xml" 10.10.13.157
+
+nmap -vv --reason -Pn -T4 -sV -p 49153 --script="banner,msrpc-enum,rpc-grind,rpcinfo" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49153/tcp_49153_rpc_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49153/xml/tcp_49153_rpc_nmap.xml" 10.10.13.157
+
+nmap -vv --reason -Pn -T4 -sV -p 49154 --script="banner,msrpc-enum,rpc-grind,rpcinfo" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49154/tcp_49154_rpc_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49154/xml/tcp_49154_rpc_nmap.xml" 10.10.13.157
+
+nmap -vv --reason -Pn -T4 -sV -p 49158 --script="banner,msrpc-enum,rpc-grind,rpcinfo" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49158/tcp_49158_rpc_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49158/xml/tcp_49158_rpc_nmap.xml" 10.10.13.157
+
+nmap -vv --reason -Pn -T4 -sV -p 49159 --script="banner,msrpc-enum,rpc-grind,rpcinfo" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49159/tcp_49159_rpc_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49159/xml/tcp_49159_rpc_nmap.xml" 10.10.13.157
+
+nmap -vv --reason -Pn -T4 -sV -p 49160 --script="banner,msrpc-enum,rpc-grind,rpcinfo" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49160/tcp_49160_rpc_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp49160/xml/tcp_49160_rpc_nmap.xml" 10.10.13.157
+
+smbmap -u null -p "" -H 10.10.13.157 -P 445 2>&1
+
+smbmap -u null -p "" -H 10.10.13.157 -P 139 2>&1
+
+smbmap -H 10.10.13.157 -P 445 -R 2>&1
+
+smbmap -H 10.10.13.157 -P 139 -R 2>&1
+
+smbmap -u null -p "" -H 10.10.13.157 -P 445 -R 2>&1
+
+smbmap -u null -p "" -H 10.10.13.157 -P 139 -R 2>&1
+
+smbmap -H 10.10.13.157 -P 445 -x "ipconfig /all" 2>&1
+
+smbmap -H 10.10.13.157 -P 139 -x "ipconfig /all" 2>&1
+
+smbmap -u null -p "" -H 10.10.13.157 -P 445 -x "ipconfig /all" 2>&1
+
+nmap -vv --reason -Pn -T4 -sU -sV -p 137 --script="banner,(nbstat or smb* or ssl*) and not (brute or broadcast or dos or external or fuzzer)" -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/udp137/udp_137_smb_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/udp137/xml/udp_137_smb_nmap.xml" 10.10.13.157
+
+smbmap -H 10.10.13.157 -P 137 2>&1
+
+smbmap -u null -p "" -H 10.10.13.157 -P 137 2>&1
+
+smbmap -u null -p "" -H 10.10.13.157 -P 139 -x "ipconfig /all" 2>&1
+
+smbmap -H 10.10.13.157 -P 137 -R 2>&1
+
+smbmap -u null -p "" -H 10.10.13.157 -P 137 -R 2>&1
+
+smbmap -H 10.10.13.157 -P 137 -x "ipconfig /all" 2>&1
+
+smbmap -u null -p "" -H 10.10.13.157 -P 137 -x "ipconfig /all" 2>&1
+
+nmap -vv --reason -Pn -T4 -sV -sC --version-all -A --osscan-guess -p 3389 -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/_full_tcp_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/xml/_full_tcp_nmap.xml" 10.10.13.157
+
+nmap -vv --reason -Pn -T4 -sU -A --osscan-guess -p 3389 -oN "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/_custom_ports_udp_nmap.txt" -oX "/root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/xml/_custom_ports_udp_nmap.xml" 10.10.13.157
+

@@ -1,0 +1,20 @@
+[*] Service scan wkhtmltoimage (tcp/5357/http/wkhtmltoimage) ran a command which returned a non-zero exit code (1).
+[-] Command: wkhtmltoimage --format png http://10.10.13.157:5357/ /root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp5357/tcp_5357_http_screenshot.png
+[-] Error Output:
+Loading page (1/2)
+[>                                                           ] 0%Error: Failed to load http://10.10.13.157:5357/, with network status code 403 and http status code 503 - Error transferring http://10.10.13.157:5357/ - server replied: Service Unavailable
+[==============================>                             ] 50%[============================================================] 100%Rendering (2/2)
+[>                                                           ] 0%[===============>                                            ] 25%[============================================================] 100%Done
+Exit with code 1 due to network error: ServiceUnavailableError
+
+
+[*] Service scan wkhtmltoimage (tcp/8000/http/wkhtmltoimage) ran a command which returned a non-zero exit code (1).
+[-] Command: wkhtmltoimage --format png http://10.10.13.157:8000/ /root/enum-more/obsidian_vault/thm/WINDOWS/Ice/results/10.10.13.157/scans/tcp8000/tcp_8000_http_screenshot.png
+[-] Error Output:
+Loading page (1/2)
+[>                                                           ] 0%Error: Failed to load http://10.10.13.157:8000/, with network status code 203 and http status code 404 - Error transferring http://10.10.13.157:8000/ - server replied: File Not Found
+[==================>                                         ] 30%[============================================================] 100%Rendering (2/2)
+[>                                                           ] 0%[===============>                                            ] 25%[============================================================] 100%Done
+Exit with code 1 due to network error: ContentNotFoundError
+
+
