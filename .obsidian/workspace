@@ -7,11 +7,9 @@
         "id": "fc58c378bea4491b",
         "type": "leaf",
         "state": {
-          "type": "markdown",
+          "type": "image",
           "state": {
-            "file": "thm/WINDOWS/Ice/readme.md",
-            "mode": "source",
-            "source": true
+            "file": "thm/LINUX/bsidesgtdav/assets/images/Pasted image 20220729215132.png"
           }
         }
       }
@@ -69,7 +67,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thm/WINDOWS/Ice/readme.md",
+                "file": "thm/LINUX/bsidesgtdav/assets/images/Pasted image 20220729215132.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,15 +94,15 @@
   },
   "active": "fc58c378bea4491b",
   "lastOpenFiles": [
-    "thm/LINUX/bsidesgtdav/readme.md",
+    "thm/LINUX/bsidesgtdav/assets/images/Pasted image 20220729205634.png",
     "thm/WINDOWS/Ice/readme.md",
+    "thm/LINUX/bsidesgtdav/readme.md",
     "thm/LINUX/bsidesgtdav/assets/images/webdav.png",
     "thm/LINUX/bsidesgtdav/assets/images/revshell.png",
     "thm/LINUX/bsidesgtdav/assets/images/default_cred.png",
     "thm/LINUX/bsidesgtdav/assets/images/rer.md",
     "thm/LINUX/bsidesgtdav/assets/images/dav.png",
     "thm/LINUX/bsidesgtdav/assets/doc/re.md",
-    "thm/AD/adenumeration/readme.md",
-    "thm/AD/exploitingad/readme.md"
+    "thm/AD/adenumeration/readme.md"
   ]
 }
