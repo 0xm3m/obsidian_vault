@@ -9,7 +9,7 @@
         "state": {
           "type": "image",
           "state": {
-            "file": "thm/LINUX/bsidesgtdav/assets/images/Pasted image 20220729215132.png"
+            "file": "thm/WINDOWS/Ice/assets/images/Pasted image 20220729215132.png"
           }
         }
       }
@@ -67,7 +67,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thm/LINUX/bsidesgtdav/assets/images/Pasted image 20220729215132.png",
+                "file": "thm/WINDOWS/Ice/assets/images/Pasted image 20220729215132.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -92,9 +92,9 @@
     "direction": "horizontal",
     "width": 100
   },
-  "active": "fc58c378bea4491b",
+  "active": "f816177e427261a2",
   "lastOpenFiles": [
-    "thm/LINUX/bsidesgtdav/assets/images/Pasted image 20220729205634.png",
+    "thm/WINDOWS/Ice/assets/images/Pasted image 20220729205634.png",
     "thm/WINDOWS/Ice/readme.md",
     "thm/LINUX/bsidesgtdav/readme.md",
     "thm/LINUX/bsidesgtdav/assets/images/webdav.png",
