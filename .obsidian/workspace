@@ -7,8 +7,12 @@
         "id": "fc58c378bea4491b",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "htb/WINDOWS/readme.md",
+            "mode": "source",
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "htb/WINDOWS/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,17 +94,17 @@
     "direction": "horizontal",
     "width": 100
   },
-  "active": "f816177e427261a2",
+  "active": "fc58c378bea4491b",
   "lastOpenFiles": [
-    "thm/WINDOWS/Ice/readme.md",
+    "htb/AD/readme.md",
+    "htb/LINUX/late.md",
     "thm/LINUX/bsidesgtdav/readme.md",
+    "thm/WINDOWS/Ice/readme.md",
     "thm/WINDOWS/Ice/assets/images/cve.png",
     "thm/WINDOWS/Ice/assets/images/ice.png",
     "thm/LINUX/bsidesgtdav/assets/images/webdav.png",
     "thm/LINUX/bsidesgtdav/assets/images/revshell.png",
     "thm/LINUX/bsidesgtdav/assets/images/default_cred.png",
-    "thm/LINUX/bsidesgtdav/assets/images/rer.md",
-    "thm/LINUX/bsidesgtdav/assets/images/dav.png",
-    "thm/LINUX/bsidesgtdav/assets/doc/re.md"
+    "thm/LINUX/bsidesgtdav/assets/images/rer.md"
   ]
 }
