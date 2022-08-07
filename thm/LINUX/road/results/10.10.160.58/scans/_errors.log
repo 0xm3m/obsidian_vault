@@ -1,0 +1,16 @@
+[*] Service scan wkhtmltoimage (tcp/80/http/wkhtmltoimage) ran a command which returned a non-zero exit code (1).
+[-] Command: wkhtmltoimage --format png http://10.10.160.58:80/ /root/enum-more/obsidian_vault/thm/LINUX/road/results/10.10.160.58/scans/tcp80/tcp_80_http_screenshot.png
+[-] Error Output:
+Loading page (1/2)
+[>                                                           ] 0%[==================>                                         ] 30%[===================>                                        ] 32%Error: Failed to load http://10.10.160.58/js/jquery-3.3.1.js, with network status code 203 and http status code 404 - Error transferring http://10.10.160.58/js/jquery-3.3.1.js - server replied: Not Found
+[=========================>                                  ] 43%[============================>                               ] 47%Warning: Failed to load http://10.10.160.58/assets/images/IT.png (ignore)
+[=============================>                              ] 49%[=============================>                              ] 49%[=============================>                              ] 49%Error: Failed to load http://10.10.160.58/assets/fonts/fontawesome-webfont.woff2?v=4.7.0, with network status code 203 and http status code 404 - Error transferring http://10.10.160.58/assets/fonts/fontawesome-webfont.woff2?v=4.7.0 - server replied: Not Found
+[================================>                           ] 54%Error: Failed to load http://10.10.160.58/assets/fonts/fontawesome-webfont.woff?v=4.7.0, with network status code 203 and http status code 404 - Error transferring http://10.10.160.58/assets/fonts/fontawesome-webfont.woff?v=4.7.0 - server replied: Not Found
+[====================================>                       ] 60%Error: Failed to load http://10.10.160.58/assets/fonts/fontawesome-webfont.ttf?v=4.7.0, with network status code 203 and http status code 404 - Error transferring http://10.10.160.58/assets/fonts/fontawesome-webfont.ttf?v=4.7.0 - server replied: Not Found
+Error: Failed to load http://10.10.160.58/assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular, with network status code 203 and http status code 404 - Error transferring http://10.10.160.58/assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular - server replied: Not Found
+[======================================>                     ] 64%[============================================>               ] 74%Error: Failed to load http://10.10.160.58/assets/fonts/AgencyFB.ttf, with network status code 203 and http status code 404 - Error transferring http://10.10.160.58/assets/fonts/AgencyFB.ttf - server replied: Not Found
+[=====================================================>      ] 89%[============================================================] 100%Rendering (2/2)
+[>                                                           ] 0%[===============>                                            ] 25%[============================================================] 100%Done
+Exit with code 1 due to network error: ContentNotFoundError
+
+
