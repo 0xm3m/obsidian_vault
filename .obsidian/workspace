@@ -11,7 +11,7 @@
           "state": {
             "file": "htb/LINUX/late/readme.md",
             "mode": "source",
-            "source": false
+            "source": true
           }
         }
       }
@@ -94,17 +94,17 @@
     "direction": "horizontal",
     "width": 100
   },
-  "active": "f816177e427261a2",
+  "active": "fc58c378bea4491b",
   "lastOpenFiles": [
-    "htb/WINDOWS/readme.md",
-    "htb/AD/readme.md",
-    "htb/LINUX/late/readme.md",
     "thm/LINUX/bsidesgtdav/readme.md",
-    "thm/WINDOWS/Ice/readme.md",
-    "thm/WINDOWS/Ice/assets/images/cve.png",
-    "thm/WINDOWS/Ice/assets/images/ice.png",
-    "thm/LINUX/bsidesgtdav/assets/images/webdav.png",
-    "thm/LINUX/bsidesgtdav/assets/images/revshell.png",
-    "thm/LINUX/bsidesgtdav/assets/images/default_cred.png"
+    "htb/LINUX/late/readme.md",
+    "htb/LINUX/late/assets/images/ssti2.png",
+    "htb/LINUX/late/assets/images/web2.png",
+    "htb/LINUX/late/assets/images/ssti1.png",
+    "htb/LINUX/late/assets/images/pwned.png",
+    "htb/LINUX/late/assets/images/web3.png",
+    "htb/LINUX/late/assets/images/web1.png",
+    "htb/LINUX/late/assets/images/web.png",
+    "htb/WINDOWS/readme.md"
   ]
 }
