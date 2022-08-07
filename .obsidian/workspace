@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "htb/LINUX/late/readme.md",
-            "mode": "preview",
+            "file": "thm/LINUX/road/readme.md",
+            "mode": "source",
             "source": true
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "htb/LINUX/late/readme.md",
+                "file": "thm/LINUX/road/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,6 +96,8 @@
   },
   "active": "fc58c378bea4491b",
   "lastOpenFiles": [
+    "thm/LINUX/road/assets/images/road.png",
+    "thm/LINUX/road/readme.md",
     "thm/LINUX/bsidesgtdav/readme.md",
     "htb/LINUX/late/readme.md",
     "htb/LINUX/late/assets/images/ssti2.png",
@@ -103,8 +105,6 @@
     "htb/LINUX/late/assets/images/ssti1.png",
     "htb/LINUX/late/assets/images/pwned.png",
     "htb/LINUX/late/assets/images/web3.png",
-    "htb/LINUX/late/assets/images/web1.png",
-    "htb/LINUX/late/assets/images/web.png",
-    "htb/WINDOWS/readme.md"
+    "htb/LINUX/late/assets/images/web1.png"
   ]
 }
