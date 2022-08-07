@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "fc58c378bea4491b",
+        "id": "e26dd06e94e4695a",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -53,7 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314
+    "width": 248.5
   },
   "right": {
     "id": "28118da430c51560",
@@ -94,17 +94,17 @@
     "direction": "horizontal",
     "width": 100
   },
-  "active": "fc58c378bea4491b",
+  "active": "e26dd06e94e4695a",
   "lastOpenFiles": [
-    "thm/LINUX/road/assets/images/road.png",
-    "thm/LINUX/road/readme.md",
-    "thm/LINUX/bsidesgtdav/readme.md",
-    "htb/LINUX/late/readme.md",
-    "htb/LINUX/late/assets/images/ssti2.png",
-    "htb/LINUX/late/assets/images/web2.png",
-    "htb/LINUX/late/assets/images/ssti1.png",
-    "htb/LINUX/late/assets/images/pwned.png",
-    "htb/LINUX/late/assets/images/web3.png",
-    "htb/LINUX/late/assets/images/web1.png"
+    "thm/LINUX/road/assets/images/web8.png",
+    "thm/LINUX/road/assets/images/flags.png",
+    "thm/LINUX/road/assets/images/web10.png",
+    "thm/LINUX/road/assets/images/web9.png",
+    "thm/LINUX/road/assets/images/web7.png",
+    "thm/LINUX/road/assets/images/web6.png",
+    "thm/LINUX/road/assets/images/web5.png",
+    "thm/LINUX/road/assets/images/web4.png",
+    "thm/LINUX/road/assets/images/web3.png",
+    "thm/LINUX/road/assets/images/web2.png"
   ]
 }
