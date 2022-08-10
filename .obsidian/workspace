@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "thm/LINUX/MrRobotCTF/readme.md",
+            "file": "thm/LINUX/goldeneye/readme.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thm/LINUX/MrRobotCTF/readme.md",
+                "file": "thm/LINUX/goldeneye/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,15 +96,15 @@
   },
   "active": "e26dd06e94e4695a",
   "lastOpenFiles": [
-    "thm/LINUX/MrRobotCTF/assets/images/robot.png",
+    "thm/WINDOWS/Ice/readme.md",
+    "thm/LINUX/goldeneye/readme.md",
     "thm/LINUX/MrRobotCTF/readme.md",
+    "thm/LINUX/MrRobotCTF/assets/images/robot.png",
     "thm/LINUX/road/readme.md",
     "thm/LINUX/road/assets/images/web8.png",
     "thm/LINUX/road/assets/images/flags.png",
     "thm/LINUX/road/assets/images/web10.png",
     "thm/LINUX/road/assets/images/web9.png",
-    "thm/LINUX/road/assets/images/web7.png",
-    "thm/LINUX/road/assets/images/web6.png",
-    "thm/LINUX/road/assets/images/web5.png"
+    "thm/LINUX/road/assets/images/web7.png"
   ]
 }
