@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "thm/LINUX/stuxctf/readme.md",
+            "file": "htb/LINUX/redpanda/readme.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thm/LINUX/stuxctf/readme.md",
+                "file": "htb/LINUX/redpanda/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,15 +96,15 @@
   },
   "active": "e26dd06e94e4695a",
   "lastOpenFiles": [
+    "htb/LINUX/late/readme.md",
+    "htb/LINUX/redpanda/readme.md",
+    "thm/LINUX/stuxctf/readme.md",
     "thm/LINUX/goldeneye/readme.md",
     "thm/LINUX/goldeneye/assets/images/Pasted image 20220810202644.png",
     "thm/LINUX/goldeneye/assets/images/Pasted image 20220810201322.png",
     "thm/LINUX/goldeneye/assets/images/Pasted image 20220810201310.png",
     "thm/LINUX/goldeneye/assets/images/Pasted image 20220810201259.png",
     "thm/LINUX/goldeneye/assets/images/Pasted image 20220810195901.png",
-    "thm/WINDOWS/Ice/readme.md",
-    "thm/LINUX/MrRobotCTF/readme.md",
-    "thm/LINUX/MrRobotCTF/assets/images/robot.png",
-    "thm/LINUX/road/readme.md"
+    "thm/WINDOWS/Ice/readme.md"
   ]
 }
